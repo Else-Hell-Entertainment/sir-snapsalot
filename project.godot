@@ -31,6 +31,15 @@ project/assembly_name="Sir Snapsalot"
 
 enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://Assets/": "red",
+"res://Code/": "orange",
+"res://Data/": "yellow",
+"res://Scenes/": "green"
+}
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
