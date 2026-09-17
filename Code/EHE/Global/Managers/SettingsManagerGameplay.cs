@@ -1,6 +1,12 @@
 using Godot;
-using System;
 
-public partial class SettingsManagerGameplay : Node
+namespace EHE.Global.Managers
 {
+    public partial class SettingsManager
+    {
+        public void ApplyGameplaySettings()
+        {
+            GD.Print("Gameplay settings applied!");
+        }
+    }
 }

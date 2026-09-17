@@ -1,3 +1,5 @@
+using EHE.Global.SceneManagement;
+
 namespace EHE.Global.Config
 {
     public class GameStartConfig
