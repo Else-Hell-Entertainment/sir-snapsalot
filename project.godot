@@ -15,6 +15,7 @@ General/banks_path="res://Assets/Banks"
 [application]
 
 config/name="Sir Snapsalot"
+run/main_scene="uid://blu5sd3fnxsok"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 

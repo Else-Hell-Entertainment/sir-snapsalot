@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://blu5sd3fnxsok"]
+
+[ext_resource type="Script" uid="uid://bbv3p2xythhtw" path="res://Code/EHE/Global/BootStrap.cs" id="1_ikrf3"]
+[ext_resource type="Texture2D" uid="uid://fgutnmox7hj7" path="res://icon.svg" id="3_82r8h"]
+
+[sub_resource type="Animation" id="Animation_uu6nw"]
+resource_name = "IntroMovie"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-90, 527), Vector2(1300, 527)]
+}
+
+[sub_resource type="Animation" id="Animation_7uk0i"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-90, 527)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nm5ya"]
+_data = {
+&"IntroMovie": SubResource("Animation_uu6nw"),
+&"RESET": SubResource("Animation_7uk0i")
+}
+
+[node name="BootStrap" type="Node" unique_id=110727307 node_paths=PackedStringArray("_splashAnimationPlayer")]
+script = ExtResource("1_ikrf3")
+_splashAnimationPlayer = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=424386661]
+libraries/ = SubResource("AnimationLibrary_nm5ya")
+autoplay = &"IntroMovie"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1781322358]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1511025988]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=567404156]
+offset_left = 96.0
+offset_top = 190.0
+offset_right = 624.0
+offset_bottom = 369.0
+text = "SIR SNAPSALOT!"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=83145387]
+position = Vector2(-90, 527)
+texture = ExtResource("3_82r8h")
