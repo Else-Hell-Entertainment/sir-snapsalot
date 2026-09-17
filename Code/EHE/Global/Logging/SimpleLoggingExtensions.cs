@@ -1,12 +1,11 @@
 ﻿// License: MIT License (see LICENSE in project root for details)
 // Author: Miska Rihu <miska.rihu@tuni.fi>
-// Used under license for this project by Pekka Heljakka <pekka.heljakka@tuni.fi>
 
 using System;
 using System.Diagnostics;
 using Godot;
 
-namespace Arcana.Common.Logging
+namespace EHE.Global.Logging
 {
     /// <summary>
     ///  <para>
@@ -124,9 +123,7 @@ namespace Arcana.Common.Logging
         /// <param name="what">Arguments that are written to the log.</param>
         ///
         /// <seealso cref="LogWarning"/>
-        [Obsolete(
-            "Stack trace will always be omitted from release build logs and included in DEBUG build logs."
-        )]
+        [Obsolete("Stack trace will always be omitted from release build logs and included in DEBUG build logs.")]
         public static void LogWarningNoStackTrace(this object obj, params object[] what) =>
             obj.Log(LogSeverity.Warning, includeStackTrace: false, what);
 
@@ -140,9 +137,7 @@ namespace Arcana.Common.Logging
         /// <param name="what">Arguments that are written to the log.</param>
         ///
         /// <seealso cref="LogError"/>
-        [Obsolete(
-            "Stack trace will always be omitted from release build logs and included in DEBUG build logs."
-        )]
+        [Obsolete("Stack trace will always be omitted from release build logs and included in DEBUG build logs.")]
         public static void LogErrorNoStackTrace(this object obj, params object[] what) =>
             obj.Log(LogSeverity.Error, includeStackTrace: false, what);
 
@@ -156,9 +151,7 @@ namespace Arcana.Common.Logging
         /// <param name="what">Arguments that are written to the log.</param>
         ///
         /// <seealso cref="LogFatalError"/>
-        [Obsolete(
-            "Stack trace will always be omitted from release build logs and included in DEBUG build logs."
-        )]
+        [Obsolete("Stack trace will always be omitted from release build logs and included in DEBUG build logs.")]
         public static void LogFatalErrorNoStackTrace(this object obj, params object[] what) =>
             obj.Log(LogSeverity.Fatal, includeStackTrace: false, what);
 
@@ -254,8 +247,7 @@ namespace Arcana.Common.Logging
         )
         {
             var message =
-                $"[{DateTime.Now}] [{severity.ToString().ToUpper()}] [{sender}]"
-                + $": {string.Join(" ", what).Trim()}";
+                $"[{DateTime.Now}] [{severity.ToString().ToUpper()}] [{sender}]" + $": {string.Join(" ", what).Trim()}";
 
 #if DEBUG
             if (severity is LogSeverity.Warning or LogSeverity.Error or LogSeverity.Fatal)
@@ -298,12 +290,7 @@ namespace Arcana.Common.Logging
         ///  Severity of the log message. For all severity labels,
         ///  see <see cref="LogSeverity"/>.
         /// </param>
-        private static void Log(
-            this object sender,
-            LogSeverity severity,
-            bool includeStackTrace,
-            params object[] what
-        )
+        private static void Log(this object sender, LogSeverity severity, bool includeStackTrace, params object[] what)
         {
             string senderName;
 
