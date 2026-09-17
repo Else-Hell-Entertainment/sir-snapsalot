@@ -10,4 +10,7 @@
     <ItemGroup>
         <Folder Include="Code\EHE\" />
     </ItemGroup>
+    <ItemGroup>
+        <Content Include="Code\EHE\Global\SaveSystem\BinarySaveSerializer.cs.uid" />
+    </ItemGroup>
 </Project>
