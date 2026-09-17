@@ -5,4 +5,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>SirSnapsalot</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Code\EHE\" />
+  </ItemGroup>
 </Project>
