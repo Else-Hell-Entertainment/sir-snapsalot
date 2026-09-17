@@ -1,6 +1,8 @@
-﻿using Godot;
+﻿using EHE.Global.Logging;
+using EHE.Global.Managers;
+using Godot;
 
-namespace EHE.Global.Config
+namespace EHE.Global.SceneManagement
 {
     /// <summary>
     /// Contains constants and methods for managing scene collections in the game.

@@ -139,21 +139,8 @@ namespace EHE.Global.Managers
             GameData gameData = new GameData();
             PlayerData playerData = new PlayerData();
             playerData.PlayerId = startConfig.DefaultPlayerId;
-
-            Inventory startingInventory = new Inventory();
-            startingInventory.Size = startConfig.StartingInventorySize;
-            startingInventory.InitializeInventory();
-            foreach (var item in startConfig.StartingItems)
-            {
-                startingInventory.AddItem(item);
-            }
-            playerData.InventoryData = startingInventory.SaveState();
-
             gameData.PlayerData = playerData;
-
             SceneManagerData sceneManagerData = new SceneManagerData();
-            sceneManagerData.CurrentSceneKey = startConfig.DefaultSceneKey;
-            gameData.SceneManagerData = sceneManagerData;
             return gameData;
         }
     }
