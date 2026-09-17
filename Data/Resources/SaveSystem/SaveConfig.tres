@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SaveConfig" format=3 uid="uid://bjxd5ddoec2ik"]
+
+[ext_resource type="Script" uid="uid://cpqqnwlnlmcp5" path="res://Code/EHE/Global/SaveSystem/SaveConfig.cs" id="1_866ut"]
+
+[resource]
+script = ExtResource("1_866ut")
+DefaultSaveBackend = 1
+metadata/_custom_type_script = "uid://cpqqnwlnlmcp5"

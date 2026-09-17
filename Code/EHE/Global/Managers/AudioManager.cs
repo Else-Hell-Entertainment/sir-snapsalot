@@ -56,19 +56,19 @@ namespace EHE.Global.Managers
 
         public override void _Ready()
         {
-            base._Ready();
-            _musicPlayer1 = new AudioStreamPlayer();
-            _musicPlayer1.SetBus(MusicBusName);
-            _musicPlayer1.Name = "MusicPlayer1";
-            AddChild(_musicPlayer1);
-            _musicPlayer2 = new AudioStreamPlayer();
-            _musicPlayer2.SetBus(MusicBusName);
-            _musicPlayer2.Name = "MusicPlayer2";
-            AddChild(_musicPlayer2);
-            _genericPlayer = new AudioStreamPlayer();
-            _genericPlayer.SetBus(SFXBusName);
-            _genericPlayer.Name = "GenericPlayer";
-            AddChild(_genericPlayer);
+            // base._Ready();
+            // _musicPlayer1 = new AudioStreamPlayer();
+            // _musicPlayer1.SetBus(MusicBusName);
+            // _musicPlayer1.Name = "MusicPlayer1";
+            // AddChild(_musicPlayer1);
+            // _musicPlayer2 = new AudioStreamPlayer();
+            // _musicPlayer2.SetBus(MusicBusName);
+            // _musicPlayer2.Name = "MusicPlayer2";
+            // AddChild(_musicPlayer2);
+            // _genericPlayer = new AudioStreamPlayer();
+            // _genericPlayer.SetBus(SFXBusName);
+            // _genericPlayer.Name = "GenericPlayer";
+            // AddChild(_genericPlayer);
         }
 
         /// <summary>
@@ -78,28 +78,29 @@ namespace EHE.Global.Managers
         /// <param name="volumePercentage">The volume percentage to set (0 = muted, 100 = full volume).</param>
         public bool SetLinearVolume(string audioBus, int volumePercentage)
         {
-            int busIndex = GetBusIndex(audioBus);
-            float linearVolume = Mathf.Clamp(volumePercentage / 100f, 0f, 1f);
-
-            if (busIndex == -1)
-            {
-                this.LogError($"Invalid bus index for {audioBus}. Cannot set volume.");
-                return false;
-            }
-
-            AudioServer.SetBusVolumeLinear(busIndex, linearVolume);
+            // int busIndex = GetBusIndex(audioBus);
+            // float linearVolume = Mathf.Clamp(volumePercentage / 100f, 0f, 1f);
+            //
+            // if (busIndex == -1)
+            // {
+            //     this.LogError($"Invalid bus index for {audioBus}. Cannot set volume.");
+            //     return false;
+            // }
+            //
+            // AudioServer.SetBusVolumeLinear(busIndex, linearVolume);
             return true;
         }
 
         private int GetBusIndex(string audioBus)
         {
-            return audioBus switch
-            {
-                MasterBusName => AudioServer.GetBusIndex(MasterBusName),
-                MusicBusName => AudioServer.GetBusIndex(MusicBusName),
-                SFXBusName => AudioServer.GetBusIndex(SFXBusName),
-                _ => -1,
-            };
+            // return audioBus switch
+            // {
+            //     MasterBusName => AudioServer.GetBusIndex(MasterBusName),
+            //     MusicBusName => AudioServer.GetBusIndex(MusicBusName),
+            //     SFXBusName => AudioServer.GetBusIndex(SFXBusName),
+            //     _ => -1,
+            // };
+            return -1;
         }
     }
 }

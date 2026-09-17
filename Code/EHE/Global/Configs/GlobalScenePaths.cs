@@ -8,7 +8,5 @@
 
             public const string PlayerHud = "res://Scenes/UI/Player/PlayerHud.tscn";
         }
-
-        public static class Objects { }
     }
 }
