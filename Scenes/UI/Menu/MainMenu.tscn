@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://b5v814hio7knd"]
+
+[ext_resource type="Script" uid="uid://dstdbntp1dy20" path="res://Code/Scenes/UI/Menu/SceneScripts/MainMenu.cs" id="1_a2ivp"]
+
+[node name="MainMenu" type="Control" unique_id=799995417 node_paths=PackedStringArray("_startNewGameButton", "_settingsButton", "_saveButton", "_loadButton", "_creditsButton", "_exitButton")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_a2ivp")
+_startNewGameButton = NodePath("VBoxContainer/NewGameButton")
+_settingsButton = NodePath("VBoxContainer/SettingsButton")
+_saveButton = NodePath("VBoxContainer/SaveButton")
+_loadButton = NodePath("VBoxContainer/LoadButton")
+_creditsButton = NodePath("VBoxContainer/CreditsButton")
+_exitButton = NodePath("VBoxContainer/ExitButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=480366749]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 95.0
+offset_right = 308.0
+offset_bottom = 356.0
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=684667878]
+layout_mode = 2
+text = "MAIN MENU"
+horizontal_alignment = 1
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer" unique_id=955995684]
+layout_mode = 2
+text = "Start New Game"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=1997201080]
+layout_mode = 2
+text = "Settings
+"
+
+[node name="SaveButton" type="Button" parent="VBoxContainer" unique_id=918225396]
+layout_mode = 2
+text = "Save Game"
+
+[node name="LoadButton" type="Button" parent="VBoxContainer" unique_id=747215499]
+layout_mode = 2
+text = "Load Game"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=671834929]
+layout_mode = 2
+text = "Credits"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer" unique_id=335120052]
+layout_mode = 2
+text = "Exit to Desktop"

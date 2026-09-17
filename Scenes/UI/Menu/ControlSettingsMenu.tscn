@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cfs8n2ipatnc1"]
+
+[ext_resource type="Script" uid="uid://oafgweya7hi0" path="res://Code/Scenes/UI/Menu/SceneScripts/ControlSettingsMenu.cs" id="1_qor3i"]
+[ext_resource type="PackedScene" uid="uid://bv5fdrppekuym" path="res://Scenes/Menu/Buttons/ControlSettingButton.tscn" id="2_tbyh6"]
+
+[node name="ControlSettingsMenu" type="Control" unique_id=1679196557 node_paths=PackedStringArray("_controlsContainer", "_remapPromptPanel", "_actionLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qor3i")
+_controlsContainer = NodePath("ControlsContainer")
+_controlSettingButtonScene = ExtResource("2_tbyh6")
+_remapPromptPanel = NodePath("RemapPromptPanel")
+_actionLabel = NodePath("RemapPromptPanel/RemapPromptContainer/ActionLabel")
+
+[node name="ControlsContainer" type="VBoxContainer" parent="." unique_id=2143381631]
+layout_mode = 1
+offset_left = 306.0
+offset_top = 147.0
+offset_right = 481.0
+offset_bottom = 213.0
+
+[node name="RemapPromptPanel" type="Panel" parent="." unique_id=159147031]
+layout_mode = 1
+offset_left = 769.0
+offset_top = 268.0
+offset_right = 1198.0
+offset_bottom = 347.0
+
+[node name="RemapPromptContainer" type="HBoxContainer" parent="RemapPromptPanel" unique_id=1454123065]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RemapPromptLabel" type="Label" parent="RemapPromptPanel/RemapPromptContainer" unique_id=299649317]
+layout_mode = 2
+text = "Press a key to remap to action: "
+
+[node name="ActionLabel" type="Label" parent="RemapPromptPanel/RemapPromptContainer" unique_id=1868894736]
+layout_mode = 2
+text = "Jump"
+
+[node name="Panel" type="Panel" parent="." unique_id=2069884286]
+layout_mode = 1
+offset_left = 142.0
+offset_top = 336.0
+offset_right = 361.0
+offset_bottom = 448.0
+
+[node name="BackButton" type="Button" parent="Panel" unique_id=186075756]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0

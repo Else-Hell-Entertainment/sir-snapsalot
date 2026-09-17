@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://gekhf4mdgmcu"]
+
+[ext_resource type="Script" uid="uid://bd4a3rcc40feh" path="res://Code/Scenes/UI/Menu/SceneScripts/PauseMenuRoot.cs" id="1_an0u3"]
+
+[node name="PauseMenuRoot" type="Control" unique_id=725137946]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_an0u3")
+_sceneCollection = 1
