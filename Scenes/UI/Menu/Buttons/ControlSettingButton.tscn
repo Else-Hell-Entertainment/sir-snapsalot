@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bv5fdrppekuym"]
+
+[ext_resource type="Script" uid="uid://bcr438k3suj0y" path="res://Code/Scenes/UI/Menu/SceneScripts/Buttons/ControlSettingButton.cs" id="1_aiv72"]
+
+[node name="ControlSettingButton" type="Control" unique_id=1492358167 node_paths=PackedStringArray("_remapButton", "_inputLabel")]
+custom_minimum_size = Vector2(335, 35)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_top = -1.0
+offset_right = -1584.0
+offset_bottom = -1046.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aiv72")
+_remapButton = NodePath("HBoxContainer/Button")
+_inputLabel = NodePath("HBoxContainer/Label")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1612373579]
+custom_minimum_size = Vector2(175, 35)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="HBoxContainer" unique_id=499377780]
+layout_mode = 2
+text = "Jump"
+alignment = 0
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=1553695666]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = "Space"
+horizontal_alignment = 2
+vertical_alignment = 1

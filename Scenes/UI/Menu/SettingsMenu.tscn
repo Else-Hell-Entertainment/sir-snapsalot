@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c2qdtw7g17nml"]
+
+[ext_resource type="Script" uid="uid://d250bxrnfb3fv" path="res://Code/Scenes/UI/Menu/SceneScripts/SettingsMenu.cs" id="1_o4h48"]
+
+[node name="SettingsMenu" type="Control" unique_id=1026790017 node_paths=PackedStringArray("_audioSettingsButton", "_videoSettingsButton", "_gameplaySettingsButton", "_backButton")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_o4h48")
+_audioSettingsButton = NodePath("VBoxContainer/AudioSettingsButton")
+_videoSettingsButton = NodePath("VBoxContainer/VideoSettingsButton")
+_gameplaySettingsButton = NodePath("VBoxContainer/GameSettingsButton")
+_backButton = NodePath("VBoxContainer/BackButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1716789487]
+layout_mode = 1
+offset_left = 77.0
+offset_top = 66.0
+offset_right = 197.0
+offset_bottom = 171.0
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=2110498825]
+layout_mode = 2
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="VideoSettingsButton" type="Button" parent="VBoxContainer" unique_id=2058135669]
+layout_mode = 2
+text = "Video"
+
+[node name="AudioSettingsButton" type="Button" parent="VBoxContainer" unique_id=1823733322]
+layout_mode = 2
+text = "Audio"
+
+[node name="GameSettingsButton" type="Button" parent="VBoxContainer" unique_id=755084471]
+layout_mode = 2
+text = "Gameplay"
+
+[node name="BackButton" type="Button" parent="VBoxContainer" unique_id=1565603149]
+layout_mode = 2
+text = "Back"
