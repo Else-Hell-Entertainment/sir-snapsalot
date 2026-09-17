@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://q757pwjquvse"]
+
+[ext_resource type="Script" uid="uid://cydt2iw51yqgx" path="res://Code/Scenes/UI/Menu/SceneScripts/PauseMenu.cs" id="1_0vmhm"]
+
+[node name="PauseMenu" type="Control" unique_id=2137152062 node_paths=PackedStringArray("_resumeButton", "_saveButton", "_loadButton", "_settingsButton", "_quitToMainButton", "_quitToDesktopButton")]
+layout_mode = 3
+anchors_preset = 0
+focus_mode = 2
+script = ExtResource("1_0vmhm")
+_resumeButton = NodePath("VBoxContainer/ResumeButton")
+_saveButton = NodePath("VBoxContainer/SaveButton")
+_loadButton = NodePath("VBoxContainer/LoadButton")
+_settingsButton = NodePath("VBoxContainer/SettingsButton")
+_quitToMainButton = NodePath("VBoxContainer/QuitToMainButton")
+_quitToDesktopButton = NodePath("VBoxContainer/QuitToDesktopButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1868743407]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 142.0
+offset_right = 443.0
+offset_bottom = 189.0
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=450147953]
+layout_mode = 2
+text = "GAME PAUSED"
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer" unique_id=1462719941]
+layout_mode = 2
+text = "Resume"
+
+[node name="SaveButton" type="Button" parent="VBoxContainer" unique_id=825796984]
+layout_mode = 2
+text = "Save"
+
+[node name="LoadButton" type="Button" parent="VBoxContainer" unique_id=1137331478]
+layout_mode = 2
+text = "Load"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=1009955294]
+layout_mode = 2
+text = "Settings"
+
+[node name="QuitToMainButton" type="Button" parent="VBoxContainer" unique_id=233853000]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="QuitToDesktopButton" type="Button" parent="VBoxContainer" unique_id=1572907663]
+layout_mode = 2
+text = "Quit to Desktop"

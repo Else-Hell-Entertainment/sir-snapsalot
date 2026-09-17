@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://ck5h3rj7u2v2c"]
+
+[ext_resource type="Script" uid="uid://dro4xpeonikty" path="res://Code/Scenes/UI/Menu/SceneScripts/VideoSettingsMenu.cs" id="1_47nkj"]
+
+[node name="VideoSettingsMenu" type="Control" unique_id=813509538 node_paths=PackedStringArray("_resolutionDropdown", "_displayModeDropdown", "_saveSettingsButton", "_backToSettingsButton", "_cancelButton", "_resetDefaultsButton", "_popupScreen", "_popupSaveButton", "_popupCancelButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_47nkj")
+_resolutionDropdown = NodePath("VBoxContainer2/ResolutionOptions")
+_displayModeDropdown = NodePath("VBoxContainer2/DispModeOptions")
+_saveSettingsButton = NodePath("VBoxContainer/SaveButton")
+_backToSettingsButton = NodePath("VBoxContainer/BackButton")
+_cancelButton = NodePath("VBoxContainer/CancelButton")
+_resetDefaultsButton = NodePath("VBoxContainer/ResetDefaultsButton")
+_popupScreen = NodePath("Control")
+_popupSaveButton = NodePath("Control/PanelContainer/VBoxContainer/PopupSaveButton")
+_popupCancelButton = NodePath("Control/PanelContainer/VBoxContainer/PopupCancelButton")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=136572263]
+layout_mode = 0
+offset_left = 530.0
+offset_top = 392.0
+offset_right = 727.0
+offset_bottom = 582.0
+
+[node name="ResolutionLabel" type="Label" parent="VBoxContainer2" unique_id=304101494]
+layout_mode = 2
+text = "Resolution"
+horizontal_alignment = 1
+
+[node name="ResolutionOptions" type="OptionButton" parent="VBoxContainer2" unique_id=322322441]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "1080"
+popup/item_0/id = 0
+popup/item_1/text = "720"
+popup/item_1/id = 1
+popup/item_2/id = 2
+
+[node name="DispModeLabel" type="Label" parent="VBoxContainer2" unique_id=740705212]
+layout_mode = 2
+text = "Display mode"
+horizontal_alignment = 1
+
+[node name="DispModeOptions" type="OptionButton" parent="VBoxContainer2" unique_id=1136311749]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Windowed Fullscreen"
+popup/item_1/id = 1
+popup/item_2/text = "Fullscreen"
+popup/item_2/id = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1943645835]
+layout_mode = 1
+offset_left = 904.0
+offset_top = 839.0
+offset_right = 1044.0
+offset_bottom = 975.0
+
+[node name="ResetDefaultsButton" type="Button" parent="VBoxContainer" unique_id=616084298]
+layout_mode = 2
+text = "Reset to Defaults"
+
+[node name="CancelButton" type="Button" parent="VBoxContainer" unique_id=631671085]
+layout_mode = 2
+text = "Cancel Changes"
+
+[node name="SaveButton" type="Button" parent="VBoxContainer" unique_id=930308149]
+layout_mode = 2
+text = "Save Settings"
+
+[node name="BackButton" type="Button" parent="VBoxContainer" unique_id=671931969]
+layout_mode = 2
+text = "Back"
+
+[node name="Control" type="Control" parent="." unique_id=569295354]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control" unique_id=1747887140]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=1473910773]
+layout_mode = 1
+offset_left = 909.0
+offset_top = 602.0
+offset_right = 1122.0
+offset_bottom = 721.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer" unique_id=1864218296]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer" unique_id=957068073]
+layout_mode = 2
+text = "You have unsaved changes!
+"
+
+[node name="PopupSaveButton" type="Button" parent="Control/PanelContainer/VBoxContainer" unique_id=430773877]
+layout_mode = 2
+text = "Save and exit"
+
+[node name="PopupCancelButton" type="Button" parent="Control/PanelContainer/VBoxContainer" unique_id=146192630]
+layout_mode = 2
+text = "Cancel changes"
