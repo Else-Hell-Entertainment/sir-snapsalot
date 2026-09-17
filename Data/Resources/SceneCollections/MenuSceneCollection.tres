@@ -5,8 +5,38 @@
 [resource]
 script = ExtResource("1_muvuc")
 CollectionName = "Menu scenes"
-_savedScenePaths = Dictionary[String, String]({})
+_savedScenePaths = Dictionary[String, String]({
+"AudioSettings": "res://Scenes/UI/Menu/AudioSettingsMenu.tscn",
+"ControlSettings": "res://Scenes/UI/Menu/ControlSettingsMenu.tscn",
+"GamePlaySettings": "res://Scenes/UI/Menu/GamePlaySettingsMenu.tscn",
+"MainMenu": "res://Scenes/UI/Menu/MainMenu.tscn",
+"MainMenuRoot": "res://Scenes/UI/Menu/MainMenuRoot.tscn",
+"Pause": "res://Scenes/UI/Menu/PauseMenu.tscn",
+"PauseMenuRoot": "res://Scenes/UI/Menu/PauseMenuRoot.tscn",
+"Settings": "res://Scenes/UI/Menu/SettingsMenu.tscn",
+"VideoSettings": "res://Scenes/UI/Menu/VideoSettingsMenu.tscn"
+})
 "Manual collection management. Use with caution!" = null
-management_ScenePathDictionary = Dictionary[String, String]({})
-management_SceneUidDictionary = Dictionary[String, String]({})
+management_ScenePathDictionary = Dictionary[String, String]({
+"AudioSettings": "res://Scenes/UI/Menu/AudioSettingsMenu.tscn",
+"ControlSettings": "res://Scenes/UI/Menu/ControlSettingsMenu.tscn",
+"GamePlaySettings": "res://Scenes/UI/Menu/GamePlaySettingsMenu.tscn",
+"MainMenu": "res://Scenes/UI/Menu/MainMenu.tscn",
+"MainMenuRoot": "res://Scenes/UI/Menu/MainMenuRoot.tscn",
+"Pause": "res://Scenes/UI/Menu/PauseMenu.tscn",
+"PauseMenuRoot": "res://Scenes/UI/Menu/PauseMenuRoot.tscn",
+"Settings": "res://Scenes/UI/Menu/SettingsMenu.tscn",
+"VideoSettings": "res://Scenes/UI/Menu/VideoSettingsMenu.tscn"
+})
+management_SceneUidDictionary = Dictionary[String, String]({
+"AudioSettings": "uid://bub6fs360dllq",
+"ControlSettings": "uid://cfs8n2ipatnc1",
+"GamePlaySettings": "uid://cyho3xmc3umam",
+"MainMenu": "uid://b5v814hio7knd",
+"MainMenuRoot": "uid://bl6uwq7nps1if",
+"Pause": "uid://q757pwjquvse",
+"PauseMenuRoot": "uid://gekhf4mdgmcu",
+"Settings": "uid://c2qdtw7g17nml",
+"VideoSettings": "uid://ck5h3rj7u2v2c"
+})
 metadata/_custom_type_script = "uid://c6xlgsbgg2co2"
