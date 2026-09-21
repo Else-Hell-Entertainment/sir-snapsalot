@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b7r6fabvjinfm"]
+
+[ext_resource type="Script" uid="uid://0gdac7jm14vr" path="res://Code/EHE/Scenes/Character/Character.cs" id="1_i60gv"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_blgkw"]
+height = 1.8
+
+[node name="Character" type="Node3D" unique_id=1559585746]
+script = ExtResource("1_i60gv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=132792473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_blgkw")

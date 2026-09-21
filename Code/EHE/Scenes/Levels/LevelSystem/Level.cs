@@ -1,4 +1,122 @@
-using System;
+using EHE.CharacterSystem;
 using Godot;
 
-public partial class Level : Node3D { }
+namespace EHE.LevelSystem
+{
+    [GlobalClass]
+    public partial class Level : Node3D
+    {
+        [Export]
+        private FloorComponent _floorComponent;
+
+        [Export]
+        private WallComponent _wallComponent;
+
+        [Export]
+        private PropComponent _propComponent;
+
+        [Export]
+        private Button _startGameButton;
+
+        [Export]
+        private Character _character;
+
+        private int _width = 10;
+        private int _height = 10;
+        private int _blockSize = 2;
+
+        public LevelGrid Grid;
+
+        private Vector3 _startPos = new Vector3(0, 0, 0);
+
+        public override void _Ready()
+        {
+            Name = "Level";
+            Grid = new LevelGrid();
+            Grid.Name = "LevelGrid";
+            AddChild(Grid);
+            var sceneOwner = GetTree().CurrentScene;
+            if (sceneOwner != null)
+            {
+                Grid.Owner = sceneOwner;
+            }
+
+            CreateFirstGridCell();
+            _startGameButton.Pressed += StartGame;
+            _startPos = Grid.GetGridCell(new Vector2I(0, 0)).GlobalPosition;
+            _character.GlobalPosition = _startPos;
+        }
+
+        public override void _Process(double delta)
+        {
+            base._Process(delta);
+            if (Engine.IsEditorHint())
+            {
+                if (Input.IsActionJustPressed("Hotbar1"))
+                {
+                    GD.Print("Hotbar1 pressed");
+                }
+            }
+        }
+
+        public override void _Input(InputEvent @event)
+        {
+            base._Input(@event);
+            if (Engine.IsEditorHint())
+            {
+                if (@event.IsActionPressed("Hotbar1"))
+                {
+                    //Grid.GhostComponent = _floorComponent;
+                    GD.Print("Selected Floor Component");
+                }
+            }
+
+            if (@event.IsActionPressed("Hotbar1"))
+            {
+                Grid.GhostComponent = _floorComponent;
+                GD.Print("Selected Floor Component");
+            }
+            else if (@event.IsActionPressed("Hotbar2"))
+            {
+                Grid.GhostComponent = _wallComponent;
+                GD.Print("Selected Wall Component");
+            }
+            else if (@event.IsActionPressed("Hotbar3"))
+            {
+                Grid.GhostComponent = _propComponent;
+                GD.Print("Selected Prop Component");
+            }
+            else if (@event.IsActionPressed("RotateCW"))
+            {
+                Grid.RotateGhostComponent(true);
+            }
+            else if (@event.IsActionPressed("RotateCCW"))
+            {
+                Grid.RotateGhostComponent(false);
+            }
+            else if (@event.IsActionPressed("ClearCell"))
+            {
+                Grid.RemoveCell();
+            }
+        }
+
+        private void StartGame()
+        {
+            _character.GlobalPosition = _startPos;
+            Grid.CalculateNavigation();
+            _character.ReceivePath(Grid.GetNavPath());
+            _character.Activate();
+            ShowPath();
+        }
+
+        private void ShowPath()
+        {
+            Grid.DrawNavigationPath();
+        }
+
+        private void CreateFirstGridCell()
+        {
+            Grid.Initialize(_floorComponent);
+        }
+    }
+}
