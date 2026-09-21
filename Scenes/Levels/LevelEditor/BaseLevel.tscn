@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://drur0a5ndj8rl"]
+
+[ext_resource type="Script" uid="uid://dog681eywdien" path="res://Code/EHE/Scenes/Levels/LevelSystem/Level.cs" id="1_uqbwj"]
+[ext_resource type="Resource" uid="uid://gnakrgkapgmb" path="res://Data/Resources/LevelComponents/ProtoFloor1.tres" id="2_f24sm"]
+[ext_resource type="Resource" uid="uid://c5uqw6ksrdept" path="res://Data/Resources/LevelComponents/ProtoWall1.tres" id="3_agxf6"]
+[ext_resource type="Resource" uid="uid://p5ls6ob2wkxl" path="res://Data/Resources/LevelComponents/ProtoPillar1.tres" id="4_nhtej"]
+[ext_resource type="PackedScene" uid="uid://b7r6fabvjinfm" path="res://Scenes/Character/Character.tscn" id="5_agxf6"]
+
+[node name="BaseLevel" type="Node3D" unique_id=1007198492 node_paths=PackedStringArray("_startGameButton", "_character")]
+script = ExtResource("1_uqbwj")
+_floorComponent = ExtResource("2_f24sm")
+_wallComponent = ExtResource("3_agxf6")
+_propComponent = ExtResource("4_nhtej")
+_startGameButton = NodePath("CanvasLayer/Button")
+_character = NodePath("Character")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=600270821]
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=439147885]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Start Game"
+
+[node name="Character" parent="." unique_id=1559585746 instance=ExtResource("5_agxf6")]

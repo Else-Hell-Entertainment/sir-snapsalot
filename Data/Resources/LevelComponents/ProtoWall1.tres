@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WallComponent" format=3 uid="uid://c5uqw6ksrdept"]
+
+[ext_resource type="PackedScene" uid="uid://dp6xspnm3bg43" path="res://Assets/Models/Level/LevelWallL1.glb" id="1_4luci"]
+[ext_resource type="Script" uid="uid://cjh65rokloc8t" path="res://Code/EHE/Scenes/Levels/LevelSystem/ResourceDefinitions/WallComponent.cs" id="1_m41pq"]
+
+[resource]
+script = ExtResource("1_m41pq")
+Name = "Wall1"
+_scene = ExtResource("1_4luci")
+IsSolid = true
+BlocksMovement = true
+metadata/_custom_type_script = "uid://cjh65rokloc8t"
