@@ -50,6 +50,12 @@ namespace EHE.LevelSystem
 
         public Godot.Collections.Dictionary<Vector2I, GridCell> Cells = new();
 
+        public override void _Ready()
+        {
+            RebuildCells();
+            GD.Print(Cells);
+        }
+
         public override void _PhysicsProcess(double delta)
         {
             UpdateGhost();
@@ -57,6 +63,24 @@ namespace EHE.LevelSystem
             if (Input.IsActionJustPressed("Confirm"))
             {
                 PlaceGhostComponent();
+            }
+        }
+
+        private void RebuildCells()
+        {
+            Cells.Clear();
+
+            foreach (var child in GetChildren())
+            {
+                if (child is GridCell cell && cell.Name.ToString().StartsWith("Cell_"))
+                {
+                    var parts = cell.Name.ToString().Split('_');
+
+                    if (parts.Length == 3 && int.TryParse(parts[1], out var x) && int.TryParse(parts[2], out var y))
+                    {
+                        Cells[new Vector2I(x, y)] = cell;
+                    }
+                }
             }
         }
 
@@ -153,6 +177,11 @@ namespace EHE.LevelSystem
 
             var cell = GetGridCell(gridCoordinates);
 
+            if (_ghostComponent == null)
+            {
+                return false;
+            }
+
             // Handle special case of creating a new cell for floor components.
             if (_ghostComponent.ComponentType == CellComponent.CellComponentType.Floor)
             {
@@ -170,17 +199,27 @@ namespace EHE.LevelSystem
             {
                 if (cell != null)
                 {
-                    foreach (var tuple in cell.Components)
+                    foreach (var comp in cell.Components)
                     {
                         if (
-                            tuple.Item1 == _ghostPosition
-                            && tuple.Item2.ComponentType == CellComponent.CellComponentType.Wall
+                            comp.Position == _ghostPosition
+                            && comp.Component.ComponentType == CellComponent.CellComponentType.Wall
                         )
                         {
                             return false; // Cannot place a wall where one already exists.
                         }
                     }
 
+                    // foreach (var tuple in cell.Components)
+                    // {
+                    //     if (
+                    //         tuple.Item1 == _ghostPosition
+                    //         && tuple.Item2.ComponentType == CellComponent.CellComponentType.Wall
+                    //     )
+                    //     {
+                    //         return false; // Cannot place a wall where one already exists.
+                    //     }
+                    // }
                     return true; // Can place a wall if no wall exists at that position.
                 }
                 else
@@ -259,7 +298,7 @@ namespace EHE.LevelSystem
 
         public void CreateGridCell(Vector2I gridCoordinates)
         {
-            GridCell cell = new GridCell(_gridSize)
+            GridCell cell = new GridCell()
             {
                 Position = new Vector3(
                     gridCoordinates.X * _gridSize + (float)_gridSize / 2,
@@ -279,6 +318,14 @@ namespace EHE.LevelSystem
             }
 
             AddChild(cell);
+            cell.Name = $"Cell_{gridCoordinates.X}_{gridCoordinates.Y}";
+            var sceneOwner = GetTree().CurrentScene;
+            if (sceneOwner != null)
+            {
+                cell.Owner = sceneOwner;
+            }
+
+            GD.Print("Cell owner: " + cell.Owner.Name);
             Cells[gridCoordinates] = cell;
         }
 
