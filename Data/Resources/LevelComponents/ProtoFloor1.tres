@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FloorComponent" format=3 uid="uid://gnakrgkapgmb"]
+
+[ext_resource type="PackedScene" uid="uid://ccanv6xiypoyy" path="res://Assets/Models/Level/LevelFloor1.glb" id="1_jtnor"]
+[ext_resource type="Script" uid="uid://dohd1scjw0xwl" path="res://Code/EHE/Scenes/Levels/LevelSystem/ResourceDefinitions/FloorComponent.cs" id="1_sfroj"]
+
+[resource]
+script = ExtResource("1_sfroj")
+Name = "Floor1"
+_scene = ExtResource("1_jtnor")
+metadata/_custom_type_script = "uid://dohd1scjw0xwl"

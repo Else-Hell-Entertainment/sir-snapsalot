@@ -1,16 +1,9 @@
-using System;
-using System.Collections.Generic;
 using Godot;
 
 namespace EHE.LevelSystem
 {
     public partial class GridCell : Node3D
     {
-        public GridCell(int GridSize)
-        {
-            _gridSize = GridSize;
-        }
-
         public enum Direction
         {
             North,
@@ -23,10 +16,19 @@ namespace EHE.LevelSystem
 
         private int _gridSize;
 
-        public List<Tuple<CellComponent.Position, CellComponent>> Components = new();
+        public partial class CellPositionComponent : GodotObject
+        {
+            public CellComponent.Position Position;
+            public CellComponent Component;
+        }
+
+        public Godot.Collections.Array<CellPositionComponent> Components = new();
+
+        //public List<Tuple<CellComponent.Position, CellComponent>> Components = new();
 
         public override void _Ready()
         {
+            _gridSize = 2;
             base._Ready();
             int x = 1 + (int)GlobalPosition.X / _gridSize;
             int y = 1 + (int)GlobalPosition.Z / _gridSize;
@@ -38,11 +40,15 @@ namespace EHE.LevelSystem
 
         public void AddComponent(CellComponent.Position position, CellComponent component)
         {
-            Components.Add(new Tuple<CellComponent.Position, CellComponent>(position, component));
+            CellPositionComponent cposcomp = new CellPositionComponent();
+            cposcomp.Position = position;
+            cposcomp.Component = component;
+            Components.Add(cposcomp);
+            //Components.Add(new Tuple<CellComponent.Position, CellComponent>(position, component));
             GD.Print("Added component at position: " + position);
             foreach (var com in Components)
             {
-                GD.Print("Component at position: " + com.Item1);
+                GD.Print("Component at position: " + com.Position);
             }
         }
 
@@ -53,7 +59,7 @@ namespace EHE.LevelSystem
         {
             foreach (var c in Components)
             {
-                SpawnCellComponent(c.Item1, c.Item2);
+                SpawnCellComponent(c.Position, c.Component);
             }
         }
 
@@ -66,6 +72,12 @@ namespace EHE.LevelSystem
         {
             var componentInstance = (Node3D)component.GetSceneInstance();
             AddChild(componentInstance);
+
+            var sceneOwner = GetTree().CurrentScene;
+            if (sceneOwner != null)
+            {
+                componentInstance.Owner = sceneOwner;
+            }
 
             SetComponentPosition(componentInstance, position);
             SetComponentRotation(componentInstance, position);
@@ -140,9 +152,12 @@ namespace EHE.LevelSystem
         {
             foreach (var c in Components)
             {
-                GD.Print("Checking component at position: " + c.Item1 + " for movement to direction: " + direction);
-                CellComponent.Position pos = c.Item1;
-                CellComponent cell = c.Item2;
+                GD.Print("Checking component at position: " + c.Position + " for movement to direction: " + direction);
+
+                //CellComponent.Position pos = c.Item1;
+                //CellComponent cell = c.Item2;
+                CellComponent.Position pos = c.Position;
+                CellComponent cell = c.Component;
                 if (cell.BlocksMovement)
                 {
                     switch (direction)
@@ -200,8 +215,10 @@ namespace EHE.LevelSystem
         {
             foreach (var c in Components)
             {
-                CellComponent.Position pos = c.Item1;
-                CellComponent cell = c.Item2;
+                //CellComponent.Position pos = c.Item1;
+                //CellComponent cell = c.Item2;
+                CellComponent.Position pos = c.Position;
+                CellComponent cell = c.Component;
                 if (cell.BlocksMovement)
                 {
                     if (pos == CellComponent.Position.Floor)

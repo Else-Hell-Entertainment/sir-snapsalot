@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PropComponent" format=3 uid="uid://p5ls6ob2wkxl"]
+
+[ext_resource type="Script" uid="uid://bp6mr4fgj4s74" path="res://Code/EHE/Scenes/Levels/LevelSystem/ResourceDefinitions/PropComponent.cs" id="1_3u35g"]
+
+[resource]
+script = ExtResource("1_3u35g")
+metadata/_custom_type_script = "uid://bp6mr4fgj4s74"

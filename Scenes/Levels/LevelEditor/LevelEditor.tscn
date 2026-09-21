@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://buoa1aewdfidp"]
+
+[ext_resource type="PackedScene" uid="uid://drur0a5ndj8rl" path="res://Scenes/Levels/LevelEditor/BaseLevel.tscn" id="1_4t5ao"]
+
+[sub_resource type="Environment" id="Environment_blgkw"]
+
+[node name="LevelEditor" type="Node3D" unique_id=449126731]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=206511898]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 5.073656, 8.291958, 0)
+shadow_enabled = true
+
+[node name="BaseLevel" parent="." unique_id=1007198492 instance=ExtResource("1_4t5ao")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=916009153]
+environment = SubResource("Environment_blgkw")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1014206546]
+transform = Transform3D(1, 0, 0, 0, 0.37775356, 0.9259062, 0, -0.9259062, 0.37775356, 11.442457, 10.429326, 11.999655)
+fov = 90.0
