@@ -3,6 +3,7 @@ using Godot;
 
 namespace EHE.LevelSystem
 {
+    [GlobalClass]
     public partial class GridCell : Node3D
     {
         public enum Direction
@@ -17,17 +18,19 @@ namespace EHE.LevelSystem
 
         private int _gridScale = SystemConfig.GridScale;
 
-        public partial class CellPositionComponent : GodotObject
-        {
-            public CellComponent.Position Position;
-            public CellComponent Component;
-        }
+        [Export]
+        public Vector2I GridCoordinates;
 
-        public Godot.Collections.Array<CellPositionComponent> Components = new();
+        [Export]
+        public Godot.Collections.Array<CellComponentData> Components;
 
         public override void _Ready()
         {
             base._Ready();
+            if (Components == null)
+            {
+                Components = new Godot.Collections.Array<CellComponentData>();
+            }
             int x = 1 + (int)GlobalPosition.X / _gridScale;
             int y = 1 + (int)GlobalPosition.Z / _gridScale;
             string xStr = x.ToString().PadRight(3, '0');
@@ -38,10 +41,10 @@ namespace EHE.LevelSystem
 
         public void AddComponent(CellComponent.Position position, CellComponent component)
         {
-            CellPositionComponent cposcomp = new CellPositionComponent();
-            cposcomp.Position = position;
-            cposcomp.Component = component;
-            Components.Add(cposcomp);
+            CellComponentData compData = new CellComponentData();
+            compData.Position = position;
+            compData.Component = component;
+            Components.Add(compData);
         }
 
         /// <summary>
