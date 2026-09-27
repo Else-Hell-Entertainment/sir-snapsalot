@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c3ehu15mt4kf"]
+
+[ext_resource type="Script" uid="uid://bxw431artvvt1" path="res://Code/EHE/Scenes/Levels/LevelSystem/GridCell.cs" id="1_75y8w"]
+
+[node name="GridCell" type="Node3D" unique_id=762825864]
+script = ExtResource("1_75y8w")
