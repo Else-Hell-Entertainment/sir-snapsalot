@@ -25,8 +25,6 @@ namespace EHE.LevelSystem
 
         public Godot.Collections.Array<CellPositionComponent> Components = new();
 
-        //public List<Tuple<CellComponent.Position, CellComponent>> Components = new();
-
         public override void _Ready()
         {
             base._Ready();
@@ -44,11 +42,6 @@ namespace EHE.LevelSystem
             cposcomp.Position = position;
             cposcomp.Component = component;
             Components.Add(cposcomp);
-            GD.Print("Added component at position: " + position);
-            foreach (var com in Components)
-            {
-                GD.Print("Component at position: " + com.Position);
-            }
         }
 
         /// <summary>
@@ -151,10 +144,6 @@ namespace EHE.LevelSystem
         {
             foreach (var c in Components)
             {
-                GD.Print("Checking component at position: " + c.Position + " for movement to direction: " + direction);
-
-                //CellComponent.Position pos = c.Item1;
-                //CellComponent cell = c.Item2;
                 CellComponent.Position pos = c.Position;
                 CellComponent cell = c.Component;
                 if (cell.BlocksMovement)
@@ -164,7 +153,6 @@ namespace EHE.LevelSystem
                         case Direction.North:
                             if (pos == CellComponent.Position.NorthWall)
                             {
-                                GD.Print("blocking movement to direction: " + direction);
                                 return false;
                             }
 
@@ -172,7 +160,6 @@ namespace EHE.LevelSystem
                         case Direction.South:
                             if (pos == CellComponent.Position.SouthWall)
                             {
-                                GD.Print("blocking movement to direction: " + direction);
                                 return false;
                             }
 
@@ -180,7 +167,6 @@ namespace EHE.LevelSystem
                         case Direction.East:
                             if (pos == CellComponent.Position.EastWall)
                             {
-                                GD.Print("blocking movement to direction: " + direction);
                                 return false;
                             }
 
@@ -188,7 +174,6 @@ namespace EHE.LevelSystem
                         case Direction.West:
                             if (pos == CellComponent.Position.WestWall)
                             {
-                                GD.Print("blocking movement to direction: " + direction);
                                 return false;
                             }
 
@@ -196,8 +181,6 @@ namespace EHE.LevelSystem
                     }
                 }
             }
-
-            GD.Print("Movement to direction: " + direction + " is passable.");
             return true;
         }
 
@@ -228,7 +211,6 @@ namespace EHE.LevelSystem
                         case Direction.North:
                             if (pos == CellComponent.Position.NorthWall)
                             {
-                                GD.Print("blocking movement from direction: " + direction);
                                 return false;
                             }
 
@@ -236,7 +218,6 @@ namespace EHE.LevelSystem
                         case Direction.South:
                             if (pos == CellComponent.Position.SouthWall)
                             {
-                                GD.Print("blocking movement from direction: " + direction);
                                 return false;
                             }
 
@@ -244,7 +225,6 @@ namespace EHE.LevelSystem
                         case Direction.East:
                             if (pos == CellComponent.Position.EastWall)
                             {
-                                GD.Print("blocking movement from direction: " + direction);
                                 return false;
                             }
 
@@ -252,7 +232,6 @@ namespace EHE.LevelSystem
                         case Direction.West:
                             if (pos == CellComponent.Position.WestWall)
                             {
-                                GD.Print("blocking movement from direction: " + direction);
                                 return false;
                             }
 
