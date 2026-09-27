@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using EHE.Global.Config;
 using Godot;
 
 namespace EHE.LevelSystem
@@ -8,7 +9,7 @@ namespace EHE.LevelSystem
     {
         private int _width = 0;
         private int _height = 0;
-        private int _gridSize = 2;
+        private int _gridSize = SystemConfig.GridScale;
 
         private GridCell _rootCell;
 
