@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b7qi88hp4hkuw"]
+
+[ext_resource type="PackedScene" path="res://Scenes/Levels/TestLevel1.tscn" id="1_65qa6"]
+
+[sub_resource type="Environment" id="Environment_h3402"]
+
+[node name="LevelTestEnvironment" type="Node3D" unique_id=2110468116]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=431567692]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 5.073656, 8.291958, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1829396444]
+environment = SubResource("Environment_h3402")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1367251214]
+transform = Transform3D(1, 0, 0, 0, 0.37775356, 0.9259062, 0, -0.9259062, 0.37775356, 11.442457, 10.429326, 11.999655)
+fov = 90.0
+
+[node name="Level" parent="." unique_id=1007198492 instance=ExtResource("1_65qa6")]

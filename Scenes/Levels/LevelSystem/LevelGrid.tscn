@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bebyhyia3idf5"]
+
+[ext_resource type="Script" uid="uid://b8c7kvq2dm8cl" path="res://Code/EHE/Scenes/Levels/LevelSystem/LevelGrid.cs" id="1_wb2l4"]
+
+[node name="LevelGrid" type="Node3D" unique_id=2071475430]
+script = ExtResource("1_wb2l4")
