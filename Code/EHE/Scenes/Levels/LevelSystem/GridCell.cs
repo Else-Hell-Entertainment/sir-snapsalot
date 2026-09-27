@@ -1,3 +1,4 @@
+using EHE.Global.Config;
 using Godot;
 
 namespace EHE.LevelSystem
@@ -14,7 +15,7 @@ namespace EHE.LevelSystem
 
         public int GridId;
 
-        private int _gridSize;
+        private int _gridScale = SystemConfig.GridScale;
 
         public partial class CellPositionComponent : GodotObject
         {
@@ -28,10 +29,9 @@ namespace EHE.LevelSystem
 
         public override void _Ready()
         {
-            _gridSize = 2;
             base._Ready();
-            int x = 1 + (int)GlobalPosition.X / _gridSize;
-            int y = 1 + (int)GlobalPosition.Z / _gridSize;
+            int x = 1 + (int)GlobalPosition.X / _gridScale;
+            int y = 1 + (int)GlobalPosition.Z / _gridScale;
             string xStr = x.ToString().PadRight(3, '0');
             string yStr = y.ToString().PadLeft(3, '0');
             string gridIdStr = xStr + yStr;
@@ -44,7 +44,6 @@ namespace EHE.LevelSystem
             cposcomp.Position = position;
             cposcomp.Component = component;
             Components.Add(cposcomp);
-            //Components.Add(new Tuple<CellComponent.Position, CellComponent>(position, component));
             GD.Print("Added component at position: " + position);
             foreach (var com in Components)
             {
@@ -103,16 +102,16 @@ namespace EHE.LevelSystem
                     component.GlobalPosition = globalRoot + new Vector3(0, 0, 0);
                     break;
                 case CellComponent.Position.NorthWall:
-                    component.GlobalPosition = globalRoot + new Vector3(0, 0, -1) * _gridSize / 2;
+                    component.GlobalPosition = globalRoot + new Vector3(0, 0, -1) * _gridScale / 2;
                     break;
                 case CellComponent.Position.SouthWall:
-                    component.GlobalPosition = globalRoot + new Vector3(0, 0, 1) * _gridSize / 2;
+                    component.GlobalPosition = globalRoot + new Vector3(0, 0, 1) * _gridScale / 2;
                     break;
                 case CellComponent.Position.EastWall:
-                    component.GlobalPosition = globalRoot + new Vector3(1, 0, 0) * _gridSize / 2;
+                    component.GlobalPosition = globalRoot + new Vector3(1, 0, 0) * _gridScale / 2;
                     break;
                 case CellComponent.Position.WestWall:
-                    component.GlobalPosition = globalRoot + new Vector3(-1, 0, 0) * _gridSize / 2;
+                    component.GlobalPosition = globalRoot + new Vector3(-1, 0, 0) * _gridScale / 2;
                     break;
             }
         }
@@ -215,8 +214,6 @@ namespace EHE.LevelSystem
         {
             foreach (var c in Components)
             {
-                //CellComponent.Position pos = c.Item1;
-                //CellComponent cell = c.Item2;
                 CellComponent.Position pos = c.Position;
                 CellComponent cell = c.Component;
                 if (cell.BlocksMovement)
