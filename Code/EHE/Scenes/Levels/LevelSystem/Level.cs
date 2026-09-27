@@ -6,6 +6,7 @@ namespace EHE.LevelSystem
     [GlobalClass]
     public partial class Level : Node3D
     {
+        //TODO: Refactor temp solutions below:
         [Export]
         private FloorComponent _floorComponent;
 
@@ -20,10 +21,6 @@ namespace EHE.LevelSystem
 
         [Export]
         private Character _character;
-
-        private int _width = 10;
-        private int _height = 10;
-        private int _blockSize = 2;
 
         public LevelGrid Grid;
 
@@ -41,35 +38,19 @@ namespace EHE.LevelSystem
                 Grid.Owner = sceneOwner;
             }
 
+            //TODO: Refactor temp solutions below:
+
             CreateFirstGridCell();
             _startGameButton.Pressed += StartGame;
             _startPos = Grid.GetGridCell(new Vector2I(0, 0)).GlobalPosition;
             _character.GlobalPosition = _startPos;
         }
 
-        public override void _Process(double delta)
-        {
-            base._Process(delta);
-            if (Engine.IsEditorHint())
-            {
-                if (Input.IsActionJustPressed("Hotbar1"))
-                {
-                    GD.Print("Hotbar1 pressed");
-                }
-            }
-        }
-
         public override void _Input(InputEvent @event)
         {
             base._Input(@event);
-            if (Engine.IsEditorHint())
-            {
-                if (@event.IsActionPressed("Hotbar1"))
-                {
-                    //Grid.GhostComponent = _floorComponent;
-                    GD.Print("Selected Floor Component");
-                }
-            }
+
+            //TODO: Refactor temp solutions below:
 
             if (@event.IsActionPressed("Hotbar1"))
             {
@@ -104,6 +85,8 @@ namespace EHE.LevelSystem
         {
             _character.GlobalPosition = _startPos;
             Grid.CalculateNavigation();
+
+            //TODO: Refactor placeholder solution below:
             _character.ReceivePath(Grid.GetNavPath());
             _character.Activate();
             ShowPath();
