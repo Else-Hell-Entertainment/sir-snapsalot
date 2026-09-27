@@ -54,7 +54,6 @@ namespace EHE.LevelSystem
         public override void _Ready()
         {
             RebuildCells();
-            GD.Print(Cells);
         }
 
         public override void _PhysicsProcess(double delta)
@@ -211,16 +210,6 @@ namespace EHE.LevelSystem
                         }
                     }
 
-                    // foreach (var tuple in cell.Components)
-                    // {
-                    //     if (
-                    //         tuple.Item1 == _ghostPosition
-                    //         && tuple.Item2.ComponentType == CellComponent.CellComponentType.Wall
-                    //     )
-                    //     {
-                    //         return false; // Cannot place a wall where one already exists.
-                    //     }
-                    // }
                     return true; // Can place a wall if no wall exists at that position.
                 }
                 else
@@ -420,8 +409,6 @@ namespace EHE.LevelSystem
             {
                 return intersectionPoint;
             }
-
-            GD.PrintErr("Mouse does not intersect the plane!");
             return Vector3.Zero;
         }
 
