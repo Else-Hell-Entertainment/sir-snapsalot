@@ -29,21 +29,28 @@ namespace EHE.LevelSystem
         public override void _Ready()
         {
             Name = "Level";
-            Grid = new LevelGrid();
-            Grid.Name = "LevelGrid";
-            AddChild(Grid);
-            var sceneOwner = GetTree().CurrentScene;
-            if (sceneOwner != null)
+            var grid = FindChild("LevelGrid");
+            if (grid != null && grid is LevelGrid)
             {
-                Grid.Owner = sceneOwner;
+                GD.Print("LevelGrid found in scene tree.");
+                Grid = (LevelGrid)grid;
             }
-
+            else if (Grid == null)
+            {
+                GD.Print("LevelGrid is null, creating a new instance.");
+                Grid = new LevelGrid();
+                Grid.Name = "LevelGrid";
+                AddChild(Grid);
+                var sceneOwner = GetTree().CurrentScene;
+                if (sceneOwner != null)
+                {
+                    Grid.Owner = sceneOwner;
+                }
+            }
             //TODO: Refactor temp solutions below:
 
-            CreateFirstGridCell();
             _startGameButton.Pressed += StartGame;
-            _startPos = Grid.GetGridCell(new Vector2I(0, 0)).GlobalPosition;
-            _character.GlobalPosition = _startPos;
+            _startPos = _character.GlobalPosition;
         }
 
         public override void _Input(InputEvent @event)
@@ -95,11 +102,6 @@ namespace EHE.LevelSystem
         private void ShowPath()
         {
             Grid.DrawNavigationPath();
-        }
-
-        private void CreateFirstGridCell()
-        {
-            Grid.Initialize(_floorComponent);
         }
     }
 }

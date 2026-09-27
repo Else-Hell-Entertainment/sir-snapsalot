@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using EHE.Global.Config;
 using Godot;
+using Godot.Collections;
 
 namespace EHE.LevelSystem
 {
@@ -11,13 +12,12 @@ namespace EHE.LevelSystem
         private int _height = 0;
         private int _gridSize = SystemConfig.GridScale;
 
-        private GridCell _rootCell;
-
         private Plane _zeroPlane = new Plane(Vector3.Up, 0);
 
         private CellComponent.Position _ghostPosition = CellComponent.Position.NONE;
 
         private CellComponent _ghostComponent;
+        private GridCell _rootCell; // Cell at position (0,0) to hold ghost components before placement.
 
         private List<MeshInstance3D> _navigationPath = new List<MeshInstance3D>();
         private PathFinder _pathFinder;
@@ -49,11 +49,13 @@ namespace EHE.LevelSystem
 
         private Node3D _ghostInstance;
 
-        public Godot.Collections.Dictionary<Vector2I, GridCell> Cells = new();
+        public Godot.Collections.Dictionary<Vector2I, GridCell> Cells;
 
         public override void _Ready()
         {
-            RebuildCells();
+            Initialize();
+            PopulateCellDictionary();
+            _pathFinder = new PathFinder(this);
         }
 
         public override void _PhysicsProcess(double delta)
@@ -66,33 +68,32 @@ namespace EHE.LevelSystem
             }
         }
 
-        private void RebuildCells()
+        private void PopulateCellDictionary()
         {
-            Cells.Clear();
+            if (Cells == null)
+            {
+                Cells = new Godot.Collections.Dictionary<Vector2I, GridCell>();
+            }
+            else
+            {
+                Cells.Clear();
+            }
 
             foreach (var child in GetChildren())
             {
-                if (child is GridCell cell && cell.Name.ToString().StartsWith("Cell_"))
+                if (child is GridCell cell)
                 {
-                    var parts = cell.Name.ToString().Split('_');
-
-                    if (parts.Length == 3 && int.TryParse(parts[1], out var x) && int.TryParse(parts[2], out var y))
-                    {
-                        Cells[new Vector2I(x, y)] = cell;
-                    }
+                    Cells[new Vector2I(cell.GridCoordinates.X, cell.GridCoordinates.Y)] = cell;
                 }
             }
         }
 
-        public void Initialize(CellComponent initialFloorPiece)
+        public void Initialize()
         {
-            Vector2I gridPos = new Vector2I(0, 0);
-            CreateGridCell(gridPos);
-            _rootCell = GetGridCell(gridPos);
-            _rootCell.AddComponent(CellComponent.Position.Floor, initialFloorPiece);
-            _rootCell.GenerateCellCellComponents();
-
+            PopulateCellDictionary();
             _pathFinder = new PathFinder(this);
+            CreateGridCell(new Vector2I(0, 0));
+            _rootCell = GetGridCell(new Vector2I(0, 0));
         }
 
         public void RotateGhostComponent(bool clockwise)
@@ -162,7 +163,7 @@ namespace EHE.LevelSystem
                 var cell = GetGridCell(gridCoordinates);
                 if (cell != null)
                 {
-                    cell.SetComponentRotation(_ghostInstance, _ghostPosition);
+                    _rootCell.SetComponentRotation(_ghostInstance, _ghostPosition);
                     cell.SetComponentPosition(_ghostInstance, _ghostPosition);
                 }
             }
@@ -189,10 +190,19 @@ namespace EHE.LevelSystem
                 {
                     return true; // Can be placed, but cell needs to be created first.
                 }
-                else
+
+                foreach (var comp in cell.Components)
                 {
-                    return false; // Can only place one floor component per cell.
+                    if (
+                        comp.Position == CellComponent.Position.Floor
+                        && comp.Component.ComponentType == CellComponent.CellComponentType.Floor
+                    )
+                    {
+                        return false; // Cannot place a floor where one already exists.
+                    }
                 }
+
+                return true; // Can place a floor if no floor exists at that position.
             }
 
             if (_ghostComponent.ComponentType == CellComponent.CellComponentType.Wall)
@@ -309,13 +319,13 @@ namespace EHE.LevelSystem
 
             AddChild(cell);
             cell.Name = $"Cell_{gridCoordinates.X}_{gridCoordinates.Y}";
+            cell.GridCoordinates = gridCoordinates;
             var sceneOwner = GetTree().CurrentScene;
             if (sceneOwner != null)
             {
                 cell.Owner = sceneOwner;
             }
 
-            GD.Print("Cell owner: " + cell.Owner.Name);
             Cells[gridCoordinates] = cell;
         }
 
@@ -409,6 +419,7 @@ namespace EHE.LevelSystem
             {
                 return intersectionPoint;
             }
+
             return Vector3.Zero;
         }
 

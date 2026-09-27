@@ -1,0 +1,537 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Code/EHE/Scenes/Levels/LevelSystem/Level.cs" id="1_almqe"]
+[ext_resource type="Resource" path="res://Data/Resources/LevelComponents/ProtoFloor1.tres" id="2_axxus"]
+[ext_resource type="Resource" path="res://Data/Resources/LevelComponents/ProtoWall1.tres" id="3_xhbyj"]
+[ext_resource type="Resource" path="res://Data/Resources/LevelComponents/ProtoPillar1.tres" id="4_8dbpo"]
+[ext_resource type="PackedScene" path="res://Scenes/Character/Character.tscn" id="5_f1oxt"]
+[ext_resource type="Script" path="res://Code/EHE/Scenes/Levels/LevelSystem/LevelGrid.cs" id="6_c5omb"]
+[ext_resource type="Script" path="res://Code/EHE/Scenes/Levels/LevelSystem/GridCell.cs" id="7_goqlq"]
+[ext_resource type="Script" path="res://Code/EHE/Scenes/Levels/LevelSystem/ResourceDefinitions/CellComponentData.cs" id="8_avtx7"]
+[ext_resource type="PackedScene" path="res://Assets/Models/Level/LevelFloor1.glb" id="9_3jove"]
+[ext_resource type="PackedScene" path="res://Assets/Models/Level/LevelWallL1.glb" id="10_tfc4c"]
+
+[sub_resource type="Resource" id="Resource_kupee"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_snijv"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_co1ee"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_japgp"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_bylp5"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_3pa3v"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_y05b4"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_cw5wx"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_jlgne"]
+script = ExtResource("8_avtx7")
+Position = 2
+Component = ExtResource("3_xhbyj")
+
+[sub_resource type="Resource" id="Resource_bf53w"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_6jddl"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_ila0r"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_1ceid"]
+script = ExtResource("8_avtx7")
+Position = 2
+Component = ExtResource("3_xhbyj")
+
+[sub_resource type="Resource" id="Resource_dgwk5"]
+script = ExtResource("8_avtx7")
+Position = 4
+Component = ExtResource("3_xhbyj")
+
+[sub_resource type="Resource" id="Resource_jornx"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_n4wqc"]
+script = ExtResource("8_avtx7")
+Position = 4
+Component = ExtResource("3_xhbyj")
+
+[sub_resource type="Resource" id="Resource_21jri"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_de25f"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_rlj8n"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_rs1wg"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_hvkrf"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_a8vbe"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_ligm6"]
+script = ExtResource("8_avtx7")
+Position = 4
+Component = ExtResource("3_xhbyj")
+
+[sub_resource type="Resource" id="Resource_6yuq8"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_6eh2h"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_gnypq"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_s1uf5"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_eedwq"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_2gaqe"]
+script = ExtResource("8_avtx7")
+Position = 4
+Component = ExtResource("3_xhbyj")
+
+[sub_resource type="Resource" id="Resource_w5cox"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_y0lmw"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_0lm0j"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_nnk5p"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_5a8g4"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_48o0b"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_qk27g"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_j6v6x"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_dqx7q"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_m3ojx"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_8rpio"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[sub_resource type="Resource" id="Resource_7hpwh"]
+script = ExtResource("8_avtx7")
+Position = 1
+Component = ExtResource("2_axxus")
+
+[node name="Level" type="Node3D" unique_id=1007198492 node_paths=PackedStringArray("_startGameButton", "_character")]
+script = ExtResource("1_almqe")
+_floorComponent = ExtResource("2_axxus")
+_wallComponent = ExtResource("3_xhbyj")
+_propComponent = ExtResource("4_8dbpo")
+_startGameButton = NodePath("CanvasLayer/Button")
+_character = NodePath("Character")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=600270821]
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=439147885]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Start Game"
+
+[node name="Character" parent="." unique_id=1559585746 instance=ExtResource("5_f1oxt")]
+
+[node name="LevelGrid" type="Node3D" parent="." unique_id=916494177]
+script = ExtResource("6_c5omb")
+
+[node name="Cell_0_0" type="Node3D" parent="LevelGrid" unique_id=1047168404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+script = ExtResource("7_goqlq")
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_kupee")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_0_0" unique_id=1989957725 instance=ExtResource("9_3jove")]
+
+[node name="Cell_2_0" type="Node3D" parent="LevelGrid" unique_id=152477721]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 1)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(2, 0)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_snijv")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_2_0" unique_id=184989921 instance=ExtResource("9_3jove")]
+
+[node name="Cell_1_1" type="Node3D" parent="LevelGrid" unique_id=130768835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(1, 1)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_co1ee")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_1_1" unique_id=770883542 instance=ExtResource("9_3jove")]
+
+[node name="Cell_0_1" type="Node3D" parent="LevelGrid" unique_id=31861754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(0, 1)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_japgp")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_0_1" unique_id=749853690 instance=ExtResource("9_3jove")]
+
+[node name="Cell_2_1" type="Node3D" parent="LevelGrid" unique_id=1313382590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 3)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(2, 1)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_bylp5")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_2_1" unique_id=53240622 instance=ExtResource("9_3jove")]
+
+[node name="Cell_0_2" type="Node3D" parent="LevelGrid" unique_id=823349852]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(0, 2)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_3pa3v")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_0_2" unique_id=1590099324 instance=ExtResource("9_3jove")]
+
+[node name="Cell_2_3" type="Node3D" parent="LevelGrid" unique_id=1315948920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 7)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(2, 3)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_y05b4")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_2_3" unique_id=1399523314 instance=ExtResource("9_3jove")]
+
+[node name="Cell_2_2" type="Node3D" parent="LevelGrid" unique_id=322452135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(2, 2)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_cw5wx"), SubResource("Resource_jlgne")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_2_2" unique_id=1727983967 instance=ExtResource("9_3jove")]
+
+[node name="LevelWallL12" parent="LevelGrid/Cell_2_2" unique_id=2119599417 instance=ExtResource("10_tfc4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Cell_1_2" type="Node3D" parent="LevelGrid" unique_id=985560230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(1, 2)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_bf53w")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_1_2" unique_id=1365403643 instance=ExtResource("9_3jove")]
+
+[node name="Cell_1_0" type="Node3D" parent="LevelGrid" unique_id=133729086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(1, 0)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_6jddl")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_1_0" unique_id=1573584393 instance=ExtResource("9_3jove")]
+
+[node name="Cell_3_2" type="Node3D" parent="LevelGrid" unique_id=102501580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 5)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(3, 2)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_ila0r"), SubResource("Resource_1ceid"), SubResource("Resource_dgwk5")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_3_2" unique_id=1840655246 instance=ExtResource("9_3jove")]
+
+[node name="LevelWallL12" parent="LevelGrid/Cell_3_2" unique_id=524385148 instance=ExtResource("10_tfc4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="_Node3D_38" parent="LevelGrid/Cell_3_2" unique_id=1812044472 instance=ExtResource("10_tfc4c")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0, 0)
+
+[node name="Cell_3_3" type="Node3D" parent="LevelGrid" unique_id=1559172477]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(3, 3)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_jornx"), SubResource("Resource_n4wqc")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_3_3" unique_id=1067572276 instance=ExtResource("9_3jove")]
+
+[node name="LevelWallL12" parent="LevelGrid/Cell_3_3" unique_id=1545770940 instance=ExtResource("10_tfc4c")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0, 0)
+
+[node name="Cell_3_0" type="Node3D" parent="LevelGrid" unique_id=933110224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 1)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(3, 0)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_21jri")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_3_0" unique_id=1892600549 instance=ExtResource("9_3jove")]
+
+[node name="Cell_3_1" type="Node3D" parent="LevelGrid" unique_id=420744760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 3)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(3, 1)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_de25f")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_3_1" unique_id=917714110 instance=ExtResource("9_3jove")]
+
+[node name="Cell_4_1" type="Node3D" parent="LevelGrid" unique_id=1239146234]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(4, 1)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_rlj8n")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_4_1" unique_id=364076028 instance=ExtResource("9_3jove")]
+
+[node name="Cell_4_3" type="Node3D" parent="LevelGrid" unique_id=742702795]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 7)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(4, 3)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_rs1wg")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_4_3" unique_id=2056328329 instance=ExtResource("9_3jove")]
+
+[node name="Cell_4_4" type="Node3D" parent="LevelGrid" unique_id=1260113212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 9)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(4, 4)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_hvkrf")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_4_4" unique_id=498445697 instance=ExtResource("9_3jove")]
+
+[node name="Cell_3_5" type="Node3D" parent="LevelGrid" unique_id=1628573042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 11)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(3, 5)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_a8vbe"), SubResource("Resource_ligm6")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_3_5" unique_id=2108451404 instance=ExtResource("9_3jove")]
+
+[node name="LevelWallL12" parent="LevelGrid/Cell_3_5" unique_id=623496158 instance=ExtResource("10_tfc4c")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0, 0)
+
+[node name="Cell_5_6" type="Node3D" parent="LevelGrid" unique_id=1717582118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 13)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(5, 6)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_6yuq8")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_5_6" unique_id=1438773196 instance=ExtResource("9_3jove")]
+
+[node name="Cell_4_6" type="Node3D" parent="LevelGrid" unique_id=122847810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 13)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(4, 6)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_6eh2h")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_4_6" unique_id=105560328 instance=ExtResource("9_3jove")]
+
+[node name="Cell_3_6" type="Node3D" parent="LevelGrid" unique_id=702322916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 13)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(3, 6)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_gnypq")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_3_6" unique_id=1095337530 instance=ExtResource("9_3jove")]
+
+[node name="Cell_2_4" type="Node3D" parent="LevelGrid" unique_id=2124124699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 9)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(2, 4)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_s1uf5")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_2_4" unique_id=2026493043 instance=ExtResource("9_3jove")]
+
+[node name="Cell_3_4" type="Node3D" parent="LevelGrid" unique_id=1338430983]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 9)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(3, 4)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_eedwq"), SubResource("Resource_2gaqe")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_3_4" unique_id=148197877 instance=ExtResource("9_3jove")]
+
+[node name="LevelWallL12" parent="LevelGrid/Cell_3_4" unique_id=816011176 instance=ExtResource("10_tfc4c")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0, 0)
+
+[node name="Cell_4_5" type="Node3D" parent="LevelGrid" unique_id=1870822738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 11)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(4, 5)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_w5cox")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_4_5" unique_id=236808510 instance=ExtResource("9_3jove")]
+
+[node name="Cell_5_5" type="Node3D" parent="LevelGrid" unique_id=1369555044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 11)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(5, 5)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_y0lmw")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_5_5" unique_id=1762429957 instance=ExtResource("9_3jove")]
+
+[node name="Cell_5_4" type="Node3D" parent="LevelGrid" unique_id=1727205449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 9)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(5, 4)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_0lm0j")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_5_4" unique_id=734111621 instance=ExtResource("9_3jove")]
+
+[node name="Cell_4_2" type="Node3D" parent="LevelGrid" unique_id=1539832495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 5)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(4, 2)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_nnk5p")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_4_2" unique_id=1962719898 instance=ExtResource("9_3jove")]
+
+[node name="Cell_5_3" type="Node3D" parent="LevelGrid" unique_id=454521887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 7)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(5, 3)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_5a8g4")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_5_3" unique_id=1868360439 instance=ExtResource("9_3jove")]
+
+[node name="Cell_5_1" type="Node3D" parent="LevelGrid" unique_id=393456938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 3)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(5, 1)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_48o0b")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_5_1" unique_id=85510839 instance=ExtResource("9_3jove")]
+
+[node name="Cell_5_2" type="Node3D" parent="LevelGrid" unique_id=1200937880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 5)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(5, 2)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_qk27g")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_5_2" unique_id=1031713896 instance=ExtResource("9_3jove")]
+
+[node name="Cell_4_0" type="Node3D" parent="LevelGrid" unique_id=1605472919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 1)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(4, 0)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_j6v6x")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_4_0" unique_id=1797604975 instance=ExtResource("9_3jove")]
+
+[node name="Cell_1_3" type="Node3D" parent="LevelGrid" unique_id=1081937240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 7)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(1, 3)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_dqx7q")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_1_3" unique_id=1509742912 instance=ExtResource("9_3jove")]
+
+[node name="Cell_1_4" type="Node3D" parent="LevelGrid" unique_id=1239216359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 9)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(1, 4)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_m3ojx")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_1_4" unique_id=747034304 instance=ExtResource("9_3jove")]
+
+[node name="Cell_2_5" type="Node3D" parent="LevelGrid" unique_id=212287728]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 11)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(2, 5)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_8rpio")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_2_5" unique_id=311634319 instance=ExtResource("9_3jove")]
+
+[node name="Cell_2_6" type="Node3D" parent="LevelGrid" unique_id=552206694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 13)
+script = ExtResource("7_goqlq")
+GridCoordinates = Vector2i(2, 6)
+Components = Array[ExtResource("8_avtx7")]([SubResource("Resource_7hpwh")])
+
+[node name="LevelFloor12" parent="LevelGrid/Cell_2_6" unique_id=178706358 instance=ExtResource("9_3jove")]
+
+[node name="LevelWallL12" parent="LevelGrid" unique_id=758429503 instance=ExtResource("10_tfc4c")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7, 0, 17)
