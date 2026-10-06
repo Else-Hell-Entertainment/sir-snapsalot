@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://h3bmlqx7wi4i"]
+
+[ext_resource type="Theme" uid="uid://v3fvpnghlyrc" path="res://Assets/UI/UITheme.tres" id="1_ose27"]
+[ext_resource type="Texture2D" uid="uid://cdrlqswido44g" path="res://Assets/UI/PROTO_MainMenuBackground.webp" id="2_0did6"]
+[ext_resource type="Texture2D" uid="uid://c34cnuhqbvksy" path="res://Assets/UI/PROTO_GameLogo.png" id="3_3kg7h"]
+[ext_resource type="Texture2D" uid="uid://d283lupix3rto" path="res://Assets/ThirdParty/kenney-game-icons/sprites/fastForward.png" id="4_fncam"]
+[ext_resource type="Texture2D" uid="uid://d0x7jrd7xd6fl" path="res://Assets/ThirdParty/kenney-game-icons/sprites/menuList.png" id="5_yiqgx"]
+[ext_resource type="Texture2D" uid="uid://dkv1ux8mn7x30" path="res://Assets/ThirdParty/kenney-game-icons/sprites/gear.png" id="6_3qkmk"]
+[ext_resource type="Texture2D" uid="uid://nm1s1dlfeb2t" path="res://Assets/ThirdParty/kenney-game-icons/sprites/information.png" id="7_b4f8e"]
+[ext_resource type="Texture2D" uid="uid://gaq4spo3vx3s" path="res://Assets/ThirdParty/kenney-game-icons/sprites/exit.png" id="8_tvuuw"]
+
+[node name="MainMenu" type="Control" unique_id=799995417]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_ose27")
+
+[node name="PROTO_Background" type="TextureRect" parent="." unique_id=1632889322]
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_0did6")
+expand_mode = 1
+
+[node name="GameTitle" type="Sprite2D" parent="." unique_id=1256411029]
+position = Vector2(1380, 151)
+scale = Vector2(0.84433967, 0.81145257)
+texture = ExtResource("3_3kg7h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=480366749]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 468.0
+offset_bottom = 500.0
+
+[node name="QuickPlayButton" type="Button" parent="VBoxContainer" unique_id=4853037]
+layout_mode = 2
+theme = ExtResource("1_ose27")
+text = "Quick Play"
+icon = ExtResource("4_fncam")
+alignment = 0
+expand_icon = true
+
+[node name="LevelSelectButton" type="Button" parent="VBoxContainer" unique_id=473229554]
+layout_mode = 2
+text = "Select Level"
+icon = ExtResource("5_yiqgx")
+alignment = 0
+expand_icon = true
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=901680437]
+layout_mode = 2
+text = "Settings"
+icon = ExtResource("6_3qkmk")
+alignment = 0
+expand_icon = true
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=974830222]
+layout_mode = 2
+text = "Credits"
+icon = ExtResource("7_b4f8e")
+alignment = 0
+expand_icon = true
+
+[node name="ExitGameButton" type="Button" parent="VBoxContainer" unique_id=569642621]
+layout_mode = 2
+text = "Exit Game"
+icon = ExtResource("8_tvuuw")
+alignment = 0
+expand_icon = true
