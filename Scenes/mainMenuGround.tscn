@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dryb76ll2jvqd"]
+
+[ext_resource type="PackedScene" uid="uid://cvu1qnm56wqwe" path="res://Assets/Models/MainMenuBG/newTerrainTest.glb" id="1_equu3"]
+
+[node name="newTerrainTest" unique_id=561079548 instance=ExtResource("1_equu3")]
