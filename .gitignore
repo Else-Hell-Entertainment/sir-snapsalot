@@ -47,3 +47,6 @@ Builds/
 
 # Temporary files
 Temp/
+
+# FMOD Temp libs
+addons/fmod/libs/windows/~libGodotFmod.windows.editor.x86_64.dll
