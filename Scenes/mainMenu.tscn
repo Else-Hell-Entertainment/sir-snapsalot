@@ -1,5 +1,11 @@
-[gd_scene format=3 uid="uid://bfauc2pw0x0nw"]
+[gd_scene format=3 uid="uid://bed4f1fyo4lyv"]
 
-[ext_resource type="PackedScene" uid="uid://p7d1iuaai1ob" path="res://Assets/Models/MainMenuBG/MainMenuGround.glb" id="1_ek13t"]
+[ext_resource type="PackedScene" uid="uid://dryb76ll2jvqd" path="res://Scenes/mainMenuGround.tscn" id="1_5pknu"]
+[ext_resource type="PackedScene" uid="uid://cf1egv26wi1e3" path="res://Scenes/mainMenuCastle.tscn" id="2_b7htb"]
 
-[node name="MainMenuGround" unique_id=1937953008 instance=ExtResource("1_ek13t")]
+[node name="World" type="Node3D" unique_id=1042960786]
+
+[node name="newTerrainTest" parent="." unique_id=561079548 instance=ExtResource("1_5pknu")]
+
+[node name="MainMenuCastle" parent="." unique_id=1119352472 instance=ExtResource("2_b7htb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.266118, 2.498986, -15.463291)
