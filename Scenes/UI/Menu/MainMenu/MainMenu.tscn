@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://v3fvpnghlyrc" path="res://Assets/UI/UITheme.tres" id="1_ose27"]
 [ext_resource type="Texture2D" uid="uid://cdrlqswido44g" path="res://Assets/UI/PROTO_MainMenuBackground.webp" id="2_0did6"]
+[ext_resource type="Script" uid="uid://0en3hb2vji8t" path="res://Code/EHE/SirSnapsalot/UI/MainMenu.cs" id="2_3kg7h"]
 [ext_resource type="Texture2D" uid="uid://c34cnuhqbvksy" path="res://Assets/UI/PROTO_GameLogo.png" id="3_3kg7h"]
 [ext_resource type="Texture2D" uid="uid://d283lupix3rto" path="res://Assets/ThirdParty/kenney-game-icons/sprites/fastForward.png" id="4_fncam"]
 [ext_resource type="Texture2D" uid="uid://d0x7jrd7xd6fl" path="res://Assets/ThirdParty/kenney-game-icons/sprites/menuList.png" id="5_yiqgx"]
@@ -13,6 +14,7 @@
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_ose27")
+script = ExtResource("2_3kg7h")
 
 [node name="PROTO_Background" type="TextureRect" parent="." unique_id=1632889322]
 layout_mode = 1
