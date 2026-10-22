@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EHE.Common.Godot.Logging;
 using EHE.Global.Config;
-using EHE.Global.SceneManagement;
 using EHE.SirSnapsalot.SaveSystem;
+using EHE.SirSnapsalot.SceneManagement;
 using Godot;
 using Array = Godot.Collections.Array;
 

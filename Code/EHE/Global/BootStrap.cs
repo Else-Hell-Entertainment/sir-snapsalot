@@ -2,7 +2,7 @@
 using EHE.Global.Managers;
 using Godot;
 
-namespace EHE.Global.SceneManagement
+namespace EHE.SirSnapsalot.SceneManagement
 {
     /// <summary>
     /// First scene to load when game starts to allow autoloads initialize and then transition to the main menu.

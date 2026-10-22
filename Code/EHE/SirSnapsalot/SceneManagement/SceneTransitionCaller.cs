@@ -2,7 +2,7 @@
 using Godot;
 using Godot.Collections;
 
-namespace EHE.Global.SceneManagement
+namespace EHE.SirSnapsalot.SceneManagement
 {
     /// <summary>
     /// Node for calling scene transitions from within a level.
