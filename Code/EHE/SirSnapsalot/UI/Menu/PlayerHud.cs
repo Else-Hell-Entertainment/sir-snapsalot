@@ -1,6 +1,6 @@
 using EHE.Common.Godot.Logging;
-using EHE.Global.GlobalPlayer;
 using EHE.Global.Managers;
+using EHE.SirSnapsalot.GlobalPlayer;
 using Godot;
 
 namespace EHE.SirSnapsalot.UI.PlayerUI
