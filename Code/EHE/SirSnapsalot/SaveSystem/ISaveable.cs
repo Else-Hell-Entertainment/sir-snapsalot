@@ -1,4 +1,4 @@
-namespace EHE.Global.SaveSystem
+namespace EHE.SirSnapsalot.SaveSystem
 {
     /// <summary>
     /// Contract for any game object that wants to participate in the save system.

@@ -1,7 +1,7 @@
 using System.IO;
 using System.Text;
 
-namespace EHE.Global.SaveSystem
+namespace EHE.SirSnapsalot.SaveSystem
 {
     /// <summary>
     /// NOT IMPLEMENTED IN GAME!

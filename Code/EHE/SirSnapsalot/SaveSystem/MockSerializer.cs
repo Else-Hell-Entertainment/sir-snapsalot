@@ -1,7 +1,7 @@
 using System.IO;
 using Godot;
 
-namespace EHE.Global.SaveSystem
+namespace EHE.SirSnapsalot.SaveSystem
 {
     public class MockSerializer : ISaveSerializer
     {

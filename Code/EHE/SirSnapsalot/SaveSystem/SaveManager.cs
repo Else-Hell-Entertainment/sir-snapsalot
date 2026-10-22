@@ -4,7 +4,7 @@ using EHE.Common.Godot.Logging;
 using EHE.Global.Managers;
 using Godot;
 
-namespace EHE.Global.SaveSystem
+namespace EHE.SirSnapsalot.SaveSystem
 {
     public enum SaveBackend
     {
