@@ -3,7 +3,7 @@ using EHE.Common.Godot.Logging;
 using EHE.Global.FSM;
 using Godot;
 
-namespace EHE.UI.Menu
+namespace EHE.SirSnapsalot.UI.Menu
 {
     /// <summary>
     /// Represents a state in the menu system to be used with the class-based <see cref="StateMachine"/>. This state is

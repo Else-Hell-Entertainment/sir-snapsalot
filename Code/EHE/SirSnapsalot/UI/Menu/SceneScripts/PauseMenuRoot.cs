@@ -1,6 +1,6 @@
 using EHE.Global.SceneManagement;
 
-namespace EHE.UI.Menu
+namespace EHE.SirSnapsalot.UI.Menu
 {
     public partial class PauseMenuRoot : MenuRoot
     {

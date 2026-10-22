@@ -3,7 +3,7 @@ using EHE.Global.Config;
 using EHE.Global.Managers;
 using Godot;
 
-namespace EHE.UI.Menu
+namespace EHE.SirSnapsalot.UI.Menu
 {
     public partial class ControlSettingsMenu : MenuScene
     {
