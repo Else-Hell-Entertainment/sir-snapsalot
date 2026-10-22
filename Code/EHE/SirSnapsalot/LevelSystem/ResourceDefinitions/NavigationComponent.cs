@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-namespace EHE.LevelSystem
+namespace EHE.SirSnapsalot.LevelSystem
 {
     public partial class NavigationComponent : CellComponent
     {

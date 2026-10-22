@@ -4,7 +4,7 @@ using EHE.Global.Config;
 using Godot;
 using Godot.Collections;
 
-namespace EHE.LevelSystem
+namespace EHE.SirSnapsalot.LevelSystem
 {
     public partial class LevelGrid : Node3D
     {

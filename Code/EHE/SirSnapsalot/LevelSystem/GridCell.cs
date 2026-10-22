@@ -1,7 +1,7 @@
 using EHE.Global.Config;
 using Godot;
 
-namespace EHE.LevelSystem
+namespace EHE.SirSnapsalot.LevelSystem
 {
     [GlobalClass]
     public partial class GridCell : Node3D
