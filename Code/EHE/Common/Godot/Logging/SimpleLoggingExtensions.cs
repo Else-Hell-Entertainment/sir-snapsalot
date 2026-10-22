@@ -5,7 +5,7 @@ using System;
 using System.Diagnostics;
 using Godot;
 
-namespace EHE.Global.Logging
+namespace EHE.Common.Godot.Logging
 {
     /// <summary>
     ///  <para>

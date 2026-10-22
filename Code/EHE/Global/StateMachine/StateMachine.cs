@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using EHE.Global.Logging;
+using EHE.Common.Godot.Logging;
 using Godot;
 
 namespace EHE.Global.FSM

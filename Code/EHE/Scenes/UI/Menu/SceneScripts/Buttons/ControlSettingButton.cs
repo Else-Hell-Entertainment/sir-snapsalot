@@ -1,5 +1,5 @@
 using System;
-using EHE.Global.Logging;
+using EHE.Common.Godot.Logging;
 using Godot;
 
 public partial class ControlSettingButton : Control

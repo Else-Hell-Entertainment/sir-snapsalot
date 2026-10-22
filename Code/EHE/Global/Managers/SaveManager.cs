@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using EHE.Global.Logging;
+using EHE.Common.Godot.Logging;
 using EHE.Global.Managers;
 using Godot;
 

@@ -1,5 +1,5 @@
+using EHE.Common.Godot.Logging;
 using EHE.Global.Config;
-using EHE.Global.Logging;
 using EHE.Global.SceneManagement;
 using EHE.Global.UI;
 using EHE.UI.Menu;
