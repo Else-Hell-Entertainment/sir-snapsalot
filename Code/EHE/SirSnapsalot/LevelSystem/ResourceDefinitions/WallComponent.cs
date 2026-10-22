@@ -1,6 +1,6 @@
 using Godot;
 
-namespace EHE.LevelSystem
+namespace EHE.SirSnapsalot.LevelSystem
 {
     [GlobalClass]
     public partial class WallComponent : CellComponent
