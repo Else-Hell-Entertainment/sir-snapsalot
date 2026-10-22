@@ -2,7 +2,7 @@ using EHE.Common.Godot.Logging;
 using Godot;
 using Godot.Collections;
 
-namespace EHE.Global.SceneManagement
+namespace EHE.SirSnapsalot.SceneManagement
 {
     [Tool]
     [GlobalClass]

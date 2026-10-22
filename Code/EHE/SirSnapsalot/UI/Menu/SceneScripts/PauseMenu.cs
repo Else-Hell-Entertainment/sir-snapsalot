@@ -1,8 +1,8 @@
 using EHE.Global.Config;
 using EHE.Global.Managers;
-using EHE.Global.SceneManagement;
+using EHE.SirSnapsalot.SceneManagement;
 using Godot;
-using StateKeys = EHE.Global.SceneManagement.SceneCollections.MenuScenes.Keys;
+using StateKeys = EHE.SirSnapsalot.SceneManagement.SceneCollections.MenuScenes.Keys;
 
 namespace EHE.SirSnapsalot.UI.Menu
 {

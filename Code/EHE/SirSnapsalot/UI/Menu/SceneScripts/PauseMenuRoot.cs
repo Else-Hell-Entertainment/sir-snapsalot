@@ -1,4 +1,4 @@
-using EHE.Global.SceneManagement;
+using EHE.SirSnapsalot.SceneManagement;
 
 namespace EHE.SirSnapsalot.UI.Menu
 {

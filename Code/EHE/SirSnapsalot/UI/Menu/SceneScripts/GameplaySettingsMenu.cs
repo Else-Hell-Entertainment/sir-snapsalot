@@ -1,7 +1,7 @@
 using EHE.Common.Godot.Logging;
 using EHE.Global.Config;
 using Godot;
-using SceneKeys = EHE.Global.SceneManagement.SceneCollections.MenuScenes.Keys;
+using SceneKeys = EHE.SirSnapsalot.SceneManagement.SceneCollections.MenuScenes.Keys;
 
 namespace EHE.SirSnapsalot.UI.Menu
 {

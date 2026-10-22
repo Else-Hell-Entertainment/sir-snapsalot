@@ -1,6 +1,6 @@
 using EHE.Global.Managers;
-using EHE.Global.SceneManagement;
-using StateKeys = EHE.Global.SceneManagement.SceneCollections.MenuScenes.Keys;
+using EHE.SirSnapsalot.SceneManagement;
+using StateKeys = EHE.SirSnapsalot.SceneManagement.SceneCollections.MenuScenes.Keys;
 
 namespace EHE.SirSnapsalot.UI.Menu
 {
