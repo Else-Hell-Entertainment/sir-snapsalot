@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using EHE.Common.Godot.Logging;
 using EHE.Global.GlobalPlayer;
-using EHE.Global.SaveSystem;
+using EHE.SirSnapsalot.SaveSystem;
 using Godot;
 
 namespace EHE.Global.Managers

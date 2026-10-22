@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace EHE.Global.SaveSystem
+namespace EHE.SirSnapsalot.SaveSystem
 {
     /// <summary>
     /// Strategy interface for serializing and deserializing game save data.
