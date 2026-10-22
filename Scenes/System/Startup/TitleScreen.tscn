@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://de8qges64samm"]
 
-[ext_resource type="Script" uid="uid://dppgfw7hkdcd1" path="res://Code/EHE/Scenes/UI/Menu/TitleScreen.cs" id="1_dbydc"]
+[ext_resource type="Script" uid="uid://dppgfw7hkdcd1" path="res://Code/EHE/SirSnapsalot/UI/Menu/TitleScreen.cs" id="1_dbydc"]
 [ext_resource type="Texture2D" uid="uid://fgutnmox7hj7" path="res://icon.svg" id="1_rqth7"]
 
 [sub_resource type="Animation" id="Animation_dbydc"]
