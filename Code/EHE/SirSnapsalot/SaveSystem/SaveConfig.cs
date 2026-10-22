@@ -1,6 +1,6 @@
 using Godot;
 
-namespace EHE.Global.SaveSystem
+namespace EHE.SirSnapsalot.SaveSystem
 {
     [GlobalClass]
     public partial class SaveConfig : Resource

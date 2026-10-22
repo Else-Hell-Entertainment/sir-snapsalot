@@ -1,4 +1,4 @@
-namespace EHE.Global.SaveSystem
+namespace EHE.SirSnapsalot.SaveSystem
 {
     public sealed class GameData
     {

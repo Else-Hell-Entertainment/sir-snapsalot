@@ -1,7 +1,7 @@
 using System.IO;
 using System.Text.Json;
 
-namespace EHE.Global.SaveSystem
+namespace EHE.SirSnapsalot.SaveSystem
 {
     public class JsonSaveSerializer : ISaveSerializer
     {
