@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace EHE.CharacterSystem
+namespace EHE.SirSnapsalot.CharacterSystem
 {
     public partial class DefaultMovementBehavior : CharacterBehavior
     {

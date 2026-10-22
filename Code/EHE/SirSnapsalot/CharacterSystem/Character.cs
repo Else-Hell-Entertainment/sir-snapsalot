@@ -1,4 +1,4 @@
-﻿namespace EHE.CharacterSystem
+﻿namespace EHE.SirSnapsalot.CharacterSystem
 {
     using Godot;
 

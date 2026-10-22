@@ -1,4 +1,4 @@
-using EHE.CharacterSystem;
+using EHE.SirSnapsalot.CharacterSystem;
 using Godot;
 
 namespace EHE.LevelSystem
