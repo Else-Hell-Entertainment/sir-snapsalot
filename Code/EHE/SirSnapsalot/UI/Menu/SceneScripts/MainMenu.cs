@@ -3,7 +3,7 @@ using EHE.Global.Managers;
 using Godot;
 using StateKeys = EHE.Global.SceneManagement.SceneCollections.MenuScenes.Keys;
 
-namespace EHE.UI.Menu
+namespace EHE.SirSnapsalot.UI.Menu
 {
     public partial class MainMenu : MenuScene
     {

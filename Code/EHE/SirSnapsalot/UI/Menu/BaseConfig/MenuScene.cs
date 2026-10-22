@@ -2,7 +2,7 @@ using System;
 using EHE.Global.Config;
 using Godot;
 
-namespace EHE.UI.Menu
+namespace EHE.SirSnapsalot.UI.Menu
 {
     public abstract partial class MenuScene : Control
     {

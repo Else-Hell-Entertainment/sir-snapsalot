@@ -3,7 +3,7 @@ using EHE.Global.GlobalPlayer;
 using EHE.Global.Managers;
 using Godot;
 
-namespace EHE.UI.PlayerUI
+namespace EHE.SirSnapsalot.UI.PlayerUI
 {
     public partial class PlayerHud : Control
     {
