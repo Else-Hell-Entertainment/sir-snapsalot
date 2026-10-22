@@ -2,7 +2,7 @@ using EHE.Global.Managers;
 using EHE.Global.SceneManagement;
 using StateKeys = EHE.Global.SceneManagement.SceneCollections.MenuScenes.Keys;
 
-namespace EHE.UI.Menu
+namespace EHE.SirSnapsalot.UI.Menu
 {
     public partial class MainMenuRoot : MenuRoot
     {

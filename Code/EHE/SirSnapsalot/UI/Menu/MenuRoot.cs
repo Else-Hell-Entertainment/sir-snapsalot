@@ -5,7 +5,7 @@ using EHE.Global.FSM;
 using EHE.Global.SceneManagement;
 using Godot;
 
-namespace EHE.UI.Menu
+namespace EHE.SirSnapsalot.UI.Menu
 {
     public abstract partial class MenuRoot : Control
     {

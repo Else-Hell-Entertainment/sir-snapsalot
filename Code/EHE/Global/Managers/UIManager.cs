@@ -2,8 +2,8 @@ using EHE.Common.Godot.Logging;
 using EHE.Global.Config;
 using EHE.Global.SceneManagement;
 using EHE.Global.UI;
-using EHE.UI.Menu;
-using EHE.UI.PlayerUI;
+using EHE.SirSnapsalot.UI.Menu;
+using EHE.SirSnapsalot.UI.PlayerUI;
 using Godot;
 using MenuKeys = EHE.Global.SceneManagement.SceneCollections.MenuScenes.Keys;
 
