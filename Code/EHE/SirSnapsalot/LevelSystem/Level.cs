@@ -1,7 +1,7 @@
 using EHE.SirSnapsalot.CharacterSystem;
 using Godot;
 
-namespace EHE.LevelSystem
+namespace EHE.SirSnapsalot.LevelSystem
 {
     [GlobalClass]
     public partial class Level : Node3D
