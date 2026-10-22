@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b7r6fabvjinfm"]
 
-[ext_resource type="Script" uid="uid://0gdac7jm14vr" path="res://Code/EHE/Scenes/Character/Character.cs" id="1_i60gv"]
+[ext_resource type="Script" uid="uid://0gdac7jm14vr" path="res://Code/EHE/SirSnapsalot/CharacterSystem/Character.cs" id="1_i60gv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_blgkw"]
 height = 1.8
