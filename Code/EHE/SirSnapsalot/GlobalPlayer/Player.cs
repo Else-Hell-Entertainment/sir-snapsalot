@@ -1,6 +1,6 @@
 ﻿using EHE.SirSnapsalot.SaveSystem;
 
-namespace EHE.Global.GlobalPlayer
+namespace EHE.SirSnapsalot.GlobalPlayer
 {
     public class Player : ISaveable<PlayerData>
     {

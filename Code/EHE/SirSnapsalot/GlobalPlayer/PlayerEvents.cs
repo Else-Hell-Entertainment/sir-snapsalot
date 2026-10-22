@@ -1,4 +1,4 @@
-﻿namespace EHE.Global.GlobalPlayer
+﻿namespace EHE.SirSnapsalot.GlobalPlayer
 {
     public class PlayerEvents
     {

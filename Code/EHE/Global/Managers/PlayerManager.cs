@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using EHE.Common.Godot.Logging;
-using EHE.Global.GlobalPlayer;
+using EHE.SirSnapsalot.GlobalPlayer;
 using EHE.SirSnapsalot.SaveSystem;
 using Godot;
 
