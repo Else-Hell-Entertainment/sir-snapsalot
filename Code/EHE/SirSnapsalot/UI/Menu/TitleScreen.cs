@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using EHE.Global.Managers;
-using EHE.Global.SceneManagement;
+using EHE.SirSnapsalot.SceneManagement;
 using Godot;
 
 public partial class TitleScreen : Node, ILoadableScene

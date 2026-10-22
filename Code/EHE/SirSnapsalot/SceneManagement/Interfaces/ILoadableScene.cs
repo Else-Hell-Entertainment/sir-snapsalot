@@ -2,7 +2,7 @@
 using EHE.SirSnapsalot.SaveSystem;
 using Godot;
 
-namespace EHE.Global.SceneManagement
+namespace EHE.SirSnapsalot.SceneManagement
 {
     public interface ILoadableScene
     {

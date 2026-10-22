@@ -2,7 +2,7 @@ using EHE.Common.Godot.Logging;
 using EHE.Global.Config;
 using EHE.Global.Managers;
 
-namespace EHE.Global.SceneManagement
+namespace EHE.SirSnapsalot.SceneManagement
 {
     public class SceneTransition
     {

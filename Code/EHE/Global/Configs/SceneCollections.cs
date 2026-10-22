@@ -2,7 +2,7 @@
 using EHE.Global.Managers;
 using Godot;
 
-namespace EHE.Global.SceneManagement
+namespace EHE.SirSnapsalot.SceneManagement
 {
     /// <summary>
     /// Contains constants and methods for managing scene collections in the game.

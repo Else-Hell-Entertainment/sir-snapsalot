@@ -1,6 +1,6 @@
 using Godot.Collections;
 
-namespace EHE.Global.SceneManagement
+namespace EHE.SirSnapsalot.SceneManagement
 {
     public class SceneTransitionPayload
     {
