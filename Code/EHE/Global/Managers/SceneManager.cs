@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EHE.Common.Godot.Logging;
 using EHE.Global.Config;
-using EHE.Global.Logging;
 using EHE.Global.SaveSystem;
 using EHE.Global.SceneManagement;
 using Godot;

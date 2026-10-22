@@ -1,4 +1,4 @@
-using EHE.Global.Logging;
+using EHE.Common.Godot.Logging;
 
 namespace EHE.Global.Managers
 {
