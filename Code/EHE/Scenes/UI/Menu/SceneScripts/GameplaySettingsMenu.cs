@@ -1,5 +1,5 @@
+using EHE.Common.Godot.Logging;
 using EHE.Global.Config;
-using EHE.Global.Logging;
 using Godot;
 using SceneKeys = EHE.Global.SceneManagement.SceneCollections.MenuScenes.Keys;
 

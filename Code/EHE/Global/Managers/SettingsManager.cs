@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using System.Text.Json;
-using EHE.Global.Logging;
+using EHE.Common.Godot.Logging;
 using EHE.Global.Settings;
 using Godot;
 using FileAccess = System.IO.FileAccess;

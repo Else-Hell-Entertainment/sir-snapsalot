@@ -1,7 +1,7 @@
 // License: MIT License (see LICENSE in project root for details)
 // Author: Miska Rihu <miska.rihu@tuni.fi>
 
-namespace EHE.Global.Logging
+namespace EHE.Common.Godot.Logging
 {
     /// <summary>
     ///  Contains keys for different levels of severity.

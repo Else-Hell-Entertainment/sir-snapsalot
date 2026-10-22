@@ -1,7 +1,7 @@
 using System.Collections.Generic;
+using EHE.Common.Godot.Logging;
 using EHE.Global.Config;
 using EHE.Global.FSM;
-using EHE.Global.Logging;
 using EHE.Global.SceneManagement;
 using Godot;
 

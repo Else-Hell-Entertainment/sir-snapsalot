@@ -1,5 +1,5 @@
+using EHE.Common.Godot.Logging;
 using EHE.Global.GlobalPlayer;
-using EHE.Global.Logging;
 using EHE.Global.Managers;
 using Godot;
 

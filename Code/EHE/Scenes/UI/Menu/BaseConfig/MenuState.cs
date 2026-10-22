@@ -1,6 +1,6 @@
 using System;
+using EHE.Common.Godot.Logging;
 using EHE.Global.FSM;
-using EHE.Global.Logging;
 using Godot;
 
 namespace EHE.UI.Menu
