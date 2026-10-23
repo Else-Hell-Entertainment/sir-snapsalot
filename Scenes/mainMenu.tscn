@@ -1,11 +1,17 @@
 [gd_scene format=3 uid="uid://bed4f1fyo4lyv"]
 
-[ext_resource type="PackedScene" uid="uid://dryb76ll2jvqd" path="res://Scenes/mainMenuGround.tscn" id="1_5pknu"]
-[ext_resource type="PackedScene" uid="uid://cf1egv26wi1e3" path="res://Scenes/mainMenuCastle.tscn" id="2_b7htb"]
+[ext_resource type="PackedScene" uid="uid://do8bl5mdlpen7" path="res://Scenes/main_menu_setup.tscn" id="1_60k44"]
 
-[node name="World" type="Node3D" unique_id=1042960786]
+[node name="World" type="Node3D" unique_id=1767091875]
 
-[node name="newTerrainTest" parent="." unique_id=561079548 instance=ExtResource("1_5pknu")]
+[node name="MainMenuSetup" parent="." unique_id=1570892917 instance=ExtResource("1_60k44")]
 
-[node name="MainMenuCastle" parent="." unique_id=1119352472 instance=ExtResource("2_b7htb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.266118, 2.498986, -15.463291)
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1300946360]
+transform = Transform3D(0.80651164, -0.050387036, 0.5890671, 0.04709612, 0.99867076, 0.02094242, -0.5893393, 0.010852471, 0.8078127, 1.927, 1.597, 22.985)
+current = true
+fov = 72.6
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=531004777]
+transform = Transform3D(0.11511837, -0.4778844, -0.87084687, 0.88427, -0.35010722, 0.309017, -0.45256418, -0.8056373, 0.3822751, 30.071, 13.046, 3.221)
+light_color = Color(0.74839354, 0.6368226, 0.4577222, 1)
+shadow_enabled = true
