@@ -3,16 +3,19 @@ using EHE.SirSnapsalot.Managers;
 using EHE.SirSnapsalot.SceneManagement;
 using Godot;
 
-public partial class TitleScreen : Node, ILoadableScene
+namespace EHE.SirSnapsalot.UI
 {
-    public string SceneId { get; } = "TitleScreen";
-
-    public async Task LoadScene()
+    public partial class TitleScreen : Node, ILoadableScene
     {
-        GameManager.Instance.UIManager.OpenTitleMenu();
+        public string SceneId { get; } = "TitleScreen";
+
+        public async Task LoadScene()
+        {
+            GameManager.Instance.UIManager.OpenTitleMenu();
+        }
+
+        public async Task UnloadScene() { }
+
+        public void ReceiveSceneTransitionPayload(SceneTransitionPayload payload) { }
     }
-
-    public async Task UnloadScene() { }
-
-    public void ReceiveSceneTransitionPayload(SceneTransitionPayload payload) { }
 }
