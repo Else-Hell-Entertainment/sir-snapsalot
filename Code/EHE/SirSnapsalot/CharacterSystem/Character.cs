@@ -1,7 +1,7 @@
-﻿namespace EHE.SirSnapsalot.CharacterSystem
-{
-    using Godot;
+﻿using Godot;
 
+namespace EHE.SirSnapsalot.CharacterSystem
+{
     public partial class Character : Node3D
     {
         [Export]
