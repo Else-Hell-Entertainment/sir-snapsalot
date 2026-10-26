@@ -1,6 +1,6 @@
 using System;
 
-namespace EHE.Global.UI
+namespace EHE.SirSnapsalot.UI
 {
     public class UIEvents
     {

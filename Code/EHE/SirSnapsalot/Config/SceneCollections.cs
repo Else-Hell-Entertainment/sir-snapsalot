@@ -1,5 +1,5 @@
 ﻿using EHE.Common.Godot.Logging;
-using EHE.Global.Managers;
+using EHE.SirSnapsalot.Managers;
 using Godot;
 
 namespace EHE.SirSnapsalot.SceneManagement

@@ -2,11 +2,11 @@ using System;
 using System.IO;
 using System.Text.Json;
 using EHE.Common.Godot.Logging;
-using EHE.Global.Settings;
+using EHE.SirSnapsalot.Settings;
 using Godot;
 using FileAccess = System.IO.FileAccess;
 
-namespace EHE.Global.Managers
+namespace EHE.SirSnapsalot.Managers
 {
     /// <summary>
     /// Manages the game's runtime configuration and persists it to the user's local Godot data directory.

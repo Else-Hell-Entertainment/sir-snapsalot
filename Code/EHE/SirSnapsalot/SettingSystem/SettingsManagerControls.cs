@@ -1,7 +1,7 @@
 using EHE.Common.Godot.Logging;
 using Godot;
 
-namespace EHE.Global.Managers
+namespace EHE.SirSnapsalot.Managers
 {
     public partial class SettingsManager
     {

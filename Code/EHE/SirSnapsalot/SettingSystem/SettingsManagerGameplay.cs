@@ -1,6 +1,6 @@
 using Godot;
 
-namespace EHE.Global.Managers
+namespace EHE.SirSnapsalot.Managers
 {
     public partial class SettingsManager
     {

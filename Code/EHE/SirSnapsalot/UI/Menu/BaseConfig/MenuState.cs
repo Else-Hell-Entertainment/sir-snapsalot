@@ -1,6 +1,6 @@
 using System;
 using EHE.Common.Godot.Logging;
-using EHE.Global.FSM;
+using EHE.SirSnapsalot.FSM;
 using Godot;
 
 namespace EHE.SirSnapsalot.UI.Menu

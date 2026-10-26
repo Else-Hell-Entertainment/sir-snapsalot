@@ -1,6 +1,6 @@
 using Godot;
 
-namespace EHE.Global.FSM
+namespace EHE.SirSnapsalot.FSM
 {
     public partial class NodeStateMachine : Node3D
     {

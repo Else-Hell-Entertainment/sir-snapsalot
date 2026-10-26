@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using EHE.Common.Godot.Logging;
-using EHE.Global.Settings;
+using EHE.SirSnapsalot.Settings;
 using Godot;
 
-namespace EHE.Global.Managers
+namespace EHE.SirSnapsalot.Managers
 {
     public enum AspectRatio
     {

@@ -1,5 +1,5 @@
-using EHE.Global.Config;
-using EHE.Global.Managers;
+using EHE.SirSnapsalot.Config;
+using EHE.SirSnapsalot.Managers;
 using EHE.SirSnapsalot.SceneManagement;
 using Godot;
 using StateKeys = EHE.SirSnapsalot.SceneManagement.SceneCollections.MenuScenes.Keys;

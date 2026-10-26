@@ -4,7 +4,7 @@ using EHE.SirSnapsalot.GlobalPlayer;
 using EHE.SirSnapsalot.SaveSystem;
 using Godot;
 
-namespace EHE.Global.Managers
+namespace EHE.SirSnapsalot.Managers
 {
     public partial class PlayerManager : Node, ISaveable<PlayerData>
     {

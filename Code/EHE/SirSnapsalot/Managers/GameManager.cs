@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using EHE.Common.Godot.Logging;
-using EHE.Global.Config;
-using EHE.Global.FSM;
-using EHE.Global.GameStates;
+using EHE.SirSnapsalot.Config;
+using EHE.SirSnapsalot.FSM;
+using EHE.SirSnapsalot.GameStates;
 using EHE.SirSnapsalot.SaveSystem;
 using Godot;
 
-namespace EHE.Global.Managers
+namespace EHE.SirSnapsalot.Managers
 {
     public enum GameState
     {

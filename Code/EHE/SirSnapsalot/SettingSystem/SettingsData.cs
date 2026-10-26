@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using EHE.Global.Managers;
+using EHE.SirSnapsalot.Managers;
 using Godot;
 
-namespace EHE.Global.Settings
+namespace EHE.SirSnapsalot.Settings
 {
     public class SettingsData
     {

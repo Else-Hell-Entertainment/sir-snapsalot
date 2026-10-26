@@ -1,9 +1,9 @@
 ﻿using EHE.Common.Godot.Logging;
-using EHE.Global.Config;
-using EHE.Global.Managers;
+using EHE.SirSnapsalot.Config;
+using EHE.SirSnapsalot.Managers;
 using Godot;
 
-namespace EHE.Global.GameStates
+namespace EHE.SirSnapsalot.GameStates
 {
     public partial class GameStatePlaying : GameStateBase
     {

@@ -1,4 +1,4 @@
-﻿namespace EHE.Global.FSM
+﻿namespace EHE.SirSnapsalot.FSM
 {
     public interface IState
     {

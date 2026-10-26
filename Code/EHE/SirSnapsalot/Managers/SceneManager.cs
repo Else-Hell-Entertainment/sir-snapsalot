@@ -8,7 +8,7 @@ using Array = Godot.Collections.Array;
 
 //using EHE.Scenes.PlayableScenes.Levels;
 
-namespace EHE.Global.Managers
+namespace EHE.SirSnapsalot.Managers
 {
     public partial class SceneManager : Node, ISaveable<SceneManagerData>
     {
