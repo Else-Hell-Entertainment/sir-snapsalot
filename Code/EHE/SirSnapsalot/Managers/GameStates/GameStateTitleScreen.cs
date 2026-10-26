@@ -1,7 +1,7 @@
-﻿using EHE.Global.Managers;
+﻿using EHE.SirSnapsalot.Managers;
 using Godot;
 
-namespace EHE.Global.GameStates
+namespace EHE.SirSnapsalot.GameStates
 {
     public partial class GameStateTitleScreen : GameStateBase
     {

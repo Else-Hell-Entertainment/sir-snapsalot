@@ -1,4 +1,4 @@
-namespace EHE.Global.GameStates
+namespace EHE.SirSnapsalot.GameStates
 {
     public partial class GameStateBoot : GameStateBase
     {

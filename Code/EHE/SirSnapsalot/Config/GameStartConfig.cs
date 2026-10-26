@@ -1,6 +1,6 @@
 using EHE.SirSnapsalot.SceneManagement;
 
-namespace EHE.Global.Config
+namespace EHE.SirSnapsalot.Config
 {
     public class GameStartConfig
     {

@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using EHE.Global.Managers;
+using EHE.SirSnapsalot.Managers;
 using EHE.SirSnapsalot.SceneManagement;
 using Godot;
 

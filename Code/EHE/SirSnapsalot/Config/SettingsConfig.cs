@@ -1,4 +1,4 @@
-namespace EHE.Global.Config
+namespace EHE.SirSnapsalot.Config
 {
     public static class SettingsConfig
     {
