@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://blu5sd3fnxsok"]
 
-[ext_resource type="Script" uid="uid://bbv3p2xythhtw" path="res://Code/EHE/Global/BootStrap.cs" id="1_ikrf3"]
+[ext_resource type="Script" uid="uid://bbv3p2xythhtw" path="res://Code/EHE/SirSnapsalot/BootStrap.cs" id="1_ikrf3"]
 [ext_resource type="Texture2D" uid="uid://fgutnmox7hj7" path="res://icon.svg" id="3_82r8h"]
 
 [sub_resource type="Animation" id="Animation_uu6nw"]
