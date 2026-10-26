@@ -17,7 +17,7 @@ namespace EHE.SirSnapsalot.LevelSystem
 
         public enum Position
         {
-            NONE,
+            None,
             Floor,
             NorthWall,
             SouthWall,
