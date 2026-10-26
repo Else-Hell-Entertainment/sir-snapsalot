@@ -1,5 +1,5 @@
 using System;
-using EHE.Global.Config;
+using EHE.SirSnapsalot.Config;
 using Godot;
 
 namespace EHE.SirSnapsalot.UI.Menu

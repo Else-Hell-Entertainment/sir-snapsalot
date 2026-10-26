@@ -1,6 +1,6 @@
 using EHE.Common.Godot.Logging;
-using EHE.Global.Managers;
-using EHE.Global.Settings;
+using EHE.SirSnapsalot.Managers;
+using EHE.SirSnapsalot.Settings;
 using Godot;
 
 namespace EHE.SirSnapsalot.UI.Menu

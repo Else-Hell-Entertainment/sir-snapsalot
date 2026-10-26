@@ -1,6 +1,6 @@
 using EHE.Common.Godot.Logging;
 
-namespace EHE.Global.Managers
+namespace EHE.SirSnapsalot.Managers
 {
     public partial class SettingsManager
     {

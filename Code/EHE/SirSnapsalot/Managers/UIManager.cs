@@ -1,13 +1,13 @@
 using EHE.Common.Godot.Logging;
-using EHE.Global.Config;
-using EHE.Global.UI;
+using EHE.SirSnapsalot.Config;
 using EHE.SirSnapsalot.SceneManagement;
+using EHE.SirSnapsalot.UI;
 using EHE.SirSnapsalot.UI.Menu;
 using EHE.SirSnapsalot.UI.PlayerUI;
 using Godot;
 using MenuKeys = EHE.SirSnapsalot.SceneManagement.SceneCollections.MenuScenes.Keys;
 
-namespace EHE.Global.Managers
+namespace EHE.SirSnapsalot.Managers
 {
     public partial class UIManager : Node
     {

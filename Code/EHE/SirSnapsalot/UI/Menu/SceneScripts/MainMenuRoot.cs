@@ -1,4 +1,4 @@
-using EHE.Global.Managers;
+using EHE.SirSnapsalot.Managers;
 using EHE.SirSnapsalot.SceneManagement;
 using StateKeys = EHE.SirSnapsalot.SceneManagement.SceneCollections.MenuScenes.Keys;
 

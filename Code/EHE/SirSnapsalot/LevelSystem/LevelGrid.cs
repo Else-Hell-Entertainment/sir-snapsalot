@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using EHE.Global.Config;
+using EHE.SirSnapsalot.Config;
 using Godot;
 
 namespace EHE.SirSnapsalot.LevelSystem

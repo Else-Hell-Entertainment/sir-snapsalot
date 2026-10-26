@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace EHE.Global.Config
+namespace EHE.SirSnapsalot.Config
 {
     /// <summary>
     /// This class contains the input action strings used in the game. It serves as a centralized location for input action
