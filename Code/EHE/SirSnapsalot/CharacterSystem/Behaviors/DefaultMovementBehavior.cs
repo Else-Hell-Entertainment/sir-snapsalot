@@ -14,7 +14,7 @@ namespace EHE.SirSnapsalot.CharacterSystem
 
         private bool _isMoving = false;
 
-        private float Speed = 5f;
+        private float _speed = 5f;
 
         public override void Initialize(Character character)
         {
@@ -42,7 +42,7 @@ namespace EHE.SirSnapsalot.CharacterSystem
         {
             float delta = (float)GetPhysicsProcessDeltaTime();
             Vector3 direction = (TargetPosition - GlobalPosition).Normalized();
-            GlobalPosition += direction * Speed * delta;
+            GlobalPosition += direction * _speed * delta;
 
             if (GlobalPosition.DistanceTo(TargetPosition) < 0.1f)
             {
