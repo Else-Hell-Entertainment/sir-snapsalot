@@ -13,7 +13,7 @@ namespace EHE.SirSnapsalot.LevelSystem
 
         private Plane _zeroPlane = new Plane(Vector3.Up, 0);
 
-        private CellComponent.Position _ghostPosition = CellComponent.Position.NONE;
+        private CellComponent.Position _ghostPosition = CellComponent.Position.None;
 
         private CellComponent _ghostComponent;
         private GridCell _rootCell; // Cell at position (0,0) to hold ghost components before placement.
