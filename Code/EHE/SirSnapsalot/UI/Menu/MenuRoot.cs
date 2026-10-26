@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using EHE.Common.Godot.Logging;
-using EHE.Global.Config;
 using EHE.Global.FSM;
 using EHE.SirSnapsalot.SceneManagement;
 using Godot;
