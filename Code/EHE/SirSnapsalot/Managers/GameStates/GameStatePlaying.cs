@@ -1,4 +1,4 @@
-﻿using EHE.Common.Godot.Logging;
+using EHE.Common.Godot.Logging;
 using EHE.SirSnapsalot.Config;
 using EHE.SirSnapsalot.Managers;
 using Godot;

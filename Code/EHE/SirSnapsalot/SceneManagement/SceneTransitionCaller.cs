@@ -1,4 +1,4 @@
-﻿using EHE.SirSnapsalot.Managers;
+using EHE.SirSnapsalot.Managers;
 using Godot;
 using Godot.Collections;
 
