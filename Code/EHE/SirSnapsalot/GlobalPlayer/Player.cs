@@ -1,4 +1,4 @@
-﻿using EHE.SirSnapsalot.SaveSystem;
+using EHE.SirSnapsalot.SaveSystem;
 
 namespace EHE.SirSnapsalot.GlobalPlayer
 {

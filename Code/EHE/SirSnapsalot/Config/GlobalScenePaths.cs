@@ -1,4 +1,4 @@
-﻿namespace EHE.SirSnapsalot.Config
+namespace EHE.SirSnapsalot.Config
 {
     public static class GlobalScenePaths
     {
