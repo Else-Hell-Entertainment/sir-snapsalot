@@ -7,7 +7,7 @@ namespace EHE.SirSnapsalot.LevelSystem
     {
         public enum CellComponentType
         {
-            NONE,
+            None,
             Floor,
             Wall,
             Trap,
@@ -45,7 +45,7 @@ namespace EHE.SirSnapsalot.LevelSystem
         [Export]
         public bool BlocksMovement = false;
 
-        public virtual CellComponentType ComponentType => CellComponentType.NONE;
+        public virtual CellComponentType ComponentType => CellComponentType.None;
 
         public Node GetSceneInstance()
         {
