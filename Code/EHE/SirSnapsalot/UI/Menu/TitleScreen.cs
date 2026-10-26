@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using EHE.SirSnapsalot.Managers;
 using EHE.SirSnapsalot.SceneManagement;
 using Godot;
