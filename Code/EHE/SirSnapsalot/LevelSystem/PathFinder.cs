@@ -69,76 +69,76 @@ namespace EHE.SirSnapsalot.LevelSystem
 
                 GD.Print("Checking neighbors for cell at: " + pos + " with ID: " + cell.GridId);
 
-                Vector2 nbrEastPos = new Vector2(pos.X + 1, pos.Y);
-                GridCell nbrEast = GetGridCell(nbrEastPos);
-                GD.Print("Checking neighbor to the east: " + nbrEastPos);
-                if (nbrEast == null)
+                Vector2 neighborEastPos = new Vector2(pos.X + 1, pos.Y);
+                GridCell neighborEast = GetGridCell(neighborEastPos);
+                GD.Print("Checking neighbor to the east: " + neighborEastPos);
+                if (neighborEast == null)
                 {
                     GD.Print("Neighbor to the east is null.");
                 }
 
-                Vector2 nbrWestPos = new Vector2(pos.X - 1, pos.Y);
-                GridCell nbrWest = GetGridCell(nbrWestPos);
-                GD.Print("Checking neighbor to the west: " + nbrWestPos);
-                if (nbrWest == null)
+                Vector2 neighborWestPos = new Vector2(pos.X - 1, pos.Y);
+                GridCell neighborWest = GetGridCell(neighborWestPos);
+                GD.Print("Checking neighbor to the west: " + neighborWestPos);
+                if (neighborWest == null)
                 {
                     GD.Print("Neighbor to the west is null.");
                 }
 
-                Vector2 nbrNorthPos = new Vector2(pos.X, pos.Y - 1);
-                GridCell nbrNorth = GetGridCell(nbrNorthPos);
-                GD.Print("Checking neighbor to the north: " + nbrNorthPos);
-                if (nbrNorth == null)
+                Vector2 neighborNorthPos = new Vector2(pos.X, pos.Y - 1);
+                GridCell neighborNorth = GetGridCell(neighborNorthPos);
+                GD.Print("Checking neighbor to the north: " + neighborNorthPos);
+                if (neighborNorth == null)
                 {
                     GD.Print("Neighbor to the north is null.");
                 }
 
-                Vector2 nbrSouthPos = new Vector2(pos.X, pos.Y + 1);
-                GridCell nbrSouth = GetGridCell(nbrSouthPos);
-                GD.Print("Checking neighbor to the south: " + nbrSouthPos);
-                if (nbrSouth == null)
+                Vector2 neighborSouthPos = new Vector2(pos.X, pos.Y + 1);
+                GridCell neighborSouth = GetGridCell(neighborSouthPos);
+                GD.Print("Checking neighbor to the south: " + neighborSouthPos);
+                if (neighborSouth == null)
                 {
                     GD.Print("Neighbor to the south is null.");
                 }
 
                 if (
-                    nbrEast != null
+                    neighborEast != null
                     && cell.IsPassableToDirection(GridCell.Direction.East)
-                    && nbrEast.IsPassableFromDirection(GridCell.Direction.West)
+                    && neighborEast.IsPassableFromDirection(GridCell.Direction.West)
                 )
                 {
-                    _aStar.ConnectPoints(cell.GridId, nbrEast.GridId, false);
-                    GD.Print("Connected points: " + cell.GridId + " to " + nbrEast.GridId);
+                    _aStar.ConnectPoints(cell.GridId, neighborEast.GridId, false);
+                    GD.Print("Connected points: " + cell.GridId + " to " + neighborEast.GridId);
                 }
 
                 if (
-                    nbrWest != null
+                    neighborWest != null
                     && cell.IsPassableToDirection(GridCell.Direction.West)
-                    && nbrWest.IsPassableFromDirection(GridCell.Direction.East)
+                    && neighborWest.IsPassableFromDirection(GridCell.Direction.East)
                 )
                 {
-                    _aStar.ConnectPoints(cell.GridId, nbrWest.GridId, false);
-                    GD.Print("Connected points: " + cell.GridId + " to " + nbrWest.GridId);
+                    _aStar.ConnectPoints(cell.GridId, neighborWest.GridId, false);
+                    GD.Print("Connected points: " + cell.GridId + " to " + neighborWest.GridId);
                 }
 
                 if (
-                    nbrNorth != null
+                    neighborNorth != null
                     && cell.IsPassableToDirection(GridCell.Direction.North)
-                    && nbrNorth.IsPassableFromDirection(GridCell.Direction.South)
+                    && neighborNorth.IsPassableFromDirection(GridCell.Direction.South)
                 )
                 {
-                    _aStar.ConnectPoints(cell.GridId, nbrNorth.GridId, false);
-                    GD.Print("Connected points: " + cell.GridId + " to " + nbrNorth.GridId);
+                    _aStar.ConnectPoints(cell.GridId, neighborNorth.GridId, false);
+                    GD.Print("Connected points: " + cell.GridId + " to " + neighborNorth.GridId);
                 }
 
                 if (
-                    nbrSouth != null
+                    neighborSouth != null
                     && cell.IsPassableToDirection(GridCell.Direction.South)
-                    && nbrSouth.IsPassableFromDirection(GridCell.Direction.North)
+                    && neighborSouth.IsPassableFromDirection(GridCell.Direction.North)
                 )
                 {
-                    _aStar.ConnectPoints(cell.GridId, nbrSouth.GridId, false);
-                    GD.Print("Connected points: " + cell.GridId + " to " + nbrSouth.GridId);
+                    _aStar.ConnectPoints(cell.GridId, neighborSouth.GridId, false);
+                    GD.Print("Connected points: " + cell.GridId + " to " + neighborSouth.GridId);
                 }
             }
         }
