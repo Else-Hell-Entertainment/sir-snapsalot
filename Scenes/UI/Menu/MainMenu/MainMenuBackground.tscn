@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bed4f1fyo4lyv"]
 
-[ext_resource type="PackedScene" uid="uid://do8bl5mdlpen7" path="res://Scenes/main_menu_setup.tscn" id="1_60k44"]
+[ext_resource type="PackedScene" uid="uid://do8bl5mdlpen7" path="res://Scenes/UI/Menu/MainMenu/main_menu_setup.tscn" id="1_05o3q"]
 
 [node name="World" type="Node3D" unique_id=1767091875]
 
-[node name="MainMenuSetup" parent="." unique_id=1570892917 instance=ExtResource("1_60k44")]
+[node name="MainMenuSetup" parent="." unique_id=1570892917 instance=ExtResource("1_05o3q")]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1300946360]
 transform = Transform3D(0.80651164, -0.050387036, 0.5890671, 0.04709612, 0.99867076, 0.02094242, -0.5893393, 0.010852471, 0.8078127, 1.927, 1.597, 22.985)
