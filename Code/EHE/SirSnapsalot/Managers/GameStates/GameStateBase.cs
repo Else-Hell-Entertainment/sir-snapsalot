@@ -1,3 +1,7 @@
+// (c) 2026 Else Hell Entertainment
+// License: MIT License (see LICENSE in project root for details)
+// Author: Pekka Heljakka <pekka.heljakka@tuni.fi>
+
 using EHE.Common.Godot.Logging;
 using EHE.SirSnapsalot.FSM;
 using EHE.SirSnapsalot.Managers;
