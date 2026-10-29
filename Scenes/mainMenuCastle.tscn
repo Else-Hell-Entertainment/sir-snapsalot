@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://cf1egv26wi1e3"]
-
-[ext_resource type="PackedScene" uid="uid://ci0fxhhyrr17o" path="res://Assets/Models/MainMenuBG/MainMenuCastle.glb" id="1_s3vwe"]
-
-[node name="MainMenuCastle" unique_id=1119352472 instance=ExtResource("1_s3vwe")]
