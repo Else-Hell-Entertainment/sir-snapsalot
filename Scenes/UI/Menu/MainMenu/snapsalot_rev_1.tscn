@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://b65taioywk8e1"]
+
+[ext_resource type="PackedScene" uid="uid://d4j7bb86ydv3o" path="res://Assets/Models/MainMenuBG/SnapsalotRev1.glb" id="1_ushxw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v10og"]
+albedo_color = Color(0.8109781, 0.35981745, 0.34023467, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wofhc"]
+albedo_color = Color(0.5503215, 0.34791332, 0.31142175, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_snj4n"]
+albedo_color = Color(0.288518, 0.28851798, 0.28851798, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqm77"]
+albedo_color = Color(0.27752772, 0.27752772, 0.27752772, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3uny1"]
+albedo_color = Color(0.6943235, 0.6131401, 0.43072125, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7htb"]
+albedo_color = Color(0.5409905, 0.5409905, 0.5409905, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yl13b"]
+albedo_color = Color(0.4351923, 0.43519226, 0.43519226, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmf6k"]
+albedo_color = Color(0.47788018, 0.47788012, 0.47788012, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rn1t7"]
+albedo_color = Color(0.43722832, 0.34536323, 0.13285768, 1)
+
+[node name="SnapsalotRev1" unique_id=800406870 instance=ExtResource("1_ushxw")]
+
+[node name="Snapsalot" parent="." index="0" unique_id=1380407616]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="body" parent="Snapsalot" index="0" unique_id=1176155387]
+surface_material_override/0 = SubResource("StandardMaterial3D_v10og")
+
+[node name="body_arm" parent="Snapsalot/body" index="0" unique_id=783017430]
+surface_material_override/0 = SubResource("StandardMaterial3D_wofhc")
+
+[node name="body_belt" parent="Snapsalot/body" index="1" unique_id=579481911]
+surface_material_override/0 = SubResource("StandardMaterial3D_snj4n")
+
+[node name="body_neck" parent="Snapsalot/body" index="2" unique_id=1673159236]
+surface_material_override/0 = SubResource("StandardMaterial3D_kqm77")
+
+[node name="head" parent="Snapsalot/body" index="3" unique_id=332707885]
+surface_material_override/0 = SubResource("StandardMaterial3D_3uny1")
+
+[node name="helm" parent="Snapsalot/body/head" index="2" unique_id=1403922767]
+surface_material_override/0 = SubResource("StandardMaterial3D_b7htb")
+
+[node name="helm_visor" parent="Snapsalot/body/head/helm" index="0" unique_id=348298503]
+surface_material_override/0 = SubResource("StandardMaterial3D_yl13b")
+
+[node name="leg" parent="Snapsalot/body" index="4" unique_id=571765707]
+surface_material_override/0 = SubResource("StandardMaterial3D_qmf6k")
+
+[node name="foot" parent="Snapsalot/body/leg" index="0" unique_id=356419064]
+surface_material_override/0 = SubResource("StandardMaterial3D_rn1t7")
