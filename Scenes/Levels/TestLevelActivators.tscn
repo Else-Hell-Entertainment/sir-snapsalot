@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bxw431artvvt1" path="res://Code/EHE/SirSnapsalot/LevelSystem/GridCell.cs" id="7_tscev"]
 [ext_resource type="Script" uid="uid://c6o2fghlfy0h7" path="res://Code/EHE/SirSnapsalot/LevelSystem/ResourceDefinitions/CellComponentData.cs" id="8_pen04"]
 [ext_resource type="PackedScene" uid="uid://ccanv6xiypoyy" path="res://Assets/Models/Level/LevelFloor1.glb" id="9_0wvhe"]
+[ext_resource type="PackedScene" uid="uid://ur4hydbu5wsl" path="res://Scenes/LevelObjects/TrapActivators/PressurePlate.tscn" id="10_4viw2"]
 
 [sub_resource type="Resource" id="Resource_p8sj7"]
 script = ExtResource("8_pen04")
@@ -412,3 +413,6 @@ GridCoordinates = Vector2i(9, 1)
 Components = Array[ExtResource("8_pen04")]([SubResource("Resource_hongq")])
 
 [node name="LevelFloor12" parent="LevelGrid/Cell_9_1" unique_id=2083638377 instance=ExtResource("9_0wvhe")]
+
+[node name="PressurePlate" parent="." unique_id=850378618 instance=ExtResource("10_4viw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
