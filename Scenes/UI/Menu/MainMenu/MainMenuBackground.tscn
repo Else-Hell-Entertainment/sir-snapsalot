@@ -1,17 +1,28 @@
 [gd_scene format=3 uid="uid://bed4f1fyo4lyv"]
 
-[ext_resource type="PackedScene" uid="uid://do8bl5mdlpen7" path="res://Scenes/UI/Menu/MainMenu/main_menu_setup.tscn" id="1_05o3q"]
+[ext_resource type="PackedScene" uid="uid://do8bl5mdlpen7" path="res://Scenes/UI/Menu/MainMenu/main_menu_setup.tscn" id="1_60k44"]
+[ext_resource type="PackedScene" uid="uid://b65taioywk8e1" path="res://Scenes/UI/Menu/MainMenu/snapsalot_rev_1.tscn" id="2_5pknu"]
 
 [node name="World" type="Node3D" unique_id=1767091875]
 
-[node name="MainMenuSetup" parent="." unique_id=1570892917 instance=ExtResource("1_05o3q")]
+[node name="MainMenuSetup" parent="." unique_id=1570892917 instance=ExtResource("1_60k44")]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1300946360]
-transform = Transform3D(0.80651164, -0.050387036, 0.5890671, 0.04709612, 0.99867076, 0.02094242, -0.5893393, 0.010852471, 0.8078127, 1.927, 1.597, 22.985)
+transform = Transform3D(0.8032662, -0.09890398, 0.58735114, 0.086270094, 0.99503773, 0.049570583, -0.5893393, 0.010852468, 0.80781263, 2.6101356, 1.9376359, 23.590858)
 current = true
 fov = 72.6
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=531004777]
-transform = Transform3D(0.11511837, -0.4778844, -0.87084687, 0.88427, -0.35010722, 0.309017, -0.45256418, -0.8056373, 0.3822751, 30.071, 13.046, 3.221)
+transform = Transform3D(0.013629295, -0.76319, -0.6460305, 0.8725038, -0.3065137, 0.38050804, -0.48841715, -0.5688501, 0.6617086, 1.2595806, 13.177852, 3.2931912)
 light_color = Color(0.74839354, 0.6368226, 0.4577222, 1)
 shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1771961430]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.595933, 11.825728, -28.075552)
+light_color = Color(1, 0.37254903, 1, 1)
+light_energy = 4.0
+shadow_enabled = true
+omni_range = 6.6865172
+
+[node name="SnapsalotRev1" parent="." unique_id=800406870 instance=ExtResource("2_5pknu")]
+transform = Transform3D(-0.99667394, 0.067219, -0.04607293, 0.06699839, 0.9977331, 0.0063173436, 0.04639294, 0.0032095066, -0.9989182, -0.20923884, 1.1404806, 21.869717)
