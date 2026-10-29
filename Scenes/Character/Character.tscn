@@ -5,9 +5,15 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_blgkw"]
 height = 1.8
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t0asc"]
+
 [node name="Character" type="CharacterBody3D" unique_id=1396309455]
 script = ExtResource("1_i60gv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=132792473]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 mesh = SubResource("CapsuleMesh_blgkw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=55618270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_t0asc")
