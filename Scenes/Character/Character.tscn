@@ -5,7 +5,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_blgkw"]
 height = 1.8
 
-[node name="Character" type="Node3D" unique_id=1559585746]
+[node name="Character" type="CharacterBody3D" unique_id=1396309455]
 script = ExtResource("1_i60gv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=132792473]
