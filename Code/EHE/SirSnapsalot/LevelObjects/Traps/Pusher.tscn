@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dm85ex40ikxf2"]
+
+[ext_resource type="Script" uid="uid://4nt1oe6p21rd" path="res://Code/EHE/SirSnapsalot/LevelObjects/Traps/Pusher.cs" id="1_1bg1t"]
+[ext_resource type="PackedScene" uid="uid://rdb5oy0ifx50" path="res://Assets/Models/Traps/TrapPusher.glb" id="1_b64u2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t0asc"]
+size = Vector3(2, 2, 2)
+
+[node name="Pusher" type="StaticBody3D" unique_id=1639384190]
+script = ExtResource("1_1bg1t")
+
+[node name="Model" parent="." unique_id=554394357 instance=ExtResource("1_b64u2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1739036249]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_t0asc")
