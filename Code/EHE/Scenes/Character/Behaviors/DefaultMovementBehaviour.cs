@@ -1,8 +1,10 @@
-﻿using Godot;
+﻿using EHE.Global.Logging;
+using Godot;
+using SirSnapsalot.EHE.Global.Managers;
 
 namespace EHE.CharacterSystem
 {
-    public partial class DefaultMovementBehavior : CharacterBehavior
+    public partial class DefaultMovementBehaviour : CharacterBehaviour
     {
         public override BehaviorTypeDef BehaviorType { get; } = BehaviorTypeDef.Standard;
 
@@ -14,10 +16,15 @@ namespace EHE.CharacterSystem
 
         private bool _isMoving = false;
 
-        private float Speed = 5f;
+        private float _speed = 5f;
+
+        private CharacterBody3D _body;
 
         public override void Initialize(Character character)
         {
+            //TODO: Behaviour = node3D -> add to scene tree
+
+            _body = character;
             UpdatePath();
         }
 
@@ -31,22 +38,23 @@ namespace EHE.CharacterSystem
 
         private void UpdatePath()
         {
-            //Path = LevelManager.Instance.CurrentLevel.Grid.GetNavPath();
+            Path = LevelManager.Instance.CurrentLevel.Grid.GetNavPath();
             if (Path.Length > 0)
             {
                 TargetPosition = Path[0];
+                _isMoving = true;
             }
         }
 
         private void Move()
         {
-            float delta = (float)GetPhysicsProcessDeltaTime();
-            Vector3 direction = (TargetPosition - GlobalPosition).Normalized();
-            GlobalPosition += direction * Speed * delta;
+            float delta = (float)_body.GetPhysicsProcessDeltaTime();
+            Vector3 direction = (TargetPosition - _body.GlobalPosition).Normalized();
+            _body.GlobalPosition += direction * _speed * delta;
 
-            if (GlobalPosition.DistanceTo(TargetPosition) < 0.1f)
+            if (_body.GlobalPosition.DistanceTo(TargetPosition) < 0.1f)
             {
-                GlobalPosition = TargetPosition;
+                _body.GlobalPosition = TargetPosition;
                 _isMoving = false;
                 _currentPathIndex++;
                 ResolveNextPoint();

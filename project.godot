@@ -27,6 +27,7 @@ SceneManager="*uid://dh1dg2ekiwrpg"
 PlayerManager="*uid://2c6ykqbo85q5"
 SettingsManager="*uid://63kas3dqjcig"
 AudioManager="*uid://cyys3ltwms4i4"
+LevelManager="*uid://cbk70cjafb802"
 
 [display]
 

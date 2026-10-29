@@ -1,5 +1,6 @@
 using EHE.CharacterSystem;
 using Godot;
+using SirSnapsalot.EHE.Global.Managers;
 
 namespace EHE.LevelSystem
 {
@@ -49,8 +50,11 @@ namespace EHE.LevelSystem
             }
             //TODO: Refactor temp solutions below:
 
+            Grid.CalculateNavigation();
+
             _startGameButton.Pressed += StartGame;
             _startPos = _character.GlobalPosition;
+            LevelManager.Instance.ChangeLevel(this);
         }
 
         public override void _Input(InputEvent @event)
@@ -91,10 +95,10 @@ namespace EHE.LevelSystem
         private void StartGame()
         {
             _character.GlobalPosition = _startPos;
-            Grid.CalculateNavigation();
+            //Grid.CalculateNavigation();
 
             //TODO: Refactor placeholder solution below:
-            _character.ReceivePath(Grid.GetNavPath());
+            //_character.ReceivePath(Grid.GetNavPath());
             _character.Activate();
             ShowPath();
         }

@@ -2,7 +2,7 @@
 
 namespace EHE.CharacterSystem
 {
-    public abstract partial class CharacterBehavior : Node3D
+    public abstract partial class CharacterBehaviour : Node3D
     {
         public enum BehaviorTypeDef
         {
