@@ -3,6 +3,7 @@
 // Author: Pekka Heljakka <pekka.heljakka@tuni.fi>
 
 using EHE.SirSnapsalot.CharacterSystem;
+using EHE.SirSnapsalot.LevelObjects;
 using Godot;
 
 namespace EHE.SirSnapsalot.LevelSystem
@@ -22,6 +23,12 @@ namespace EHE.SirSnapsalot.LevelSystem
 
         [Export]
         private Button _startGameButton;
+
+        [Export]
+        private TrapComponent _pressurePlateComponent;
+
+        [Export]
+        private TrapComponent _pusherComponent;
 
         [Export]
         private Character _character;
@@ -89,6 +96,14 @@ namespace EHE.SirSnapsalot.LevelSystem
             else if (@event.IsActionPressed("ClearCell"))
             {
                 Grid.RemoveCell();
+            }
+            else if (@event.IsActionPressed("LevelEditorSelectPressurePlate"))
+            {
+                Grid.GhostComponent = _pressurePlateComponent;
+            }
+            else if (@event.IsActionPressed("LevelEditorSelectPusher"))
+            {
+                Grid.GhostComponent = _pusherComponent;
             }
         }
 

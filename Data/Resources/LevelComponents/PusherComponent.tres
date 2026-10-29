@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TrapComponent" format=3 uid="uid://xs34uj4l55j0"]
+
+[ext_resource type="Script" uid="uid://cl0ys8lhida1m" path="res://Code/EHE/SirSnapsalot/LevelSystem/ResourceDefinitions/TrapComponent.cs" id="1_bu266"]
+[ext_resource type="PackedScene" uid="uid://dm85ex40ikxf2" path="res://Code/EHE/SirSnapsalot/LevelObjects/Traps/Pusher.tscn" id="1_qaphk"]
+
+[resource]
+script = ExtResource("1_bu266")
+Name = "Pusher"
+_scene = ExtResource("1_qaphk")
+BlocksMovement = true
+metadata/_custom_type_script = "uid://cl0ys8lhida1m"

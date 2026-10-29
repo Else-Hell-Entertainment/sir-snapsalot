@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TrapComponent" format=3 uid="uid://c307ubdm2nbbn"]
+
+[ext_resource type="Script" uid="uid://cl0ys8lhida1m" path="res://Code/EHE/SirSnapsalot/LevelSystem/ResourceDefinitions/TrapComponent.cs" id="1_bc717"]
+[ext_resource type="PackedScene" uid="uid://ur4hydbu5wsl" path="res://Scenes/LevelObjects/TrapActivators/PressurePlate.tscn" id="1_dxnph"]
+
+[resource]
+script = ExtResource("1_bc717")
+Name = "PressurePlate"
+_scene = ExtResource("1_dxnph")
+metadata/_custom_type_script = "uid://cl0ys8lhida1m"
