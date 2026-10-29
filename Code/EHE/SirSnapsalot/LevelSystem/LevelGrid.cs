@@ -239,6 +239,14 @@ namespace EHE.SirSnapsalot.LevelSystem
                 }
             }
 
+            if (_ghostComponent.ComponentType == CellComponent.CellComponentType.Trap)
+            {
+                if (cell != null)
+                {
+                    return true;
+                }
+            }
+
             return false;
         }
 

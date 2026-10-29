@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://buoa1aewdfidp"]
 
 [ext_resource type="PackedScene" uid="uid://drur0a5ndj8rl" path="res://Scenes/Levels/LevelEditor/BaseLevel.tscn" id="1_4t5ao"]
+[ext_resource type="Resource" uid="uid://c307ubdm2nbbn" path="res://Data/Resources/LevelComponents/PressurePlateComponent.tres" id="2_t6r0v"]
+[ext_resource type="Resource" uid="uid://xs34uj4l55j0" path="res://Data/Resources/LevelComponents/PusherComponent.tres" id="3_ie4qy"]
 
 [sub_resource type="Environment" id="Environment_blgkw"]
 
@@ -11,6 +13,8 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="BaseLevel" parent="." unique_id=1007198492 instance=ExtResource("1_4t5ao")]
+_pressurePlateComponent = ExtResource("2_t6r0v")
+_pusherComponent = ExtResource("3_ie4qy")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=916009153]
 environment = SubResource("Environment_blgkw")
