@@ -55,6 +55,9 @@ namespace EHE.SirSnapsalot.LevelObjects
         /// <param name="body"></param>
         private void OnConnectionDetectorsBodyEntered(Node3D body)
         {
+            // TODO: Only do this when trap has been actually placed.
+            // Hovering the trap next to the pressure plate shouldn't make a
+            // connection!
             if (body is IActivateable activateable)
             {
                 AddActivationTarget(activateable);
@@ -79,6 +82,7 @@ namespace EHE.SirSnapsalot.LevelObjects
         /// <param name="activateable"></param>
         private void AddActivationTarget(IActivateable activateable)
         {
+            // TODO: Make sure the thing has already been placed before connecting it!
             this.LogInfo($"Added {activateable.GetType()} to activation targets.");
             _activationTargets.Add(activateable);
         }
