@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ur4hydbu5wsl"]
+
+[ext_resource type="Script" uid="uid://dj6v8wisjpoaj" path="res://Code/EHE/SirSnapsalot/LevelObjects/TrapActivators/PressurePlate.cs" id="1_wpfvh"]
+[ext_resource type="PackedScene" uid="uid://bdnwe35f80cgc" path="res://Assets/Models/Traps/TrapPressurePlate.glb" id="2_6rl4w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jhhb6"]
+size = Vector3(2, 2, 2)
+
+[node name="PressurePlate" type="Node3D" unique_id=850378618 node_paths=PackedStringArray("TriggerArea")]
+script = ExtResource("1_wpfvh")
+TriggerArea = NodePath("TriggerArea")
+
+[node name="Model" parent="." unique_id=522589234 instance=ExtResource("2_6rl4w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="TriggerArea" type="Area3D" parent="." unique_id=372873072]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea" unique_id=1563286361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_jhhb6")
