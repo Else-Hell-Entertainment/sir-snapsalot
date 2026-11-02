@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cqcirwhc3b3m2"]
+
+[ext_resource type="Script" uid="uid://bvnbme1yd25mb" path="res://Code/EHE/SirSnapsalot/LevelEditor/ComponentSelector.cs" id="1_kulmp"]
+
+[node name="ComponentSelector" type="HBoxContainer" unique_id=1935399849]
+script = ExtResource("1_kulmp")
+
+[node name="Counter" type="Label" parent="." unique_id=250426603]
+layout_mode = 2
+text = "xx"
+
+[node name="Button" type="Button" parent="." unique_id=1241635957]
+layout_mode = 2
+text = "Pusher"
