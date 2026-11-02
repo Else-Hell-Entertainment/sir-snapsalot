@@ -71,22 +71,7 @@ namespace EHE.SirSnapsalot.LevelSystem
 
             //TODO: Refactor temp solutions below:
 
-            if (@event.IsActionPressed("Hotbar1"))
-            {
-                SetGhostComponent(_floorComponent);
-                GD.Print("Selected Floor Component");
-            }
-            else if (@event.IsActionPressed("Hotbar2"))
-            {
-                SetGhostComponent(_wallComponent);
-                GD.Print("Selected Wall Component");
-            }
-            else if (@event.IsActionPressed("Hotbar3"))
-            {
-                SetGhostComponent(_propComponent);
-                GD.Print("Selected Prop Component");
-            }
-            else if (@event.IsActionPressed("RotateCW"))
+            if (@event.IsActionPressed("RotateCW"))
             {
                 Grid.RotateGhostComponent(true);
             }
@@ -97,14 +82,6 @@ namespace EHE.SirSnapsalot.LevelSystem
             else if (@event.IsActionPressed("ClearCell"))
             {
                 Grid.RemoveCell();
-            }
-            else if (@event.IsActionPressed("LevelEditorSelectPressurePlate"))
-            {
-                SetGhostComponent(_pressurePlateComponent);
-            }
-            else if (@event.IsActionPressed("LevelEditorSelectPusher"))
-            {
-                SetGhostComponent(_pusherComponent);
             }
         }
 
