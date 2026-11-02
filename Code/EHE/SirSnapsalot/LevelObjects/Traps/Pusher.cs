@@ -2,11 +2,14 @@ using System;
 using EHE.SirSnapsalot;
 using Godot;
 
-public partial class Pusher : Node3D, IActivateable
+namespace EHE.SirSnapsalot.LevelObjects
 {
-    public bool Activate()
+    public partial class Pusher : Node3D, IActivateable
     {
-        GD.Print("Pusher activated!");
-        return true;
+        public bool Activate()
+        {
+            GD.Print("Pusher activated!");
+            return true;
+        }
     }
 }
