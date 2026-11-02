@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://buoa1aewdfidp"]
 
 [ext_resource type="PackedScene" uid="uid://drur0a5ndj8rl" path="res://Scenes/Levels/LevelEditor/BaseLevel.tscn" id="1_4t5ao"]
+[ext_resource type="Script" uid="uid://dfc3sess6fd3f" path="res://Code/EHE/SirSnapsalot/LevelEditor/LevelEditor.cs" id="1_o0cfc"]
 [ext_resource type="Resource" uid="uid://c307ubdm2nbbn" path="res://Data/Resources/LevelComponents/PressurePlateComponent.tres" id="2_t6r0v"]
 [ext_resource type="Resource" uid="uid://xs34uj4l55j0" path="res://Data/Resources/LevelComponents/PusherComponent.tres" id="3_ie4qy"]
+[ext_resource type="PackedScene" uid="uid://cqcirwhc3b3m2" path="res://Scenes/UI/LevelDesigner/ComponentSelector.tscn" id="4_ie4qy"]
+[ext_resource type="Resource" uid="uid://gnakrgkapgmb" path="res://Data/Resources/LevelComponents/ProtoFloor1.tres" id="6_rxyea"]
+[ext_resource type="Resource" uid="uid://c5uqw6ksrdept" path="res://Data/Resources/LevelComponents/ProtoWall1.tres" id="7_357rx"]
+[ext_resource type="Resource" uid="uid://p5ls6ob2wkxl" path="res://Data/Resources/LevelComponents/ProtoPillar1.tres" id="8_q1c84"]
 
 [sub_resource type="Environment" id="Environment_blgkw"]
 
 [node name="LevelEditor" type="Node3D" unique_id=449126731]
+script = ExtResource("1_o0cfc")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=206511898]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 5.073656, 8.291958, 0)
@@ -22,3 +28,56 @@ environment = SubResource("Environment_blgkw")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1014206546]
 transform = Transform3D(1, 0, 0, 0, 0.37775356, 0.9259062, 0, -0.9259062, 0.37775356, 11.442457, 10.429326, 11.999655)
 fov = 90.0
+
+[node name="DesignerUI" type="Control" parent="." unique_id=1134206697]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ComponentList" type="VBoxContainer" parent="DesignerUI" unique_id=1181475147]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 71.0
+offset_right = 161.0
+offset_bottom = 1041.0
+
+[node name="FloorSelector" parent="DesignerUI/ComponentList" unique_id=1857971257 instance=ExtResource("4_ie4qy")]
+layout_mode = 2
+CellComponent = ExtResource("6_rxyea")
+
+[node name="Button" parent="DesignerUI/ComponentList/FloorSelector" index="1" unique_id=1241635957]
+text = "Floor"
+
+[node name="WallSelector" parent="DesignerUI/ComponentList" unique_id=1951937936 instance=ExtResource("4_ie4qy")]
+layout_mode = 2
+CellComponent = ExtResource("7_357rx")
+
+[node name="Button" parent="DesignerUI/ComponentList/WallSelector" index="1" unique_id=1241635957]
+text = "Wall"
+
+[node name="PillarSelector" parent="DesignerUI/ComponentList" unique_id=1572893789 instance=ExtResource("4_ie4qy")]
+layout_mode = 2
+CellComponent = ExtResource("8_q1c84")
+
+[node name="Button" parent="DesignerUI/ComponentList/PillarSelector" index="1" unique_id=1241635957]
+text = "Pillar"
+
+[node name="PusherSelector" parent="DesignerUI/ComponentList" unique_id=1935399849 instance=ExtResource("4_ie4qy")]
+layout_mode = 2
+CellComponent = ExtResource("3_ie4qy")
+
+[node name="PressurePlateSelector" parent="DesignerUI/ComponentList" unique_id=548396267 instance=ExtResource("4_ie4qy")]
+layout_mode = 2
+CellComponent = ExtResource("2_t6r0v")
+
+[node name="Button" parent="DesignerUI/ComponentList/PressurePlateSelector" index="1" unique_id=1241635957]
+text = "Pressure Plate"
+
+[editable path="DesignerUI/ComponentList/FloorSelector"]
+[editable path="DesignerUI/ComponentList/WallSelector"]
+[editable path="DesignerUI/ComponentList/PillarSelector"]
+[editable path="DesignerUI/ComponentList/PusherSelector"]
+[editable path="DesignerUI/ComponentList/PressurePlateSelector"]

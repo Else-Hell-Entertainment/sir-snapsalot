@@ -2,6 +2,7 @@
 // License: MIT License (see LICENSE in project root for details)
 // Author: Pekka Heljakka <pekka.heljakka@tuni.fi>
 
+using EHE.Common.Godot.Logging;
 using EHE.SirSnapsalot.CharacterSystem;
 using EHE.SirSnapsalot.LevelObjects;
 using Godot;
@@ -70,22 +71,7 @@ namespace EHE.SirSnapsalot.LevelSystem
 
             //TODO: Refactor temp solutions below:
 
-            if (@event.IsActionPressed("Hotbar1"))
-            {
-                Grid.GhostComponent = _floorComponent;
-                GD.Print("Selected Floor Component");
-            }
-            else if (@event.IsActionPressed("Hotbar2"))
-            {
-                Grid.GhostComponent = _wallComponent;
-                GD.Print("Selected Wall Component");
-            }
-            else if (@event.IsActionPressed("Hotbar3"))
-            {
-                Grid.GhostComponent = _propComponent;
-                GD.Print("Selected Prop Component");
-            }
-            else if (@event.IsActionPressed("RotateCW"))
+            if (@event.IsActionPressed("RotateCW"))
             {
                 Grid.RotateGhostComponent(true);
             }
@@ -97,14 +83,16 @@ namespace EHE.SirSnapsalot.LevelSystem
             {
                 Grid.RemoveCell();
             }
-            else if (@event.IsActionPressed("LevelEditorSelectPressurePlate"))
-            {
-                Grid.GhostComponent = _pressurePlateComponent;
-            }
-            else if (@event.IsActionPressed("LevelEditorSelectPusher"))
-            {
-                Grid.GhostComponent = _pusherComponent;
-            }
+        }
+
+        /// <summary>
+        /// Sets the current ghost component to the given cell component.
+        /// </summary>
+        /// <param name="ghostComponent">The reference to the cell component resource.</param>
+        public void SetGhostComponent(CellComponent ghostComponent)
+        {
+            Grid.GhostComponent = ghostComponent;
+            this.LogDebug($"Ghost component set to '{ghostComponent}'");
         }
 
         private void StartGame()
