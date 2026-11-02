@@ -4,9 +4,9 @@ using Godot;
 
 namespace EHE.SirSnapsalot.LevelObjects
 {
-    public partial class Pusher : Node3D, IActivateable
+    public partial class Pusher : Trap
     {
-        public bool Activate()
+        public override bool Activate()
         {
             GD.Print("Pusher activated!");
             return true;
