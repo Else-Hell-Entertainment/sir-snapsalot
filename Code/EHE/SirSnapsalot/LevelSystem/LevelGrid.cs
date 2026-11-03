@@ -206,6 +206,12 @@ namespace EHE.SirSnapsalot.LevelSystem
             {
                 for (int offsetY = -1; offsetY <= 1; offsetY++)
                 {
+                    if (offsetX == 0 && offsetY == 0)
+                    {
+                        // Skip the position whose neighbors are being searched.
+                        continue;
+                    }
+
                     if (!includeDiagonalNeighbors && Mathf.Abs(offsetX) == Mathf.Abs(offsetY))
                     {
                         // Skip diagonal neighbors.
