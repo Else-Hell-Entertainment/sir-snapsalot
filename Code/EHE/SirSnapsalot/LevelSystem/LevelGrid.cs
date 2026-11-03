@@ -206,7 +206,7 @@ namespace EHE.SirSnapsalot.LevelSystem
             {
                 for (int offsetY = -1; offsetY <= 1; offsetY++)
                 {
-                    if (!includeDiagonalNeighbors && offsetX == offsetY)
+                    if (!includeDiagonalNeighbors && Mathf.Abs(offsetX) == Mathf.Abs(offsetY))
                     {
                         // Skip diagonal neighbors.
                         continue;
