@@ -175,6 +175,29 @@ namespace EHE.SirSnapsalot.LevelSystem
             Cells[gridCoordinates] = cell;
         }
 
+        /// <summary>
+        /// Finds the GridCell that is in the given global position.
+        /// </summary>
+        /// <param name="globalPosition">The world position to check.</param>
+        /// <returns>
+        /// Reference to the GridCell in the given world position or
+        /// <c>null</c> if no GridCell is found in that position.
+        /// </returns>
+        public GridCell GetGridCell(Vector3 globalPosition)
+        {
+            Vector3 localPosition = ToLocal(globalPosition);
+
+            // Check if the localPosition is within the grid bounds.
+            // TODO: Should this be done in GetGridCoordinatedFromPosition instead?
+            if (localPosition.X < 0 || localPosition.Z < 0)
+            {
+                return null;
+            }
+
+            Vector2I gridCoordinates = GetGridCoordinatesFromPosition(localPosition);
+            return GetGridCell(gridCoordinates);
+        }
+
         public GridCell GetGridCell(Vector2I gridCoordinates)
         {
             if (Cells.ContainsKey(gridCoordinates))
