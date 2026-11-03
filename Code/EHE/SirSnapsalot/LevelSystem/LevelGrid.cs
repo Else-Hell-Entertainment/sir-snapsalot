@@ -25,6 +25,8 @@ namespace EHE.SirSnapsalot.LevelSystem
         private List<MeshInstance3D> _navigationPath = new List<MeshInstance3D>();
         private PathFinder _pathFinder;
 
+        private Node3D _ghostInstance;
+
         public CellComponent GhostComponent
         {
             get => _ghostComponent;
@@ -50,9 +52,9 @@ namespace EHE.SirSnapsalot.LevelSystem
             }
         }
 
-        private Node3D _ghostInstance;
-
         public Godot.Collections.Dictionary<Vector2I, GridCell> Cells;
+
+        #region Godot API
 
         public override void _Ready()
         {
@@ -71,25 +73,9 @@ namespace EHE.SirSnapsalot.LevelSystem
             }
         }
 
-        private void PopulateCellDictionary()
-        {
-            if (Cells == null)
-            {
-                Cells = new Godot.Collections.Dictionary<Vector2I, GridCell>();
-            }
-            else
-            {
-                Cells.Clear();
-            }
+        #endregion
 
-            foreach (var child in GetChildren())
-            {
-                if (child is GridCell cell)
-                {
-                    Cells[new Vector2I(cell.GridCoordinates.X, cell.GridCoordinates.Y)] = cell;
-                }
-            }
-        }
+        #region Public API
 
         public void Initialize()
         {
@@ -123,6 +109,155 @@ namespace EHE.SirSnapsalot.LevelSystem
             else
             {
                 GD.Print("No cell found at: " + gridCoordinates);
+            }
+        }
+
+        public Vector3[] GetNavPath()
+        {
+            var path = _pathFinder.GetPath(new Vector2(0, 0), new Vector2(5, 5));
+            if (path == null || path.Length < 2)
+            {
+                GD.Print("No valid path found.");
+                return null;
+            }
+
+            Vector3[] navPath = new Vector3[path.Length];
+            for (int i = 0; i < path.Length; i++)
+            {
+                Vector2I gridPos = (Vector2I)path[i];
+                var cell = GetGridCell(gridPos);
+                if (cell != null)
+                {
+                    navPath[i] = cell.GlobalPosition;
+                }
+                else
+                {
+                    GD.PrintErr("Cell not found at: " + gridPos);
+                    return null;
+                }
+            }
+
+            return navPath;
+        }
+
+        public void CreateGridCell(Vector2I gridCoordinates)
+        {
+            GridCell cell = new GridCell()
+            {
+                Position = new Vector3(
+                    gridCoordinates.X * _gridSize + (float)_gridSize / 2,
+                    0,
+                    gridCoordinates.Y * _gridSize + (float)_gridSize / 2
+                ),
+            };
+
+            if (gridCoordinates.X >= _width)
+            {
+                _width = gridCoordinates.X + 1;
+            }
+
+            if (gridCoordinates.Y >= _height)
+            {
+                _height = gridCoordinates.Y + 1;
+            }
+
+            AddChild(cell);
+            cell.Name = $"Cell_{gridCoordinates.X}_{gridCoordinates.Y}";
+            cell.GridCoordinates = gridCoordinates;
+            var sceneOwner = GetTree().CurrentScene;
+            if (sceneOwner != null)
+            {
+                cell.Owner = sceneOwner;
+            }
+
+            Cells[gridCoordinates] = cell;
+        }
+
+        public GridCell GetGridCell(Vector2I gridCoordinates)
+        {
+            if (Cells.ContainsKey(gridCoordinates))
+            {
+                return Cells[gridCoordinates];
+            }
+
+            return null;
+        }
+
+        public void CreateGhostComponent(CellComponent component)
+        {
+            switch (component.ComponentType)
+            {
+                case CellComponent.CellComponentType.Wall:
+                    // Walls are aligned to the edges of the cell.
+                    _ghostPosition = CellComponent.Position.NorthWall;
+                    break;
+                default:
+                    // Everything else is aligned to center of the cell.
+                    _ghostPosition = CellComponent.Position.Floor;
+                    break;
+            }
+
+            _ghostInstance = (Node3D)component.GetSceneInstance();
+            AddChild(_ghostInstance);
+        }
+
+        public void CalculateNavigation()
+        {
+            _pathFinder.GenerateNavMap();
+        }
+
+        public void DrawNavigationPath()
+        {
+            foreach (var mesh in _navigationPath)
+            {
+                mesh.QueueFree();
+            }
+
+            _navigationPath.Clear();
+            var path = _pathFinder.GetPath(new Vector2(0, 0), new Vector2(5, 5));
+            if (path == null || path.Length < 2)
+            {
+                GD.Print("No valid path found.");
+                return;
+            }
+
+            for (int i = 0; i < path.Length - 1; i++)
+            {
+                Vector2I start = (Vector2I)path[i];
+                Vector2I end = (Vector2I)path[i + 1];
+                var startCell = GetGridCell(start);
+                var endCell = GetGridCell(end);
+                if (startCell != null && endCell != null)
+                {
+                    Vector3 startPos = startCell.GlobalPosition;
+                    Vector3 endPos = endCell.GlobalPosition;
+                    var lineSegment = CreateLineSegment(startPos, endPos, 0.1f);
+                    _navigationPath.Add(lineSegment);
+                }
+            }
+        }
+
+        #endregion
+
+        #region Private API
+
+        private void PopulateCellDictionary()
+        {
+            if (Cells == null)
+            {
+                Cells = new Godot.Collections.Dictionary<Vector2I, GridCell>();
+            }
+            else
+            {
+                Cells.Clear();
+            }
+
+            foreach (var child in GetChildren())
+            {
+                if (child is GridCell cell)
+                {
+                    Cells[new Vector2I(cell.GridCoordinates.X, cell.GridCoordinates.Y)] = cell;
+                }
             }
         }
 
@@ -279,131 +414,6 @@ namespace EHE.SirSnapsalot.LevelSystem
             }
         }
 
-        public Vector3[] GetNavPath()
-        {
-            var path = _pathFinder.GetPath(new Vector2(0, 0), new Vector2(5, 5));
-            if (path == null || path.Length < 2)
-            {
-                GD.Print("No valid path found.");
-                return null;
-            }
-
-            Vector3[] navPath = new Vector3[path.Length];
-            for (int i = 0; i < path.Length; i++)
-            {
-                Vector2I gridPos = (Vector2I)path[i];
-                var cell = GetGridCell(gridPos);
-                if (cell != null)
-                {
-                    navPath[i] = cell.GlobalPosition;
-                }
-                else
-                {
-                    GD.PrintErr("Cell not found at: " + gridPos);
-                    return null;
-                }
-            }
-
-            return navPath;
-        }
-
-        public void CreateGridCell(Vector2I gridCoordinates)
-        {
-            GridCell cell = new GridCell()
-            {
-                Position = new Vector3(
-                    gridCoordinates.X * _gridSize + (float)_gridSize / 2,
-                    0,
-                    gridCoordinates.Y * _gridSize + (float)_gridSize / 2
-                ),
-            };
-
-            if (gridCoordinates.X >= _width)
-            {
-                _width = gridCoordinates.X + 1;
-            }
-
-            if (gridCoordinates.Y >= _height)
-            {
-                _height = gridCoordinates.Y + 1;
-            }
-
-            AddChild(cell);
-            cell.Name = $"Cell_{gridCoordinates.X}_{gridCoordinates.Y}";
-            cell.GridCoordinates = gridCoordinates;
-            var sceneOwner = GetTree().CurrentScene;
-            if (sceneOwner != null)
-            {
-                cell.Owner = sceneOwner;
-            }
-
-            Cells[gridCoordinates] = cell;
-        }
-
-        public GridCell GetGridCell(Vector2I gridCoordinates)
-        {
-            if (Cells.ContainsKey(gridCoordinates))
-            {
-                return Cells[gridCoordinates];
-            }
-
-            return null;
-        }
-
-        public void CreateGhostComponent(CellComponent component)
-        {
-            switch (component.ComponentType)
-            {
-                case CellComponent.CellComponentType.Wall:
-                    // Walls are aligned to the edges of the cell.
-                    _ghostPosition = CellComponent.Position.NorthWall;
-                    break;
-                default:
-                    // Everything else is aligned to center of the cell.
-                    _ghostPosition = CellComponent.Position.Floor;
-                    break;
-            }
-
-            _ghostInstance = (Node3D)component.GetSceneInstance();
-            AddChild(_ghostInstance);
-        }
-
-        public void CalculateNavigation()
-        {
-            _pathFinder.GenerateNavMap();
-        }
-
-        public void DrawNavigationPath()
-        {
-            foreach (var mesh in _navigationPath)
-            {
-                mesh.QueueFree();
-            }
-
-            _navigationPath.Clear();
-            var path = _pathFinder.GetPath(new Vector2(0, 0), new Vector2(5, 5));
-            if (path == null || path.Length < 2)
-            {
-                GD.Print("No valid path found.");
-                return;
-            }
-
-            for (int i = 0; i < path.Length - 1; i++)
-            {
-                Vector2I start = (Vector2I)path[i];
-                Vector2I end = (Vector2I)path[i + 1];
-                var startCell = GetGridCell(start);
-                var endCell = GetGridCell(end);
-                if (startCell != null && endCell != null)
-                {
-                    Vector3 startPos = startCell.GlobalPosition;
-                    Vector3 endPos = endCell.GlobalPosition;
-                    var lineSegment = CreateLineSegment(startPos, endPos, 0.1f);
-                    _navigationPath.Add(lineSegment);
-                }
-            }
-        }
-
         private MeshInstance3D CreateLineSegment(Vector3 from, Vector3 to, float thickness = 0.05f)
         {
             var meshInstance = new MeshInstance3D();
@@ -447,5 +457,7 @@ namespace EHE.SirSnapsalot.LevelSystem
 
             return gridCoordinates;
         }
+
+        #endregion
     }
 }
