@@ -1,6 +1,7 @@
 // (c) 2026 Else Hell Entertainment
 // License: MIT License (see LICENSE in project root for details)
 // Author: Pekka Heljakka <pekka.heljakka@tuni.fi>
+//         Miska Rihu <miska.rihu@tuni.fi>
 
 using System;
 using System.Collections.Generic;
@@ -173,6 +174,57 @@ namespace EHE.SirSnapsalot.LevelSystem
             }
 
             Cells[gridCoordinates] = cell;
+        }
+
+
+        /// <summary>
+        /// Returns all adjacent grid cells around the given world position.
+        /// </summary>
+        ///
+        /// <param name="globalPosition">
+        /// The world position to inspect. It is converted to grid coordinates
+        /// using the current grid scale.
+        /// </param>
+        /// <param name="includeDiagonalNeighbors">
+        /// When <c>true</c>, diagonal neighbors are included in the result
+        /// alongside orthogonal neighbors; otherwise only orthogonal neighbors
+        /// are returned.
+        /// </param>
+        ///
+        /// <returns>
+        /// A list of neighboring <see cref="GridCell"/> instances that exist
+        /// in the grid. Returns an empty list
+        /// if no neighbors are found.
+        /// </returns>
+        public IList<GridCell> GetNeighbors(Vector3 globalPosition, bool includeDiagonalNeighbors = false)
+        {
+            // TODO: Is is a bug if we try to find neighboring cells for a position that doesn't have a cell?
+            Vector2I gridPosition = GetGridCoordinatesFromPosition(globalPosition);
+            List<GridCell> neighbors = new List<GridCell>();
+
+            for (int offsetX = -1; offsetX <= 1; offsetX++)
+            {
+                for (int offsetY = -1; offsetY <= 1; offsetY++)
+                {
+                    if (!includeDiagonalNeighbors && offsetX == offsetY)
+                    {
+                        // Skip diagonal neighbors.
+                        continue;
+                    }
+
+                    int neighborX = gridPosition.X + offsetX;
+                    int neighborY = gridPosition.Y + offsetY;
+
+                    GridCell neighbor = GetGridCell(new Vector2I(neighborX, neighborY));
+
+                    if (neighbor != null)
+                    {
+                        neighbors.Add(neighbor);
+                    }
+                }
+            }
+
+            return neighbors;
         }
 
         /// <summary>
