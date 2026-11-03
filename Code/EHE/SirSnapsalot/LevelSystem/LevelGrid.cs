@@ -66,7 +66,9 @@ namespace EHE.SirSnapsalot.LevelSystem
         public override void _PhysicsProcess(double delta)
         {
             UpdateGhost();
-
+#if DEBUG
+            DebugDraw(delta);
+#endif
             if (Input.IsActionJustPressed("Confirm"))
             {
                 PlaceGhostComponent();
@@ -458,6 +460,107 @@ namespace EHE.SirSnapsalot.LevelSystem
             return gridCoordinates;
         }
 
+        #endregion
+
+        #region Debug Stuff
+
+        [ExportCategory("Debug Draw")]
+        [Export]
+        private bool _useDebugDraw = false;
+
+        [Export]
+        private double _debugDrawRefreshInterval = 0.5;
+
+        // Common
+        private double _debugDrawRefreshCounter = 0.0;
+        private bool _wasUsed = false;
+
+        // DebugDrawGridCoordinates
+        private Node _debugDrawGridCoordinatesRoot;
+
+#if DEBUG
+        // Calls other debug draw methods on intervals.
+        private void DebugDraw(double delta)
+        {
+            if (!_useDebugDraw)
+            {
+                if (_wasUsed)
+                {
+                    // Clears debug stuff from scene when debug draw is
+                    // disabled during runtime.
+                    DebugDrawClear();
+                }
+
+                _wasUsed = false;
+                return;
+            }
+
+            if (_debugDrawRefreshCounter == 0)
+            {
+                // Put other debug draw method calls here.
+                DebugDrawGridCoordinates();
+            }
+
+            _debugDrawRefreshCounter += delta;
+
+            if (_debugDrawRefreshCounter >= _debugDrawRefreshInterval)
+            {
+                _debugDrawRefreshCounter = 0;
+            }
+
+            _wasUsed = true;
+        }
+
+        // Removes debug draw objects from the scene.
+        // Add necessary cleaning stuff here.
+        private void DebugDrawClear()
+        {
+            // DebugDrawGridCoordinates
+            _debugDrawGridCoordinatesRoot.Free();
+            _debugDrawGridCoordinatesRoot = null;
+        }
+
+        // Places text meshes in the scene to show cell coordinates.
+        private void DebugDrawGridCoordinates()
+        {
+            if (!_useDebugDraw)
+            {
+                return;
+            }
+
+            if (_debugDrawGridCoordinatesRoot == null)
+            {
+                _debugDrawGridCoordinatesRoot = new Node();
+                AddChild(_debugDrawGridCoordinatesRoot);
+            }
+
+            foreach (var child in _debugDrawGridCoordinatesRoot.GetChildren())
+            {
+                child.QueueFree();
+            }
+
+            foreach (var cell in Cells.Values)
+            {
+                float x = cell.GlobalPosition.X;
+                float z = cell.GlobalPosition.Z;
+                float y = 0;
+
+                MeshInstance3D mesh = new MeshInstance3D()
+                {
+                    Mesh = new TextMesh()
+                    {
+                        Text = $"{cell.GridCoordinates}",
+                        FontSize = 48
+                    },
+                    RotationDegrees = new Vector3(-90,0,0)
+                };
+
+                _debugDrawGridCoordinatesRoot.AddChild(mesh);
+                mesh.GlobalPosition = new Vector3(x, y, z);
+            }
+        }
+
+#endif
         #endregion
     }
 }
