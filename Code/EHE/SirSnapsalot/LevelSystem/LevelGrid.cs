@@ -352,13 +352,16 @@ namespace EHE.SirSnapsalot.LevelSystem
 
         public void CreateGhostComponent(CellComponent component)
         {
-            if (component.ComponentType == CellComponent.CellComponentType.Floor)
+            switch (component.ComponentType)
             {
-                _ghostPosition = CellComponent.Position.Floor;
-            }
-            else if (component.ComponentType == CellComponent.CellComponentType.Wall)
-            {
-                _ghostPosition = CellComponent.Position.NorthWall;
+                case CellComponent.CellComponentType.Wall:
+                    // Walls are aligned to the edges of the cell.
+                    _ghostPosition = CellComponent.Position.NorthWall;
+                    break;
+                default:
+                    // Everything else is aligned to center of the cell.
+                    _ghostPosition = CellComponent.Position.Floor;
+                    break;
             }
 
             _ghostInstance = (Node3D)component.GetSceneInstance();
