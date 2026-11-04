@@ -1,7 +1,9 @@
 // (c) 2026 Else Hell Entertainment
 // License: MIT License (see LICENSE in project root for details)
 // Author: Pekka Heljakka <pekka.heljakka@tuni.fi>
+//         Miska Rihu <miska.rihu@tuni.fi>
 
+using EHE.Common.Godot.Extensions;
 using EHE.Common.Godot.Logging;
 using EHE.SirSnapsalot.CharacterSystem;
 using EHE.SirSnapsalot.LevelObjects;
@@ -97,6 +99,8 @@ namespace EHE.SirSnapsalot.LevelSystem
 
         private void StartGame()
         {
+            ConnectActivatorsToTraps();
+
             _character.GlobalPosition = _startPos;
             Grid.CalculateNavigation();
 
@@ -109,6 +113,25 @@ namespace EHE.SirSnapsalot.LevelSystem
         private void ShowPath()
         {
             Grid.DrawNavigationPath();
+        }
+
+        private void ConnectActivatorsToTraps()
+        {
+            foreach (var activator in this.GetChildren<TrapActivator>(recurse: true))
+            {
+                // Find activators and clear their existing connections.
+                activator.ClearConnections();
+
+                foreach (var gridCell in Grid.GetNeighbors(activator.GlobalPosition))
+                {
+                    // Find neighboring cells and if they contain a trap, connect it to the activator.
+                    var trap = gridCell.GetChild<Trap>(recurse: true);
+                    if (trap != null)
+                    {
+                        activator.AddConnection(trap);
+                    }
+                }
+            }
         }
     }
 }
