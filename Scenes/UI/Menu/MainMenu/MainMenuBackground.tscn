@@ -9,24 +9,63 @@
 albedo_color = Color(0.5144992, 0.42765474, 0.30911446, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_gl5hb"]
-size = Vector3(1, 2.40625, 1)
+size = Vector3(1, 2.4853516, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6u2c2"]
 albedo_color = Color(0.4, 0.35, 0.3, 1)
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_rtn53"]
+rayleigh_coefficient = 3.07
+rayleigh_color = Color(0.92183936, 0.48393548, 0.25634393, 1)
+mie_eccentricity = 1.0
+mie_color = Color(0.3420876, 0.54716986, 0.6487038, 1)
+turbidity = 22.1
+
+[sub_resource type="Sky" id="Sky_sm042"]
+sky_material = SubResource("PhysicalSkyMaterial_rtn53")
+
+[sub_resource type="Environment" id="Environment_rbv2q"]
+background_mode = 2
+sky = SubResource("Sky_sm042")
+ambient_light_source = 2
+ambient_light_color = Color(0.59717613, 0.59717613, 0.5971761, 1)
+ambient_light_energy = 0.5
+ssao_enabled = true
+ssao_radius = 3.0
+ssao_intensity = 1.5
+ssao_power = 2.7991006
+ssil_enabled = true
+ssil_radius = 8.0
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.2
+fog_enabled = true
+fog_light_color = Color(0.935058, 0.8290543, 0.57320917, 1)
+fog_light_energy = 0.25
+fog_density = 0.004
+fog_aerial_perspective = 0.906
+adjustment_enabled = true
+adjustment_contrast = 1.2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_sm042"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 100.0
+dof_blur_amount = 0.05
 
 [node name="World" type="Node3D" unique_id=1767091875]
 
 [node name="MainMenuSetup" parent="." unique_id=1570892917 instance=ExtResource("1_60k44")]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1300946360]
-transform = Transform3D(0.8032662, -0.09890398, 0.58735114, 0.086270094, 0.99503773, 0.049570583, -0.5893393, 0.010852468, 0.80781263, 2.6101356, 1.9376359, 23.590858)
+transform = Transform3D(0.80326635, -0.098904006, 0.587351, 0.07783533, 0.9950913, 0.06111505, -0.5905124, -0.0033750236, 0.8070215, 2.6101356, 1.9376359, 23.590858)
 current = true
-fov = 72.6
+fov = 75.5
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=531004777]
-transform = Transform3D(0.27109468, -0.70204836, -0.65851045, 0.85602885, -0.13698262, 0.49844816, -0.4401392, -0.6988305, 0.5638383, 1.2595806, 13.177852, 3.2931912)
-light_color = Color(0.74839354, 0.6368226, 0.4577222, 1)
+transform = Transform3D(-0.03639373, -0.70149773, -0.7117417, 0.77642804, -0.46823767, 0.4217972, -0.62915415, -0.5372654, 0.5617035, 2.7515612, 13.109941, 3.2931912)
+light_color = Color(0.9593466, 0.7509483, 0.6629296, 1)
 shadow_enabled = true
+shadow_blur = 0.5
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1771961430]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.595933, 11.825728, -28.075552)
@@ -67,7 +106,7 @@ mesh = SubResource("BoxMesh_4n0sl")
 surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
 
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="Background" unique_id=692545199]
-transform = Transform3D(9.9908695, -0.43962216, -0.36632586, 0.2751863, 19.74025, 1.5827006, 0.32677835, -3.1826735, 9.867165, -97.41052, -5.9855666, -3.4560614)
+transform = Transform3D(9.99087, -0.43962222, -0.36632589, 0.1756609, 19.86009, -1.1676327, 0.38942885, 2.3202624, 9.924842, -97.41052, -5.9855666, -3.4560614)
 mesh = SubResource("BoxMesh_4n0sl")
 surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
 
@@ -86,18 +125,13 @@ transform = Transform3D(9.546211, 4.743847, 1.8010646, -2.4953783, 19.342524, 0.
 mesh = SubResource("BoxMesh_4n0sl")
 surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
 
-[node name="MeshInstance3D13" type="MeshInstance3D" parent="Background" unique_id=518996907]
-transform = Transform3D(9.546211, 4.7438464, 1.8010646, -2.5673814, 19.237946, 0.94016725, -1.5094382, -2.7198102, 9.791443, -103.20059, 4.794502, 27.616621)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Background" unique_id=1461460176]
-transform = Transform3D(8.151254, -0.83608943, -5.777739, -0.90978014, 19.515535, -1.9895386, 5.7209563, 4.294741, 7.915773, -66.44148, -5.2753296, -33.623466)
+transform = Transform3D(8.151255, -0.83608985, -5.777738, 0.6393749, 19.95582, 0.18008637, 5.75745, -1.0324148, 8.159982, -67.05046, -7.370163, -33.191483)
 mesh = SubResource("BoxMesh_4n0sl")
 surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Background" unique_id=390531221]
-transform = Transform3D(6.3280735, -2.3403814, -7.6541586, 0.981436, 19.853266, -0.7062115, 7.6806417, -0.6086217, 6.396495, -48.709373, -5.993759, -50.09944)
+transform = Transform3D(6.3280735, -2.3403814, -7.6541586, 0.981436, 19.853266, -0.7062115, 7.6806417, -0.6086217, 6.396495, -48.709373, -6.2537193, -50.09944)
 mesh = SubResource("BoxMesh_4n0sl")
 surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
 
@@ -107,7 +141,7 @@ mesh = SubResource("BoxMesh_4n0sl")
 surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
 
 [node name="MeshInstance3D14" type="MeshInstance3D" parent="Background" unique_id=1008161247]
-transform = Transform3D(7.7508526, 2.0055885, 3.1192431, -0.76347077, 19.89911, -0.3253842, -6.272273, 0.056221362, 3.8941555, -34.060238, -17.411453, -59.274704)
+transform = Transform3D(7.7508526, 2.0055888, 3.1192431, -0.7620221, 19.899096, -0.32628366, -6.272449, 0.060817678, 3.8940802, -34.060238, -17.411657, -59.27468)
 mesh = SubResource("BoxMesh_4n0sl")
 surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
 
@@ -117,7 +151,7 @@ mesh = SubResource("BoxMesh_4n0sl")
 surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
 
 [node name="MeshInstance3D15" type="MeshInstance3D" parent="Background" unique_id=2006846855]
-transform = Transform3D(9.96696, -1.0201441, 0.31604576, 0.49028677, 19.965393, 0.16233721, -0.64755726, -0.5852221, 4.98736, -23.200146, -15.971874, -66.17154)
+transform = Transform3D(9.96696, -1.0201441, 0.31604576, 0.49028677, 19.965393, 0.16233721, -0.64755726, -0.5852221, 4.98736, -23.200146, -18.482147, -66.17154)
 mesh = SubResource("BoxMesh_4n0sl")
 surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
 
@@ -132,31 +166,40 @@ mesh = SubResource("BoxMesh_4n0sl")
 surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
 
 [node name="Continuation" type="MeshInstance3D" parent="Background" unique_id=1651090422]
-transform = Transform3D(16.556238, -1.9525443, 5.524458, 1.242537, 19.892765, 0.8267669, -11.151103, -0.68238044, 8.294385, -38.437046, -17.630238, -61.049934)
+transform = Transform3D(16.556238, -1.9525443, 5.5244584, 1.2451127, 19.892925, 0.8248511, -11.150816, -0.67778575, 8.294578, -38.437046, -17.630033, -61.049957)
+mesh = SubResource("BoxMesh_gl5hb")
+surface_material_override/0 = SubResource("StandardMaterial3D_6u2c2")
+
+[node name="Continuation7" type="MeshInstance3D" parent="Background" unique_id=256116617]
+transform = Transform3D(-5.2399454, 3.325664, 9.506351, 1.6871015, 19.7044, -1.4908406, -19.227505, 0.8226266, -2.7215157, -107.19725, -14.985273, 30.47445)
 mesh = SubResource("BoxMesh_gl5hb")
 surface_material_override/0 = SubResource("StandardMaterial3D_6u2c2")
 
 [node name="Continuation2" type="MeshInstance3D" parent="Background" unique_id=352707414]
-transform = Transform3D(19.605282, -0.37456927, 1.9680325, 0.094934165, 19.948908, 0.71277344, -3.9527073, -1.3787291, 9.778487, -27.574587, -15.480629, -68.90728)
+transform = Transform3D(19.10471, -1.5360899, 2.85703, 1.113286, 19.902504, 0.8140485, -5.8112493, -1.237147, 9.548542, -27.574589, -17.990902, -68.90728)
 mesh = SubResource("BoxMesh_gl5hb")
 surface_material_override/0 = SubResource("StandardMaterial3D_6u2c2")
 
 [node name="Continuation3" type="MeshInstance3D" parent="Background" unique_id=625242844]
-transform = Transform3D(19.986134, -0.7039848, -0.121350676, 0.71946955, 19.936644, 0.7093295, 0.19199657, -1.426406, 9.974072, -12.223688, -12.786877, -75.07096)
+transform = Transform3D(19.970848, -0.7742213, 0.37604702, 0.7194694, 19.936636, 0.7093292, -0.8046296, -1.3895358, 9.967717, -12.223688, -17.812649, -75.07096)
 mesh = SubResource("BoxMesh_gl5hb")
 surface_material_override/0 = SubResource("StandardMaterial3D_6u2c2")
 
 [node name="Continuation4" type="MeshInstance3D" parent="Background" unique_id=606522026]
-transform = Transform3D(19.919828, 0.46905482, -0.86319035, -0.33844858, 19.939856, 0.7562179, 1.75666, -1.4771584, 9.933933, 30.772495, -17.65675, -75.07096)
+transform = Transform3D(19.381588, -0.26316267, -2.4639883, 0.6175035, 19.943897, 0.68178886, 4.896211, -1.4735678, 9.667676, 44.762806, -14.479832, -118.332565)
 mesh = SubResource("BoxMesh_gl5hb")
 surface_material_override/0 = SubResource("StandardMaterial3D_6u2c2")
 
 [node name="Continuation6" type="MeshInstance3D" parent="Background" unique_id=833053921]
-transform = Transform3D(19.437653, -0.6760596, -2.330261, 1.0264527, 19.925163, 0.6953314, 4.596077, -1.5907516, 9.699812, 46.9005, -20.049786, -75.60396)
+transform = Transform3D(11.936943, -0.03087771, -8.02353, 0.85521406, 19.972754, 0.29886872, 16.024277, -1.0429413, 5.961003, 60.950367, -14.911999, -108.21765)
 mesh = SubResource("BoxMesh_gl5hb")
 surface_material_override/0 = SubResource("StandardMaterial3D_6u2c2")
 
 [node name="Continuation5" type="MeshInstance3D" parent="Background" unique_id=435556167]
-transform = Transform3D(19.663143, 3.139943, -0.9356371, -3.0768898, 19.745659, 0.4005114, 1.9732356, -0.4996469, 9.948075, 43.38815, -42.976063, -71.69766)
+transform = Transform3D(15.511852, 0.51207143, -6.3071437, 0.11939582, 19.976692, 0.47888377, 12.624112, -0.81814265, 7.74536, 55.61137, -50.374146, -106.30982)
 mesh = SubResource("BoxMesh_gl5hb")
 surface_material_override/0 = SubResource("StandardMaterial3D_6u2c2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=401258587]
+environment = SubResource("Environment_rbv2q")
+camera_attributes = SubResource("CameraAttributesPractical_sm042")
