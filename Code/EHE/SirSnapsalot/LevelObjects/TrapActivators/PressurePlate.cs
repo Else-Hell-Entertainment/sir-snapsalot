@@ -17,7 +17,7 @@ namespace EHE.SirSnapsalot.LevelObjects
         [Export]
         public Area3D ConnectionDetectors { get; private set; } = null;
 
-        private List<IActivateable> _activationTargets = new List<IActivateable>();
+        private List<IActivatable> _activationTargets = new List<IActivatable>();
 
         public override void _Ready()
         {
@@ -50,7 +50,7 @@ namespace EHE.SirSnapsalot.LevelObjects
         /// <summary>
         /// Detects when a <paramref name="body"> enters the
         /// <see cref="ConnectionDetectors"/> area and adds it to the list of
-        /// activation targets if it is <see cref="IActivateable"/>.
+        /// activation targets if it is <see cref="IActivatable"/>.
         /// </summary>
         /// <param name="body"></param>
         private void OnConnectionDetectorsBodyEntered(Node3D body)
@@ -58,7 +58,7 @@ namespace EHE.SirSnapsalot.LevelObjects
             // TODO: Only do this when trap has been actually placed.
             // Hovering the trap next to the pressure plate shouldn't make a
             // connection!
-            if (body is IActivateable activateable)
+            if (body is IActivatable activateable)
             {
                 AddActivationTarget(activateable);
             }
@@ -69,22 +69,22 @@ namespace EHE.SirSnapsalot.LevelObjects
         /// </summary>
         private void ActivateConnectedTraps()
         {
-            foreach (IActivateable activateable in _activationTargets)
+            foreach (IActivatable activateable in _activationTargets)
             {
                 activateable.Activate();
             }
         }
 
         /// <summary>
-        /// Adds the given <paramref name="activateable"/> to the
+        /// Adds the given <paramref name="activatable"/> to the
         /// <see cref="_activationTargets"/> list.
         /// </summary>
-        /// <param name="activateable"></param>
-        private void AddActivationTarget(IActivateable activateable)
+        /// <param name="activatable"></param>
+        private void AddActivationTarget(IActivatable activatable)
         {
             // TODO: Make sure the thing has already been placed before connecting it!
-            this.LogInfo($"Added {activateable.GetType()} to activation targets.");
-            _activationTargets.Add(activateable);
+            this.LogInfo($"Added {activatable.GetType()} to activation targets.");
+            _activationTargets.Add(activatable);
         }
     }
 }

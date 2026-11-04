@@ -1,6 +1,6 @@
 namespace EHE.SirSnapsalot
 {
-    public interface IActivateable
+    public interface IActivatable
     {
         bool Activate();
     }

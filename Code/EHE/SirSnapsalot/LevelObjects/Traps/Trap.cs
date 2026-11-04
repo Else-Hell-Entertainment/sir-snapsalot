@@ -2,12 +2,12 @@ using Godot;
 
 namespace EHE.SirSnapsalot.LevelObjects
 {
-    public abstract partial class Trap : Node3D, IActivateable
+    public abstract partial class Trap : Node3D, IActivatable
     {
-        #region IActivateable
+        #region IActivatable
 
         public abstract bool Activate();
 
-        #endregion IActivateable
+        #endregion IActivatable
     }
 }
