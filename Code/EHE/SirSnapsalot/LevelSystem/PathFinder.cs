@@ -6,6 +6,7 @@ using Godot;
 
 namespace EHE.SirSnapsalot.LevelSystem
 {
+    // TODO: Make the PathFinder inherit from Node3D.
     public class PathFinder
     {
         public LevelGrid Grid;

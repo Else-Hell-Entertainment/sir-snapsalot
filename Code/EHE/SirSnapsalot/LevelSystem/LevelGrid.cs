@@ -24,7 +24,7 @@ namespace EHE.SirSnapsalot.LevelSystem
         private GridCell _rootCell; // Cell at position (0,0) to hold ghost components before placement.
 
         private List<MeshInstance3D> _navigationPath = new List<MeshInstance3D>();
-        private PathFinder _pathFinder;
+        private PathFinder _pathFinder; // TODO: Move this field to the Level class.
 
         private Node3D _ghostInstance;
 
