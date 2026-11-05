@@ -38,7 +38,9 @@ namespace EHE.SirSnapsalot.LevelSystem
 
         public LevelGrid Grid { get; private set; }
 
-        private Vector3 _startPos = new Vector3(0, 0, 0);
+        public Vector3 EntrancePosition => new Vector3(0, 0, 0);
+
+        public Vector3 ExitPosition => new Vector3(11, 0, 7);
 
         public override void _Ready()
         {
@@ -60,7 +62,6 @@ namespace EHE.SirSnapsalot.LevelSystem
             //TODO: Refactor temp solutions below:
 
             _startGameButton.Pressed += StartGame;
-            _startPos = _character.GlobalPosition;
         }
 
         public override void _Input(InputEvent @event)
@@ -97,7 +98,7 @@ namespace EHE.SirSnapsalot.LevelSystem
         {
             ConnectActivatorsToTraps();
 
-            _character.GlobalPosition = _startPos;
+            _character.GlobalPosition = EntrancePosition;
             Grid.CalculateNavigation();
 
             //TODO: Refactor placeholder solution below:
