@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bxasd5tcf40l7"]
+
+[ext_resource type="Script" uid="uid://bm0ts0jql7ayd" path="res://Code/EHE/SirSnapsalot/LevelObjects/Exit.cs" id="1_gosw8"]
+[ext_resource type="PackedScene" uid="uid://oyg8xkgknqfq" path="res://Assets/Models/Level/LevelExitFrame.glb" id="1_r6mi0"]
+
+[node name="Exit" type="Node3D" unique_id=60241489]
+script = ExtResource("1_gosw8")
+
+[node name="LevelExitFrame2" parent="." unique_id=313813717 instance=ExtResource("1_r6mi0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
