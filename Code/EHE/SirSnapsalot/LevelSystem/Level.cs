@@ -36,22 +36,18 @@ namespace EHE.SirSnapsalot.LevelSystem
         [Export]
         private Character _character;
 
-        public LevelGrid Grid;
+        public LevelGrid Grid { get; private set; }
 
         private Vector3 _startPos = new Vector3(0, 0, 0);
 
         public override void _Ready()
         {
             Name = "Level";
-            var grid = FindChild("LevelGrid");
-            if (grid != null && grid is LevelGrid)
+            Grid = this.GetChild<LevelGrid>(recurse: true);
+
+            if (Grid == null)
             {
-                GD.Print("LevelGrid found in scene tree.");
-                Grid = (LevelGrid)grid;
-            }
-            else if (Grid == null)
-            {
-                GD.Print("LevelGrid is null, creating a new instance.");
+                this.LogInfo($"{nameof(Grid)} is null, creating a new instance.");
                 Grid = new LevelGrid();
                 Grid.Name = "LevelGrid";
                 AddChild(Grid);
