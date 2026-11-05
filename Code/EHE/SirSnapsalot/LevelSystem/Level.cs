@@ -39,6 +39,7 @@ namespace EHE.SirSnapsalot.LevelSystem
         public LevelGrid Grid { get; private set; }
 
         private Entrance _entrance = null;
+        private Exit _exit = null;
 
         /// <summary>
         /// The <see cref="LevelObjects.Entrance"/> object in this level.
@@ -57,6 +58,22 @@ namespace EHE.SirSnapsalot.LevelSystem
         }
 
         /// <summary>
+        /// The <see cref="LevelObjects.Exit"/> object in this level.
+        /// </summary>
+        public Exit Exit
+        {
+            get
+            {
+                if (!IsInstanceValid(_exit))
+                {
+                    _exit = this.GetChild<Exit>(recurse: true);
+                }
+
+                return _exit;
+            }
+        }
+
+        /// <summary>
         /// The GlobalPosition of the <see cref="Entrance"/> object.
         /// If no such object is present in the level, returns <see cref="Vector3.Inf"/>.
         /// </summary>
@@ -65,7 +82,14 @@ namespace EHE.SirSnapsalot.LevelSystem
                 ? Entrance.GlobalPosition
                 : Vector3.Inf;
 
-        public Vector3 ExitPosition => new Vector3(11, 0, 7);
+        /// <summary>
+        /// The GlobalPosition of the <see cref="Exit"/> object.
+        /// If no such object is present in the level, returns <see cref="Vector3.Inf"/>.
+        /// </summary>
+        public Vector3 ExitPosition =>
+            IsInstanceValid(Exit)
+                ? Exit.GlobalPosition
+                : Vector3.Inf;
 
         public override void _Ready()
         {
