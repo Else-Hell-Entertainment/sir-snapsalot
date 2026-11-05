@@ -38,7 +38,32 @@ namespace EHE.SirSnapsalot.LevelSystem
 
         public LevelGrid Grid { get; private set; }
 
-        public Vector3 EntrancePosition => new Vector3(0, 0, 0);
+        private Entrance _entrance = null;
+
+        /// <summary>
+        /// The <see cref="LevelObjects.Entrance"/> object in this level.
+        /// </summary>
+        public Entrance Entrance
+        {
+            get
+            {
+                if (!IsInstanceValid(_entrance))
+                {
+                    _entrance = this.GetChild<Entrance>(recurse: true);
+                }
+
+                return _entrance;
+            }
+        }
+
+        /// <summary>
+        /// The GlobalPosition of the <see cref="Entrance"/> object.
+        /// If no such object is present in the level, returns <see cref="Vector3.Inf"/>.
+        /// </summary>
+        public Vector3 EntrancePosition =>
+            IsInstanceValid(Entrance)
+                ? Entrance.GlobalPosition
+                : Vector3.Inf;
 
         public Vector3 ExitPosition => new Vector3(11, 0, 7);
 

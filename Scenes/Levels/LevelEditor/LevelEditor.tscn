@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://gnakrgkapgmb" path="res://Data/Resources/LevelComponents/ProtoFloor1.tres" id="6_rxyea"]
 [ext_resource type="Resource" uid="uid://c5uqw6ksrdept" path="res://Data/Resources/LevelComponents/ProtoWall1.tres" id="7_357rx"]
 [ext_resource type="Resource" uid="uid://p5ls6ob2wkxl" path="res://Data/Resources/LevelComponents/ProtoPillar1.tres" id="8_q1c84"]
+[ext_resource type="Resource" uid="uid://bgb53innjwke5" path="res://Data/Resources/LevelComponents/EntranceComponent.tres" id="9_fyasm"]
 
 [sub_resource type="Environment" id="Environment_blgkw"]
 
@@ -65,7 +66,14 @@ CellComponent = ExtResource("8_q1c84")
 [node name="Button" parent="DesignerUI/ComponentList/PillarSelector" index="1" unique_id=1241635957]
 text = "Pillar"
 
-[node name="PusherSelector" parent="DesignerUI/ComponentList" unique_id=1935399849 instance=ExtResource("4_ie4qy")]
+[node name="EntranceSelector" parent="DesignerUI/ComponentList" unique_id=1935399849 instance=ExtResource("4_ie4qy")]
+layout_mode = 2
+CellComponent = ExtResource("9_fyasm")
+
+[node name="Button" parent="DesignerUI/ComponentList/EntranceSelector" index="1" unique_id=1241635957]
+text = "Entrance"
+
+[node name="PusherSelector" parent="DesignerUI/ComponentList" unique_id=1631547094 instance=ExtResource("4_ie4qy")]
 layout_mode = 2
 CellComponent = ExtResource("3_ie4qy")
 
@@ -79,5 +87,6 @@ text = "Pressure Plate"
 [editable path="DesignerUI/ComponentList/FloorSelector"]
 [editable path="DesignerUI/ComponentList/WallSelector"]
 [editable path="DesignerUI/ComponentList/PillarSelector"]
+[editable path="DesignerUI/ComponentList/EntranceSelector"]
 [editable path="DesignerUI/ComponentList/PusherSelector"]
 [editable path="DesignerUI/ComponentList/PressurePlateSelector"]
