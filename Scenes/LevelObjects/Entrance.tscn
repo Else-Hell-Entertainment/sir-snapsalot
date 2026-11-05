@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://sosymkax1t4o"]
+
+[ext_resource type="Script" uid="uid://dopywdkiosxek" path="res://Code/EHE/SirSnapsalot/LevelObjects/Entrance.cs" id="1_gq650"]
+[ext_resource type="PackedScene" uid="uid://c5yxu330oyb11" path="res://Assets/Models/Level/LevelDoorPiece.glb" id="1_kbguf"]
+
+[node name="Entrance" type="Node3D" unique_id=949347315]
+script = ExtResource("1_gq650")
+
+[node name="LevelDoorPiece" parent="." unique_id=584848950 instance=ExtResource("1_kbguf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
