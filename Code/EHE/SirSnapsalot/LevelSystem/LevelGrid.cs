@@ -390,6 +390,10 @@ namespace EHE.SirSnapsalot.LevelSystem
             }
         }
 
+        // TODO: Refactor IsPlacementValid logic to make expansion easier.
+        // For example, add exported RequiresFloor property to CellComponent and pass the cell component here as param.
+        // -> If (requires floor && no floor): return false
+        // -> Else: create cell & return true
         private bool IsPlacementValid(Vector2I gridCoordinates)
         {
             if (gridCoordinates.X < 0 || gridCoordinates.Y < 0)

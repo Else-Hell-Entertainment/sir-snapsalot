@@ -49,7 +49,14 @@ namespace EHE.SirSnapsalot.LevelSystem
         [Export]
         public bool BlocksMovement = false;
 
+        // TODO: Could this be exported?
+        // -> Makes modifying existing components easier in the editor.
+        // -> However, might make rotating walls etc. harder to implement if common rotation method is added.
         public virtual CellComponentType ComponentType => CellComponentType.None;
+
+        // TODO: Maybe add exported RequiresFloor property?
+        // -> Makes it easier to check whether the placement is valid.
+        // See LevelGrid.PlaceGhostComponent
 
         public Node GetSceneInstance()
         {
