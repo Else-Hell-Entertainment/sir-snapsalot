@@ -102,14 +102,14 @@ namespace EHE.SirSnapsalot.LevelSystem
             Grid.CalculateNavigation();
 
             //TODO: Refactor placeholder solution below:
-            _character.ReceivePath(Grid.GetNavPath());
+            _character.ReceivePath(Grid.GetNavPath(_character.GlobalPosition, ExitPosition));
             _character.Activate();
             ShowPath();
         }
 
         private void ShowPath()
         {
-            Grid.DrawNavigationPath();
+            Grid.DrawNavigationPath(_character.GlobalPosition, ExitPosition);
         }
 
         private void ConnectActivatorsToTraps()
