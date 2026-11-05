@@ -24,7 +24,7 @@ namespace EHE.SirSnapsalot.LevelSystem
         private GridCell _rootCell; // Cell at position (0,0) to hold ghost components before placement.
 
         private List<MeshInstance3D> _navigationPath = new List<MeshInstance3D>();
-        private PathFinder _pathFinder;
+        private PathFinder _pathFinder; // TODO: Move this field to the Level class.
 
         private Node3D _ghostInstance;
 
@@ -115,9 +115,37 @@ namespace EHE.SirSnapsalot.LevelSystem
             }
         }
 
-        public Vector3[] GetNavPath()
+        /// <summary>
+        /// Finds a navigation path between two positions in world space.
+        /// </summary>
+        /// <param name="startPositionWorld">The path's starting position in world coordinates.</param>
+        /// <param name="endPositionWorld">The path's destination in world coordinates.</param>
+        /// <returns>
+        /// The path as an array of world-space cell positions, or <c>null</c>
+        /// if no valid path is found or a path cell is missing from the grid.
+        /// </returns>
+        /// <seealso cref="GetNavPath(Vector2, Vector2)"/>
+        public Vector3[] GetNavPath(Vector3 startPositionWorld, Vector3 endPositionWorld)
         {
-            var path = _pathFinder.GetPath(new Vector2(0, 0), new Vector2(5, 5));
+            return GetNavPath(
+                startPositionGrid: GetGridCoordinatesFromPosition(startPositionWorld),
+                endPositionGrid: GetGridCoordinatesFromPosition(endPositionWorld)
+            );
+        }
+
+        /// <summary>
+        /// Finds a navigation path between two grid positions.
+        /// </summary>
+        /// <param name="startPositionGrid">The path's starting position in grid coordinates.</param>
+        /// <param name="endPositionGrid">The path's destination in grid coordinates.</param>
+        /// <returns>
+        /// The path as an array of world-space cell positions, or <c>null</c>
+        /// if no valid path is found or a path cell is missing from the grid.
+        /// </returns>
+        /// /// <seealso cref="GetNavPath(Vector3, Vector3)"/>
+        public Vector3[] GetNavPath(Vector2 startPositionGrid, Vector2 endPositionGrid)
+        {
+            var path = _pathFinder.GetPath(startPositionGrid, endPositionGrid);
             if (path == null || path.Length < 2)
             {
                 GD.Print("No valid path found.");
@@ -289,7 +317,31 @@ namespace EHE.SirSnapsalot.LevelSystem
             _pathFinder.GenerateNavMap();
         }
 
-        public void DrawNavigationPath()
+        // TODO: Maybe move this method to PathFinder?
+        /// <summary>
+        /// Draws the navigation path between two world-space positions on the
+        /// grid, replacing any previously drawn path.
+        /// </summary>
+        /// <param name="startPosition">The path's starting position in world coordinates.</param>
+        /// <param name="endPosition">The path's destination in world coordinates.</param>
+        /// <seealso cref="DrawNavigationPath(Vector2, Vector2)"/>
+        public void DrawNavigationPath(Vector3 startPosition, Vector3 endPosition)
+        {
+            DrawNavigationPath(
+                startPosition: GetGridCoordinatesFromPosition(startPosition),
+                endPosition: GetGridCoordinatesFromPosition(endPosition)
+            );
+        }
+
+        // TODO: Maybe move this method to PathFinder?
+        /// <summary>
+        /// Draws the navigation path between two grid positions, replacing any
+        /// previously drawn path.
+        /// </summary>
+        /// <param name="startPosition">The path's starting position in grid coordinates.</param>
+        /// <param name="endPosition">The path's destination in grid coordinates.</param>
+        /// <seealso cref="DrawNavigationPath(Vector3, Vector3)"/>
+        public void DrawNavigationPath(Vector2 startPosition, Vector2 endPosition)
         {
             foreach (var mesh in _navigationPath)
             {
@@ -297,7 +349,7 @@ namespace EHE.SirSnapsalot.LevelSystem
             }
 
             _navigationPath.Clear();
-            var path = _pathFinder.GetPath(new Vector2(0, 0), new Vector2(5, 5));
+            var path = _pathFinder.GetPath(startPosition, endPosition);
             if (path == null || path.Length < 2)
             {
                 GD.Print("No valid path found.");
@@ -390,6 +442,10 @@ namespace EHE.SirSnapsalot.LevelSystem
             }
         }
 
+        // TODO: Refactor IsPlacementValid logic to make expansion easier.
+        // For example, add exported RequiresFloor property to CellComponent and pass the cell component here as param.
+        // -> If (requires floor && no floor): return false
+        // -> Else: create cell & return true
         private bool IsPlacementValid(Vector2I gridCoordinates)
         {
             if (gridCoordinates.X < 0 || gridCoordinates.Y < 0)
@@ -458,6 +514,14 @@ namespace EHE.SirSnapsalot.LevelSystem
             }
 
             if (_ghostComponent.ComponentType == CellComponent.CellComponentType.Trap)
+            {
+                if (cell != null)
+                {
+                    return true;
+                }
+            }
+
+            if (_ghostComponent.ComponentType == CellComponent.CellComponentType.Navigation)
             {
                 if (cell != null)
                 {

@@ -38,7 +38,58 @@ namespace EHE.SirSnapsalot.LevelSystem
 
         public LevelGrid Grid { get; private set; }
 
-        private Vector3 _startPos = new Vector3(0, 0, 0);
+        private Entrance _entrance = null;
+        private Exit _exit = null;
+
+        /// <summary>
+        /// The <see cref="LevelObjects.Entrance"/> object in this level.
+        /// </summary>
+        public Entrance Entrance
+        {
+            get
+            {
+                if (!IsInstanceValid(_entrance))
+                {
+                    _entrance = this.GetChild<Entrance>(recurse: true);
+                }
+
+                return _entrance;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="LevelObjects.Exit"/> object in this level.
+        /// </summary>
+        public Exit Exit
+        {
+            get
+            {
+                if (!IsInstanceValid(_exit))
+                {
+                    _exit = this.GetChild<Exit>(recurse: true);
+                }
+
+                return _exit;
+            }
+        }
+
+        /// <summary>
+        /// The GlobalPosition of the <see cref="Entrance"/> object.
+        /// If no such object is present in the level, returns <see cref="Vector3.Inf"/>.
+        /// </summary>
+        public Vector3 EntrancePosition =>
+            IsInstanceValid(Entrance)
+                ? Entrance.GlobalPosition
+                : Vector3.Inf;
+
+        /// <summary>
+        /// The GlobalPosition of the <see cref="Exit"/> object.
+        /// If no such object is present in the level, returns <see cref="Vector3.Inf"/>.
+        /// </summary>
+        public Vector3 ExitPosition =>
+            IsInstanceValid(Exit)
+                ? Exit.GlobalPosition
+                : Vector3.Inf;
 
         public override void _Ready()
         {
@@ -60,7 +111,6 @@ namespace EHE.SirSnapsalot.LevelSystem
             //TODO: Refactor temp solutions below:
 
             _startGameButton.Pressed += StartGame;
-            _startPos = _character.GlobalPosition;
         }
 
         public override void _Input(InputEvent @event)
@@ -97,18 +147,18 @@ namespace EHE.SirSnapsalot.LevelSystem
         {
             ConnectActivatorsToTraps();
 
-            _character.GlobalPosition = _startPos;
+            _character.GlobalPosition = EntrancePosition;
             Grid.CalculateNavigation();
 
             //TODO: Refactor placeholder solution below:
-            _character.ReceivePath(Grid.GetNavPath());
+            _character.ReceivePath(Grid.GetNavPath(_character.GlobalPosition, ExitPosition));
             _character.Activate();
             ShowPath();
         }
 
         private void ShowPath()
         {
-            Grid.DrawNavigationPath();
+            Grid.DrawNavigationPath(_character.GlobalPosition, ExitPosition);
         }
 
         private void ConnectActivatorsToTraps()

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="NavigationComponent" format=3 uid="uid://bgb53innjwke5"]
+
+[ext_resource type="PackedScene" uid="uid://sosymkax1t4o" path="res://Scenes/LevelObjects/Entrance.tscn" id="1_iufc1"]
+[ext_resource type="Script" uid="uid://yl03sr0s5ot" path="res://Code/EHE/SirSnapsalot/LevelSystem/ResourceDefinitions/NavigationComponent.cs" id="1_koli0"]
+
+[resource]
+script = ExtResource("1_koli0")
+Name = "EntranceComponent"
+_scene = ExtResource("1_iufc1")
+metadata/_custom_type_script = "uid://yl03sr0s5ot"
