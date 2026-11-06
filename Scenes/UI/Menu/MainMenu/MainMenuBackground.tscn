@@ -2,33 +2,23 @@
 
 [ext_resource type="PackedScene" uid="uid://do8bl5mdlpen7" path="res://Scenes/UI/Menu/MainMenu/main_menu_setup.tscn" id="1_60k44"]
 [ext_resource type="PackedScene" uid="uid://b65taioywk8e1" path="res://Scenes/UI/Menu/MainMenu/snapsalot_rev_1.tscn" id="2_5pknu"]
+[ext_resource type="PackedScene" uid="uid://clvvayev5qwxh" path="res://Scenes/UI/Menu/MainMenu/back_drop_cliff.tscn" id="4_rtn53"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_4n0sl"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sm042"]
-albedo_color = Color(0.5144992, 0.42765474, 0.30911446, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_gl5hb"]
-size = Vector3(1, 2.4853516, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6u2c2"]
-albedo_color = Color(0.4, 0.35, 0.3, 1)
-
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_rtn53"]
-rayleigh_coefficient = 3.07
-rayleigh_color = Color(0.92183936, 0.48393548, 0.25634393, 1)
-mie_eccentricity = 1.0
-mie_color = Color(0.3420876, 0.54716986, 0.6487038, 1)
-turbidity = 22.1
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6dj0g"]
+sky_top_color = Color(0.368385, 0.43760103, 0.5298789, 1)
+sky_horizon_color = Color(0.85965985, 0.6886991, 0.31299394, 1)
+sky_curve = 0.04736633
+sun_angle_max = 85.5
+sun_curve = 0.7386869
 
 [sub_resource type="Sky" id="Sky_sm042"]
-sky_material = SubResource("PhysicalSkyMaterial_rtn53")
+sky_material = SubResource("ProceduralSkyMaterial_6dj0g")
 
 [sub_resource type="Environment" id="Environment_rbv2q"]
 background_mode = 2
 sky = SubResource("Sky_sm042")
 ambient_light_source = 2
-ambient_light_color = Color(0.59717613, 0.59717613, 0.5971761, 1)
+ambient_light_color = Color(0.73378235, 0.6821922, 0.5803332, 1)
 ambient_light_energy = 0.5
 ssao_enabled = true
 ssao_radius = 3.0
@@ -40,8 +30,9 @@ glow_enabled = true
 glow_normalized = true
 glow_bloom = 0.2
 fog_enabled = true
-fog_light_color = Color(0.935058, 0.8290543, 0.57320917, 1)
-fog_light_energy = 0.25
+fog_light_color = Color(0.686691, 0.5109468, 0.32169968, 1)
+fog_light_energy = 0.3
+fog_sun_scatter = 1.1
 fog_density = 0.004
 fog_aerial_perspective = 0.906
 adjustment_enabled = true
@@ -57,13 +48,13 @@ dof_blur_amount = 0.05
 [node name="MainMenuSetup" parent="." unique_id=1570892917 instance=ExtResource("1_60k44")]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1300946360]
-transform = Transform3D(0.80326635, -0.098904006, 0.587351, 0.07783533, 0.9950913, 0.06111505, -0.5905124, -0.0033750236, 0.8070215, 2.6101356, 1.9376359, 23.590858)
+transform = Transform3D(0.79699916, -0.09893408, 0.5958224, 0.07783535, 0.9950912, 0.061115067, -0.59894395, -0.0023326112, 0.8007874, 2.6101356, 1.9376359, 23.590858)
 current = true
 fov = 75.5
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=531004777]
-transform = Transform3D(-0.03639373, -0.70149773, -0.7117417, 0.77642804, -0.46823767, 0.4217972, -0.62915415, -0.5372654, 0.5617035, 2.7515612, 13.109941, 3.2931912)
-light_color = Color(0.9593466, 0.7509483, 0.6629296, 1)
+transform = Transform3D(0.18324149, -0.6770822, -0.7127287, 0.8676235, -0.22950141, 0.4410878, -0.46222493, -0.6992059, 0.54539824, 2.7515612, 13.109941, 3.2931912)
+light_color = Color(0.85490197, 0.65882355, 0.40392157, 1)
 shadow_enabled = true
 shadow_blur = 0.5
 
@@ -77,129 +68,9 @@ omni_range = 6.6865172
 [node name="SnapsalotRev1" parent="." unique_id=800406870 instance=ExtResource("2_5pknu")]
 transform = Transform3D(-0.99667394, 0.067219, -0.04607293, 0.06699839, 0.9977331, 0.0063173436, 0.04639294, 0.0032095066, -0.9989182, -0.20923884, 1.1404806, 21.869717)
 
-[node name="Background" type="Node3D" parent="." unique_id=335210764]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5396385, 0, -8.879517)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Background" unique_id=2003320217]
-transform = Transform3D(8.117, 0, -5.8407454, 0, 20, 0, 5.8407454, 0, 8.117, -58.629196, -5.993759, -36.807632)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Background" unique_id=1852769108]
-transform = Transform3D(8.117, 0, -5.8407454, 0, 20, 0, 5.8407454, 0, 8.117, -74.93641, -5.364816, -27.041733)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Background" unique_id=2119814452]
-transform = Transform3D(8.200032, -2.6053312, -5.5733776, -0.07705275, 19.4231, -2.3832479, 5.72307, 3.994431, 7.953464, -80.14398, -3.9284492, -23.750185)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="Background" unique_id=421476502]
-transform = Transform3D(8.345101, -0.13576789, -5.5095115, 0.17185149, 19.995167, 0.13711488, 5.5072465, -0.41821158, 8.344253, -88.125084, -4.4477515, -17.711426)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="Background" unique_id=1276959529]
-transform = Transform3D(9.797438, -0.28202844, -1.9975784, 0.41149843, 19.808146, 1.3191038, 1.9598128, -2.7491684, 9.709259, -93.66706, -2.7442565, -11.364246)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="Background" unique_id=692545199]
-transform = Transform3D(9.99087, -0.43962222, -0.36632589, 0.1756609, 19.86009, -1.1676327, 0.38942885, 2.3202624, 9.924842, -97.41052, -5.9855666, -3.4560614)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="Background" unique_id=969000287]
-transform = Transform3D(9.770746, 2.6986763, 1.6467462, -1.3872598, 19.805235, 0.11695337, -1.6149282, -0.68543804, 9.862791, -100.4556, -3.5914493, 4.0507994)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="Background" unique_id=350572907]
-transform = Transform3D(9.708006, 3.2628238, 1.7587277, -1.763997, 19.64666, 0.6248846, -1.6257114, -1.8337549, 9.824281, -100.4556, -0.8087115, 13.892982)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="Background" unique_id=2089043457]
-transform = Transform3D(9.546211, 4.743847, 1.8010646, -2.4953783, 19.342524, 0.4896642, -1.6257117, -1.8337551, 9.824282, -103.2006, 1.4840312, 20.176245)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Background" unique_id=1461460176]
-transform = Transform3D(8.151255, -0.83608985, -5.777738, 0.6393749, 19.95582, 0.18008637, 5.75745, -1.0324148, 8.159982, -67.05046, -7.370163, -33.191483)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Background" unique_id=390531221]
-transform = Transform3D(6.3280735, -2.3403814, -7.6541586, 0.981436, 19.853266, -0.7062115, 7.6806417, -0.6086217, 6.396495, -48.709373, -6.2537193, -50.09944)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Background" unique_id=772925269]
-transform = Transform3D(6.918071, 2.4359462e-08, -3.610412, -0.23619926, 19.9893, -0.113148004, 7.216959, 0.65421665, 3.4571843, -50.650284, -4.608554, -40.362183)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
-[node name="MeshInstance3D14" type="MeshInstance3D" parent="Background" unique_id=1008161247]
-transform = Transform3D(7.7508526, 2.0055888, 3.1192431, -0.7620221, 19.899096, -0.32628366, -6.272449, 0.060817678, 3.8940802, -34.060238, -17.411657, -59.27468)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
-[node name="MeshInstance3D18" type="MeshInstance3D" parent="Background" unique_id=301069930]
-transform = Transform3D(6.284389, -2.3207614, 3.845777, -0.19958727, 19.721594, 0.82535666, -7.7760296, -2.3817723, 3.086873, -43.26885, -15.7980795, -42.40139)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
-[node name="MeshInstance3D15" type="MeshInstance3D" parent="Background" unique_id=2006846855]
-transform = Transform3D(9.96696, -1.0201441, 0.31604576, 0.49028677, 19.965393, 0.16233721, -0.64755726, -0.5852221, 4.98736, -23.200146, -18.482147, -66.17154)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
-[node name="MeshInstance3D16" type="MeshInstance3D" parent="Background" unique_id=1313581478]
-transform = Transform3D(9.974006, 0.5951501, 0.32812077, -0.3871861, 19.788406, 0.69907844, -0.60769176, -2.8398628, 4.940003, -14.132629, -18.003897, -67.35373)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
-[node name="MeshInstance3D17" type="MeshInstance3D" parent="Background" unique_id=123228821]
-transform = Transform3D(9.974678, -0.90551245, 0.27422348, 0.3210764, 19.495937, 1.1038629, -0.6345793, -4.369053, 4.868911, -4.1763363, -21.313559, -67.35373)
-mesh = SubResource("BoxMesh_4n0sl")
-surface_material_override/0 = SubResource("StandardMaterial3D_sm042")
-
-[node name="Continuation" type="MeshInstance3D" parent="Background" unique_id=1651090422]
-transform = Transform3D(16.556238, -1.9525443, 5.5244584, 1.2451127, 19.892925, 0.8248511, -11.150816, -0.67778575, 8.294578, -38.437046, -17.630033, -61.049957)
-mesh = SubResource("BoxMesh_gl5hb")
-surface_material_override/0 = SubResource("StandardMaterial3D_6u2c2")
-
-[node name="Continuation7" type="MeshInstance3D" parent="Background" unique_id=256116617]
-transform = Transform3D(-5.2399454, 3.325664, 9.506351, 1.6871015, 19.7044, -1.4908406, -19.227505, 0.8226266, -2.7215157, -107.19725, -14.985273, 30.47445)
-mesh = SubResource("BoxMesh_gl5hb")
-surface_material_override/0 = SubResource("StandardMaterial3D_6u2c2")
-
-[node name="Continuation2" type="MeshInstance3D" parent="Background" unique_id=352707414]
-transform = Transform3D(19.10471, -1.5360899, 2.85703, 1.113286, 19.902504, 0.8140485, -5.8112493, -1.237147, 9.548542, -27.574589, -17.990902, -68.90728)
-mesh = SubResource("BoxMesh_gl5hb")
-surface_material_override/0 = SubResource("StandardMaterial3D_6u2c2")
-
-[node name="Continuation3" type="MeshInstance3D" parent="Background" unique_id=625242844]
-transform = Transform3D(19.970848, -0.7742213, 0.37604702, 0.7194694, 19.936636, 0.7093292, -0.8046296, -1.3895358, 9.967717, -12.223688, -17.812649, -75.07096)
-mesh = SubResource("BoxMesh_gl5hb")
-surface_material_override/0 = SubResource("StandardMaterial3D_6u2c2")
-
-[node name="Continuation4" type="MeshInstance3D" parent="Background" unique_id=606522026]
-transform = Transform3D(19.381588, -0.26316267, -2.4639883, 0.6175035, 19.943897, 0.68178886, 4.896211, -1.4735678, 9.667676, 44.762806, -14.479832, -118.332565)
-mesh = SubResource("BoxMesh_gl5hb")
-surface_material_override/0 = SubResource("StandardMaterial3D_6u2c2")
-
-[node name="Continuation6" type="MeshInstance3D" parent="Background" unique_id=833053921]
-transform = Transform3D(11.936943, -0.03087771, -8.02353, 0.85521406, 19.972754, 0.29886872, 16.024277, -1.0429413, 5.961003, 60.950367, -14.911999, -108.21765)
-mesh = SubResource("BoxMesh_gl5hb")
-surface_material_override/0 = SubResource("StandardMaterial3D_6u2c2")
-
-[node name="Continuation5" type="MeshInstance3D" parent="Background" unique_id=435556167]
-transform = Transform3D(15.511852, 0.51207143, -6.3071437, 0.11939582, 19.976692, 0.47888377, 12.624112, -0.81814265, 7.74536, 55.61137, -50.374146, -106.30982)
-mesh = SubResource("BoxMesh_gl5hb")
-surface_material_override/0 = SubResource("StandardMaterial3D_6u2c2")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=401258587]
 environment = SubResource("Environment_rbv2q")
 camera_attributes = SubResource("CameraAttributesPractical_sm042")
+
+[node name="BackDrop_Cliff" parent="." unique_id=782455733 instance=ExtResource("4_rtn53")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.29471207, -8.381683)

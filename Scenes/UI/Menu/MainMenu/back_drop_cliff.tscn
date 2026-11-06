@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://clvvayev5qwxh"]
+
+[ext_resource type="PackedScene" uid="uid://bcyi3mv4thckc" path="res://Assets/Models/MainMenuBG/BackDrop_Cliff.glb" id="1_kg1na"]
+
+[node name="BackDrop_Cliff" unique_id=782455733 instance=ExtResource("1_kg1na")]
