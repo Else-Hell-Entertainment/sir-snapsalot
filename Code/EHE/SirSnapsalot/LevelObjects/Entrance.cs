@@ -6,5 +6,5 @@ using Godot;
 
 namespace EHE.SirSnapsalot.LevelObjects
 {
-    public partial class Entrance : Node3D { }
+    public partial class Entrance : LevelObject { }
 }

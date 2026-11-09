@@ -6,7 +6,7 @@ using Godot;
 
 namespace EHE.SirSnapsalot.LevelObjects
 {
-    public partial class Exit : Node3D
+    public partial class Exit : LevelObject
     {
 
     }
