@@ -70,7 +70,11 @@ namespace EHE.SirSnapsalot.LevelSystem
 #if DEBUG
             DebugDraw(delta);
 #endif
-            if (Input.IsActionJustPressed("Confirm"))
+        }
+
+        public override void _UnhandledInput(InputEvent @event)
+        {
+            if (@event.IsActionPressed("Confirm"))
             {
                 PlaceGhostComponent();
             }
