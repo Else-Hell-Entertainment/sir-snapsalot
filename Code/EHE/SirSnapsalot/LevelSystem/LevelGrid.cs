@@ -94,10 +94,18 @@ namespace EHE.SirSnapsalot.LevelSystem
 
         public void RotateGhostComponent(bool clockwise)
         {
-            if (_ghostInstance != null)
+            // if (_ghostInstance != null)
+            // {
+            //     SetNextRotation(clockwise);
+            //     _rootCell.SetComponentRotation(_ghostInstance, _ghostPosition);
+            // }
+            if (_ghostInstance != null && _ghostInstance is IRotatable rotatable)
             {
-                SetNextRotation(clockwise);
-                _rootCell.SetComponentRotation(_ghostInstance, _ghostPosition);
+                var direction = clockwise
+                    ? IRotatable.RotationDirection.Clockwise
+                    : IRotatable.RotationDirection.CounterClockwise;
+
+                rotatable.Rotate(direction);
             }
         }
 
