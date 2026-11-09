@@ -16,22 +16,7 @@ namespace EHE.SirSnapsalot.LevelSystem
     {
         //TODO: Refactor temp solutions below:
         [Export]
-        private FloorComponent _floorComponent;
-
-        [Export]
-        private WallComponent _wallComponent;
-
-        [Export]
-        private PropComponent _propComponent;
-
-        [Export]
         private Button _startGameButton;
-
-        [Export]
-        private TrapComponent _pressurePlateComponent;
-
-        [Export]
-        private TrapComponent _pusherComponent;
 
         [Export]
         private Character _character;
