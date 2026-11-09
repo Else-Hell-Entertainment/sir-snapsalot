@@ -2,7 +2,7 @@ using Godot;
 
 namespace EHE.SirSnapsalot.LevelObjects
 {
-    public abstract partial class Trap : Node3D, IActivatable
+    public abstract partial class Trap : LevelObject, IActivatable
     {
         #region IActivatable
 
