@@ -199,11 +199,12 @@ namespace EHE.SirSnapsalot.LevelSystem
             AddChild(cell);
             cell.Name = $"Cell_{gridCoordinates.X}_{gridCoordinates.Y}";
             cell.GridCoordinates = gridCoordinates;
-            var sceneOwner = GetTree().CurrentScene;
-            if (sceneOwner != null)
-            {
-                cell.Owner = sceneOwner;
-            }
+            // var sceneOwner = GetTree().CurrentScene;
+            // if (sceneOwner != null)
+            // {
+            //     cell.Owner = sceneOwner;
+            // }
+            cell.Owner = Owner;
 
             Cells[gridCoordinates] = cell;
         }

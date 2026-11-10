@@ -72,11 +72,13 @@ namespace EHE.SirSnapsalot.LevelSystem
             var componentInstance = (Node3D)component.GetSceneInstance();
             AddChild(componentInstance);
 
-            var sceneOwner = GetTree().CurrentScene;
-            if (sceneOwner != null)
-            {
-                componentInstance.Owner = sceneOwner;
-            }
+            // var sceneOwner = GetTree().CurrentScene;
+            // if (sceneOwner != null)
+            // {
+            //     componentInstance.Owner = sceneOwner;
+            // }
+
+            componentInstance.Owner = Owner;
 
             SetComponentPosition(componentInstance, position);
             SetComponentRotation(componentInstance, position);
