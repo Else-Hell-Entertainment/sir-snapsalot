@@ -87,12 +87,15 @@ namespace EHE.SirSnapsalot.LevelSystem
                 Grid = new LevelGrid();
                 Grid.Name = "LevelGrid";
                 AddChild(Grid);
-                var sceneOwner = GetTree().CurrentScene;
-                if (sceneOwner != null)
-                {
-                    Grid.Owner = sceneOwner;
-                }
+                // var sceneOwner = GetTree().CurrentScene;
+                // if (sceneOwner != null)
+                // {
+                //     Grid.Owner = sceneOwner;
+                // }
             }
+
+            Grid.Owner = this;
+
             //TODO: Refactor temp solutions below:
 
             _startGameButton.Pressed += StartGame;
