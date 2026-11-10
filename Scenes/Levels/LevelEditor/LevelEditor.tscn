@@ -13,8 +13,10 @@
 
 [sub_resource type="Environment" id="Environment_blgkw"]
 
-[node name="LevelEditor" type="Node3D" unique_id=449126731]
+[node name="LevelEditor" type="Node3D" unique_id=449126731 node_paths=PackedStringArray("_saveAsButton", "_levelNameEntry")]
 script = ExtResource("1_o0cfc")
+_saveAsButton = NodePath("DesignerUI/SaveUI/SaveAsButton")
+_levelNameEntry = NodePath("DesignerUI/SaveUI/LevelNameEntry")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=206511898]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 5.073656, 8.291958, 0)
@@ -90,6 +92,26 @@ CellComponent = ExtResource("2_t6r0v")
 
 [node name="Button" parent="DesignerUI/ComponentList/PressurePlateSelector" index="1" unique_id=1241635957]
 text = "Pressure Plate"
+
+[node name="SaveUI" type="HBoxContainer" parent="DesignerUI" unique_id=800166111]
+layout_mode = 0
+offset_left = 1588.0
+offset_top = 18.0
+offset_right = 1900.0
+offset_bottom = 49.0
+
+[node name="SaveAsButton" type="Button" parent="DesignerUI/SaveUI" unique_id=1981617288]
+layout_mode = 2
+text = "Save As"
+
+[node name="LevelNameEntry" type="LineEdit" parent="DesignerUI/SaveUI" unique_id=1575038669]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+placeholder_text = "LevelName"
+
+[node name="FileExtensionLabel" type="Label" parent="DesignerUI/SaveUI" unique_id=737522525]
+layout_mode = 2
+text = ".tscn"
 
 [editable path="DesignerUI/ComponentList/FloorSelector"]
 [editable path="DesignerUI/ComponentList/WallSelector"]
