@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cstcxhtklbgf"]
+
+[sub_resource type="Environment" id="Environment_w0a6n"]
+
+[node name="World" type="Node3D" unique_id=514550618]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1734223779]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 5.073656, 8.291958, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=813595031]
+environment = SubResource("Environment_w0a6n")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=705992632]
+transform = Transform3D(1, 0, 0, 0, 0.37775356, 0.9259062, 0, -0.9259062, 0.37775356, 11.442457, 10.429326, 11.999655)
+fov = 90.0

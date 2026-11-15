@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://q757pwjquvse"]
 
-[ext_resource type="Script" uid="uid://cydt2iw51yqgx" path="res://Code/Scenes/UI/Menu/SceneScripts/PauseMenu.cs" id="1_0vmhm"]
+[ext_resource type="Script" uid="uid://cydt2iw51yqgx" path="res://Code/EHE/SirSnapsalot/UI/Menu/SceneScripts/PauseMenu.cs" id="1_0vmhm"]
 
-[node name="PauseMenu" type="Control" unique_id=2137152062 node_paths=PackedStringArray("_resumeButton", "_saveButton", "_loadButton", "_settingsButton", "_quitToMainButton", "_quitToDesktopButton")]
+[node name="PauseMenu" type="Control" unique_id=2137152062 node_paths=PackedStringArray("_resumeButton", "_levelSelectionButton", "_saveButton", "_loadButton", "_settingsButton", "_quitToMainButton", "_quitToDesktopButton")]
 layout_mode = 3
 anchors_preset = 0
 focus_mode = 2
 script = ExtResource("1_0vmhm")
 _resumeButton = NodePath("VBoxContainer/ResumeButton")
+_levelSelectionButton = NodePath("VBoxContainer/LevelSelectionButton")
 _saveButton = NodePath("VBoxContainer/SaveButton")
 _loadButton = NodePath("VBoxContainer/LoadButton")
 _settingsButton = NodePath("VBoxContainer/SettingsButton")
@@ -28,6 +29,10 @@ text = "GAME PAUSED"
 [node name="ResumeButton" type="Button" parent="VBoxContainer" unique_id=1462719941]
 layout_mode = 2
 text = "Resume"
+
+[node name="LevelSelectionButton" type="Button" parent="VBoxContainer" unique_id=1813631004]
+layout_mode = 2
+text = "Level Selection"
 
 [node name="SaveButton" type="Button" parent="VBoxContainer" unique_id=825796984]
 layout_mode = 2
