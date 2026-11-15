@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dmt0l5mtxp22e"]
+
+[ext_resource type="Script" uid="uid://bpq76np4rdvo7" path="res://Code/EHE/SirSnapsalot/SceneScripts/LevelSelection.cs" id="1_0o5wr"]
+[ext_resource type="Script" uid="uid://db1j1m168qffn" path="res://Code/EHE/SirSnapsalot/SceneManagement/SceneTransitionCaller.cs" id="2_1kkng"]
+[ext_resource type="Resource" uid="uid://b2gavtkx88a2i" path="res://Data/Resources/SceneCollections/LevelSceneCollection.tres" id="3_o3fsi"]
+
+[node name="LevelSelection" type="Node3D" unique_id=536150455 node_paths=PackedStringArray("_level1Button", "_level2Button")]
+script = ExtResource("1_0o5wr")
+_level1Button = NodePath("Level1")
+_level2Button = NodePath("Level2")
+
+[node name="Label" type="Label" parent="." unique_id=984406211]
+offset_left = 123.0
+offset_top = 49.0
+offset_right = 210.0
+offset_bottom = 72.0
+text = "Select level"
+
+[node name="Level1" type="Button" parent="." unique_id=1448314715]
+offset_left = 43.0
+offset_top = 94.0
+offset_right = 105.0
+offset_bottom = 125.0
+text = "Level 1"
+
+[node name="Level2" type="Button" parent="." unique_id=202888112]
+offset_left = 150.0
+offset_top = 95.0
+offset_right = 212.0
+offset_bottom = 126.0
+text = "Level 2"
+
+[node name="TransitionCallerLevel1" type="Node" parent="." unique_id=1506135063]
+script = ExtResource("2_1kkng")
+SceneCollection = ExtResource("3_o3fsi")
+Collection = 2
+TransitionTarget = "Level1"

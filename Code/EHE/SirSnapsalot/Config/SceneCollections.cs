@@ -99,7 +99,9 @@ namespace EHE.SirSnapsalot.SceneManagement
 
             public static class Keys
             {
-                public const string World = "World";
+                public const string LevelSelection = "LevelSelection";
+                public const string Level1 = "Level1";
+                public const string Level2 = "Level2";
             }
         }
 

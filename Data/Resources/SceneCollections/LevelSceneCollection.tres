@@ -5,8 +5,20 @@
 [resource]
 script = ExtResource("1_2dapc")
 CollectionName = "Level scenes"
-_savedScenePaths = Dictionary[String, String]({})
+_savedScenePaths = Dictionary[String, String]({
+"Level1": "res://Scenes/Levels/TestLevel3.tscn",
+"Level2": "res://Scenes/Levels/TestLevel4.tscn",
+"LevelSelection": "res://Scenes/Levels/LevelSelection.tscn"
+})
 "Manual collection management. Use with caution!" = null
-management_ScenePathDictionary = Dictionary[String, String]({})
-management_SceneUidDictionary = Dictionary[String, String]({})
+management_ScenePathDictionary = Dictionary[String, String]({
+"Level1": "res://Scenes/Levels/TestLevel3.tscn",
+"Level2": "res://Scenes/Levels/TestLevel4.tscn",
+"LevelSelection": "res://Scenes/Levels/LevelSelection.tscn"
+})
+management_SceneUidDictionary = Dictionary[String, String]({
+"Level1": "uid://cfwb0sptkwyr3",
+"Level2": "uid://bew0xar0ixsf",
+"LevelSelection": "uid://dmt0l5mtxp22e"
+})
 metadata/_custom_type_script = "uid://c6xlgsbgg2co2"

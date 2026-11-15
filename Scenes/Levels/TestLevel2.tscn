@@ -1,9 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://ciefypv4l74la"]
 
 [ext_resource type="Script" uid="uid://dog681eywdien" path="res://Code/EHE/SirSnapsalot/LevelSystem/Level.cs" id="1_almqe"]
 [ext_resource type="Resource" uid="uid://gnakrgkapgmb" path="res://Data/Resources/LevelComponents/ProtoFloor1.tres" id="2_axxus"]
 [ext_resource type="Resource" uid="uid://c5uqw6ksrdept" path="res://Data/Resources/LevelComponents/ProtoWall1.tres" id="3_xhbyj"]
-[ext_resource type="Resource" uid="uid://p5ls6ob2wkxl" path="res://Data/Resources/LevelComponents/ProtoPillar1.tres" id="4_8dbpo"]
 [ext_resource type="PackedScene" uid="uid://b7r6fabvjinfm" path="res://Scenes/Character/Character.tscn" id="5_f1oxt"]
 [ext_resource type="Script" uid="uid://b8c7kvq2dm8cl" path="res://Code/EHE/SirSnapsalot/LevelSystem/LevelGrid.cs" id="6_c5omb"]
 [ext_resource type="Script" uid="uid://bxw431artvvt1" path="res://Code/EHE/SirSnapsalot/LevelSystem/GridCell.cs" id="7_goqlq"]
@@ -218,9 +217,6 @@ Component = ExtResource("2_axxus")
 
 [node name="Level" type="Node3D" unique_id=1007198492 node_paths=PackedStringArray("_startGameButton", "_character")]
 script = ExtResource("1_almqe")
-_floorComponent = ExtResource("2_axxus")
-_wallComponent = ExtResource("3_xhbyj")
-_propComponent = ExtResource("4_8dbpo")
 _startGameButton = NodePath("CanvasLayer/Button")
 _character = NodePath("Character")
 
@@ -232,6 +228,7 @@ offset_bottom = 8.0
 text = "Start Game"
 
 [node name="Character" parent="." unique_id=1559585746 instance=ExtResource("5_f1oxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014441431, 0, 0)
 
 [node name="LevelGrid" type="Node3D" parent="." unique_id=916494177]
 script = ExtResource("6_c5omb")

@@ -12,6 +12,9 @@ namespace EHE.SirSnapsalot.UI.Menu
         private Button _resumeButton;
 
         [Export]
+        private Button _levelSelectionButton;
+
+        [Export]
         private Button _saveButton;
 
         [Export]
@@ -51,6 +54,7 @@ namespace EHE.SirSnapsalot.UI.Menu
         private void ConnectSignals()
         {
             _resumeButton.Pressed += OnResumePressed;
+            _levelSelectionButton.Pressed += OnLevelSelectionPressed;
             _saveButton.Pressed += OnSavePressed;
             _loadButton.Pressed += OnLoadPressed;
             _settingsButton.Pressed += OnSettingsPressed;
@@ -71,6 +75,20 @@ namespace EHE.SirSnapsalot.UI.Menu
         private void OnResumePressed()
         {
             GameManager.Instance.UIManager.UIEvents.RaiseUnpauseGame();
+        }
+
+        private void OnLevelSelectionPressed()
+        {
+            GameManager.Instance.UIManager.UIEvents.RaiseUnpauseGame();
+            SceneManager.Instance.RequestSceneTransition(
+                new SceneTransition(
+                    SceneCollections
+                        .GetSceneCollection(SceneCollections.Collections.LevelScenes)
+                        .GetScenePath(SceneCollections.LevelScenes.Keys.LevelSelection)
+                )
+            );
+
+            GameManager.Instance.RequestStateTransition(GameState.Playing);
         }
 
         private void OnSavePressed()
