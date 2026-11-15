@@ -8,6 +8,7 @@ using EHE.SirSnapsalot.Config;
 using EHE.SirSnapsalot.FSM;
 using EHE.SirSnapsalot.GameStates;
 using EHE.SirSnapsalot.SaveSystem;
+using EHE.SirSnapsalot.SceneManagement;
 using Godot;
 
 namespace EHE.SirSnapsalot.Managers
@@ -114,15 +115,23 @@ namespace EHE.SirSnapsalot.Managers
 
             GameData gameData = GenerateStartingData();
             SaveManager.LoadGameData(gameData);
+
             SceneManager.Instance.StartLoadedGame();
             RequestStateTransition(GameState.Playing);
         }
 
         public void LoadGame()
         {
-            SaveManager.QuickLoad();
+            //SaveManager.QuickLoad();
             UIManager.CloseTitleMenu();
-            SceneManager.Instance.StartLoadedGame();
+            SceneManager.Instance.RequestSceneTransition(
+                new SceneTransition(
+                    SceneCollections
+                        .GetSceneCollection(SceneCollections.Collections.LevelScenes)
+                        .GetScenePath(SceneCollections.LevelScenes.Keys.LevelSelection)
+                )
+            );
+            //SceneManager.Instance.StartLoadedGame();
             RequestStateTransition(GameState.Playing);
         }
 
