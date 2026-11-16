@@ -94,7 +94,7 @@ namespace EHE.SirSnapsalot.LevelSystem
                 // }
             }
 
-            Grid.Owner = this;
+            Grid.Initialize(this);
 
             //TODO: Refactor temp solutions below:
 

@@ -59,8 +59,9 @@ namespace EHE.SirSnapsalot.LevelSystem
 
         public override void _Ready()
         {
-            Initialize();
-            PopulateCellDictionary();
+            // TODO: Should be fine to remove these as Initialize is called manually, right?
+            // Initialize();
+            // PopulateCellDictionary();
             _pathFinder = new PathFinder(this);
         }
 
@@ -84,10 +85,39 @@ namespace EHE.SirSnapsalot.LevelSystem
 
         #region Public API
 
-        public void Initialize()
+        // TODO: Is this safe to remove?
+        // public void Initialize()
+        // {
+        //     PopulateCellDictionary();
+        //     _pathFinder = new PathFinder(this);
+        //     CreateGridCell(new Vector2I(0, 0));
+        //     _rootCell = GetGridCell(new Vector2I(0, 0));
+        // }
+
+        /// <summary>
+        /// Initializes the grid. Assigns the given <paramref name="ownerLevel"/>
+        /// as its scene owner, rebuilds the cell lookup, and creates the root
+        /// cell at (0, 0).
+        /// </summary>
+        /// <param name="ownerLevel">The level that owns this grid and its runtime-created cells.</param>
+        /// <exception cref="ArgumentException">
+        /// Thrown when <paramref name="ownerLevel"/> is not a valid Godot object.
+        /// </exception>
+        public void Initialize(Level ownerLevel)
         {
+            if (!IsInstanceValid(ownerLevel))
+            {
+                throw new ArgumentException($"{nameof(ownerLevel)} is not valid.");
+            }
+
+            Owner = ownerLevel;
+
+            if (_pathFinder == null)
+            {
+                _pathFinder = new PathFinder(this);
+            }
+
             PopulateCellDictionary();
-            _pathFinder = new PathFinder(this);
             CreateGridCell(new Vector2I(0, 0));
             _rootCell = GetGridCell(new Vector2I(0, 0));
         }
