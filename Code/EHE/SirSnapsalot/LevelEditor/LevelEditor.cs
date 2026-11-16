@@ -88,6 +88,20 @@ namespace EHE.SirSnapsalot.LevelEditor
         }
 
         /// <summary>
+        /// This method sanitizes the given level name by removing leading
+        /// and trailing whitespace as well as other illegal characters
+        /// (",", ".", "/").
+        /// </summary>
+        /// <param name="levelName">The level name to sanitize.</param>
+        /// <returns>The sanitized level name.</returns>
+        private string SanitizeLevelName(string levelName)
+        {
+            // TODO: Refactor this to use regex.
+            // TODO: Probably also make a separate saver/loader class to handle saving/loading level scenes.
+            return levelName.Trim().Replace(" ", "_").Replace(".", "_").Replace("/", "_");
+        }
+
+        /// <summary>
         /// Builds the full path to the level file with the given name.
         /// </summary>
         ///
@@ -105,9 +119,9 @@ namespace EHE.SirSnapsalot.LevelEditor
         /// </returns>
         ///
         /// <remarks>
-        /// This method also sanitizes the given level name by removing leading
-        /// and trailing whitespace as well as other illegal characters
-        /// (",", ".", "/").
+        /// This method will automatically sanitize the given level using the
+        /// <see cref="SanitizeLevelName"/> method on the <paramref name="levelName"/>
+        /// parameter.
         /// </remarks>
         private string BuildLevelFilePath(
             string levelName,
@@ -115,10 +129,7 @@ namespace EHE.SirSnapsalot.LevelEditor
             string directory = DEFAULT_LEVEL_DIRECTORY_PATH
         )
         {
-            // TODO: Refactor this to use regex.
-            // TODO: Probably also make a separate saver/loader class to handle saving/loading level scenes.
-            string sanitizedLevelName = levelName.Trim().Replace(" ", "_").Replace(".", "_").Replace("/", "_");
-            return $"{directory}/{sanitizedLevelName}.{extension}";
+            return $"{directory}/{SanitizeLevelName(levelName)}.{extension}";
         }
 
         /// <summary>
