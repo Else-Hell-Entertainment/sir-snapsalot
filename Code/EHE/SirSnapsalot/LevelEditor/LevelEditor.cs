@@ -29,6 +29,13 @@ namespace EHE.SirSnapsalot.LevelEditor
         [Export]
         private LineEdit _levelNameEntry;
 
+        [ExportGroup("Load UI")]
+        [Export]
+        private Button _loadButton;
+
+        [Export]
+        private LineEdit _levelNameLoadEntry;
+
         public override void _Ready()
         {
             // Find all ComponentSelectors in the UI and start listening to
@@ -62,6 +69,16 @@ namespace EHE.SirSnapsalot.LevelEditor
             {
                 _saveAsButton.Pressed += OnSaveAsButtonPressed;
             }
+
+            // Setup load UI.
+            if (!IsInstanceValid(_loadButton) || !IsInstanceValid(_levelNameLoadEntry))
+            {
+                throw new InvalidOperationException($"Missing references to load UI elements. Check exports!");
+            }
+            else
+            {
+                _loadButton.Pressed += OnLoadButtonPressed;
+            }
         }
 
         private void OnComponentSelected(CellComponent selectedComponent)
@@ -88,6 +105,30 @@ namespace EHE.SirSnapsalot.LevelEditor
         }
 
         /// <summary>
+        /// Called when the <see cref="_loadButton"/> is pressed.
+        /// Triggers loading the level from the file with the name given in the
+        /// <see cref="_levelNameLoadEntry"/> field.
+        /// </summary>
+        private void OnLoadButtonPressed()
+        {
+            LoadLevel(_levelNameLoadEntry.Text);
+        }
+
+        /// <summary>
+        /// This method sanitizes the given level name by removing leading
+        /// and trailing whitespace as well as other illegal characters
+        /// (",", ".", "/").
+        /// </summary>
+        /// <param name="levelName">The level name to sanitize.</param>
+        /// <returns>The sanitized level name.</returns>
+        private string SanitizeLevelName(string levelName)
+        {
+            // TODO: Refactor this to use regex.
+            // TODO: Probably also make a separate saver/loader class to handle saving/loading level scenes.
+            return levelName.Trim().Replace(" ", "_").Replace(".", "_").Replace("/", "_");
+        }
+
+        /// <summary>
         /// Builds the full path to the level file with the given name.
         /// </summary>
         ///
@@ -105,9 +146,9 @@ namespace EHE.SirSnapsalot.LevelEditor
         /// </returns>
         ///
         /// <remarks>
-        /// This method also sanitizes the given level name by removing leading
-        /// and trailing whitespace as well as other illegal characters
-        /// (",", ".", "/").
+        /// This method will automatically sanitize the given level using the
+        /// <see cref="SanitizeLevelName"/> method on the <paramref name="levelName"/>
+        /// parameter.
         /// </remarks>
         private string BuildLevelFilePath(
             string levelName,
@@ -115,10 +156,7 @@ namespace EHE.SirSnapsalot.LevelEditor
             string directory = DEFAULT_LEVEL_DIRECTORY_PATH
         )
         {
-            // TODO: Refactor this to use regex.
-            // TODO: Probably also make a separate saver/loader class to handle saving/loading level scenes.
-            string sanitizedLevelName = levelName.Trim().Replace(" ", "_").Replace(".", "_").Replace("/", "_");
-            return $"{directory}/{sanitizedLevelName}.{extension}";
+            return $"{directory}/{SanitizeLevelName(levelName)}.{extension}";
         }
 
         /// <summary>
@@ -161,6 +199,80 @@ namespace EHE.SirSnapsalot.LevelEditor
                 return false;
             }
 
+            return true;
+        }
+
+        /// <summary>
+        /// Loads a level from a scene file and adds it to the scene tree.
+        /// </summary>
+        ///
+        /// <param name="levelName">
+        ///     The name of the scene file without the file extension.</param>
+        /// <param name="extension">
+        ///     The file extension of the file.
+        ///     Default is <see cref="DEFAULT_LEVEL_FILE_EXTENSION"/>.</param>
+        /// <param name="directory">
+        ///     The path to the directory where the scene file is located.
+        ///     Default is <see cref="DEFAULT_LEVEL_DIRECTORY_PATH"/>.</param>
+        ///
+        /// <returns>
+        /// <c>true</c> if the level was loaded successfully,
+        /// <c>false</c> otherwise.
+        /// </returns>
+        private bool LoadLevel(
+            string levelName,
+            string extension = DEFAULT_LEVEL_FILE_EXTENSION,
+            string directory = DEFAULT_LEVEL_DIRECTORY_PATH
+        )
+        {
+            string sanitizedLevelName = SanitizeLevelName(levelName);
+
+            if (sanitizedLevelName == "" || sanitizedLevelName.Length == 0)
+            {
+                this.LogError($"Failed to load level: No valid level name provided.");
+                return false;
+            }
+
+            string loadPath = BuildLevelFilePath(sanitizedLevelName, extension, directory);
+
+            if (!ResourceLoader.Exists(loadPath))
+            {
+                this.LogError($"Failed to load level: Invalid path '{loadPath}'.");
+                return false;
+            }
+
+            PackedScene levelScene = ResourceLoader.Load<PackedScene>(loadPath);
+
+            if (levelScene == null)
+            {
+                this.LogError($"Failed to load level from path '{loadPath}'. Is the path correct?");
+                return false;
+            }
+
+            Level levelInstance = levelScene.Instantiate<Level>();
+
+            if (levelInstance == null)
+            {
+                this.LogError($"Failed to load level: There is no valid level scene at path '{loadPath}'.");
+                return false;
+            }
+
+            if (IsInstanceValid(_level))
+            {
+                // Renaming the current level prevents Godot from overriding
+                // the name given to the new node in case the new name is the
+                // same as the old one. For example, if the current level was
+                // TestLevel1 and you loaded a file named TestLevel1, Godot
+                // would rename the node to TestLevel2 since the name was
+                // already in use.
+                _level.Name = "removed_level";
+                _level.QueueFree();
+                _level = null;
+            }
+
+            _level = levelInstance;
+            AddChild(_level);
+            _level.Name = $"{sanitizedLevelName}";
             return true;
         }
 
