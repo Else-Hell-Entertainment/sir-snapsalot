@@ -113,6 +113,26 @@ placeholder_text = "LevelName"
 layout_mode = 2
 text = ".tscn"
 
+[node name="LoadUI" type="HBoxContainer" parent="DesignerUI" unique_id=1309640418]
+layout_mode = 0
+offset_left = 1588.0
+offset_top = 50.0
+offset_right = 1900.0
+offset_bottom = 81.0
+
+[node name="LoadButton" type="Button" parent="DesignerUI/LoadUI" unique_id=634937733]
+layout_mode = 2
+text = "Load     "
+
+[node name="LevelNameEntry" type="LineEdit" parent="DesignerUI/LoadUI" unique_id=1585876267]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+placeholder_text = "LevelName"
+
+[node name="FileExtensionLabel" type="Label" parent="DesignerUI/LoadUI" unique_id=530324648]
+layout_mode = 2
+text = ".tscn"
+
 [editable path="DesignerUI/ComponentList/FloorSelector"]
 [editable path="DesignerUI/ComponentList/WallSelector"]
 [editable path="DesignerUI/ComponentList/PillarSelector"]
