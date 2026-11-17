@@ -8,7 +8,7 @@ using Godot;
 
 namespace EHE.SirSnapsalot.LevelObjects
 {
-    public abstract partial class TrapActivator : Node3D
+    public abstract partial class TrapActivator : LevelObject
     {
         private readonly HashSet<IActivatable> _activatables = new HashSet<IActivatable>();
 

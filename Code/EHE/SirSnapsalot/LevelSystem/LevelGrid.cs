@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using EHE.Common.Godot.Logging;
 using EHE.SirSnapsalot.Config;
 using Godot;
 
@@ -124,8 +125,30 @@ namespace EHE.SirSnapsalot.LevelSystem
 
         public void RotateGhostComponent(bool clockwise)
         {
-            if (_ghostInstance != null)
+            if (_ghostInstance == null)
             {
+                this.LogWarning($"{nameof(_ghostInstance)} is null, returning.");
+                return;
+            }
+
+            if (_ghostInstance is IRotatable rotatable)
+            {
+                var direction = clockwise
+                    ? IRotatable.RotationDirection.Clockwise
+                    : IRotatable.RotationDirection.CounterClockwise;
+
+                rotatable.Rotate(direction);
+            }
+            else
+            {
+                // Old logic for objects that don't have their own classes,
+                // like walls, for example.
+                // Special logic needed by the current implementation of
+                // WallComponents. Wall object don't currently implement
+                // IRotatable so their rotation and placement needs to be
+                // handled differently.
+                // TODO: Make walls implement IRotatable.
+                // TODO: Are the other components besides WallComponent that rely on this special rotation logic?
                 SetNextRotation(clockwise);
                 _rootCell.SetComponentRotation(_ghostInstance, _ghostPosition);
             }
@@ -468,11 +491,19 @@ namespace EHE.SirSnapsalot.LevelSystem
                     gridCoordinates.Y * _gridSize + (float)_gridSize / 2
                 );
 
-                var cell = GetGridCell(gridCoordinates);
-                if (cell != null)
+                if (_ghostComponent is WallComponent)
                 {
-                    _rootCell.SetComponentRotation(_ghostInstance, _ghostPosition);
-                    cell.SetComponentPosition(_ghostInstance, _ghostPosition);
+                    // Special logic needed by the current implementation of
+                    // WallComponents. Wall object don't currently implement
+                    // IRotatable so their rotation and placement needs to be
+                    // handled differently.
+                    // TODO: Make walls implement IRotatable.
+                    var cell = GetGridCell(gridCoordinates);
+                    if (cell != null)
+                    {
+                        _rootCell.SetComponentRotation(_ghostInstance, _ghostPosition);
+                        cell.SetComponentPosition(_ghostInstance, _ghostPosition);
+                    }
                 }
             }
         }
@@ -581,13 +612,13 @@ namespace EHE.SirSnapsalot.LevelSystem
                     CreateGridCell(gridCoordinates);
                     cell = GetGridCell(gridCoordinates);
                     cell.AddComponent(CellComponent.Position.Floor, _ghostComponent);
-                    cell.SpawnCellComponent(CellComponent.Position.Floor, _ghostComponent);
+                    cell.SpawnCellComponent(_ghostComponent, _ghostInstance.Rotation, CellComponent.Position.Floor);
                 }
                 else if (cell != null)
                 {
                     GD.Print("Placing component at: " + gridCoordinates);
                     cell.AddComponent(_ghostPosition, _ghostComponent);
-                    cell.SpawnCellComponent(_ghostPosition, _ghostComponent);
+                    cell.SpawnCellComponent(_ghostComponent, _ghostInstance.Rotation, _ghostPosition);
                 }
             }
             else

@@ -84,6 +84,50 @@ namespace EHE.SirSnapsalot.LevelSystem
             SetComponentRotation(componentInstance, position);
         }
 
+        /// <summary>
+        /// Spawns a component in the cell with the given rotation at the
+        /// specified position.
+        /// </summary>
+        ///
+        /// <param name="componentResource">
+        ///     The component resource that contains definition for the
+        ///     instance.</param>
+        /// <param name="rotation">
+        ///     The rotation of the placed instance as Euler angles in radians.
+        ///     I.e., the rotation of the 3D object in the 3D space.</param>
+        /// <param name="componentPosition">
+        ///     The position of the component in the cell (one of the edges or
+        ///     in the middle). Default is <see cref="CellComponent.Position.Floor"/>
+        ///     aka in the middle of the cell.</param>
+        ///
+        /// <remarks>
+        /// Currently the <paramref name="componentPosition"/> is only used by
+        /// the WallComponents as the wall instances don't implement the
+        /// <see cref="IRotatable"/> interface and thus, require special logic.
+        /// </remarks>
+        public void SpawnCellComponent(
+            CellComponent componentResource,
+            Vector3 rotation,
+            CellComponent.Position componentPosition = CellComponent.Position.Floor
+        )
+        {
+            Node3D componentInstance = (Node3D)componentResource.GetSceneInstance();
+            AddChild(componentInstance);
+            componentInstance.Owner = Owner;
+            componentInstance.Rotation = rotation;
+
+            if (componentResource is WallComponent)
+            {
+                // Special logic needed by the current implementation of
+                // WallComponents. Wall object don't currently implement
+                // IRotatable so their rotation and placement needs to be
+                // handled differently.
+                // TODO: Make walls implement IRotatable.
+                SetComponentPosition(componentInstance, componentPosition);
+                SetComponentRotation(componentInstance, componentPosition);
+            }
+        }
+
         public void ClearCellComponents()
         {
             var children = GetChildren();
