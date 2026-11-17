@@ -11,8 +11,6 @@
 [ext_resource type="Resource" uid="uid://bgb53innjwke5" path="res://Data/Resources/LevelComponents/EntranceComponent.tres" id="9_fyasm"]
 [ext_resource type="Resource" uid="uid://2csiw85l3mil" path="res://Data/Resources/LevelComponents/ExitComponent.tres" id="10_5608h"]
 
-[sub_resource type="Environment" id="Environment_blgkw"]
-
 [node name="LevelEditor" type="Node3D" unique_id=449126731 node_paths=PackedStringArray("_saveAsButton", "_levelNameEntry", "_loadButton", "_levelNameLoadEntry")]
 script = ExtResource("1_o0cfc")
 _saveAsButton = NodePath("DesignerUI/SaveUI/SaveAsButton")
@@ -20,18 +18,7 @@ _levelNameEntry = NodePath("DesignerUI/SaveUI/LevelNameEntry")
 _loadButton = NodePath("DesignerUI/LoadUI/LoadButton")
 _levelNameLoadEntry = NodePath("DesignerUI/LoadUI/LevelNameEntry")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=206511898]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 5.073656, 8.291958, 0)
-shadow_enabled = true
-
 [node name="BaseLevel" parent="." unique_id=1007198492 instance=ExtResource("1_4t5ao")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=916009153]
-environment = SubResource("Environment_blgkw")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1014206546]
-transform = Transform3D(1, 0, 0, 0, 0.37775356, 0.9259062, 0, -0.9259062, 0.37775356, 11.442457, 10.429326, 11.999655)
-fov = 90.0
 
 [node name="DesignerUI" type="Control" parent="." unique_id=1134206697]
 layout_mode = 3
