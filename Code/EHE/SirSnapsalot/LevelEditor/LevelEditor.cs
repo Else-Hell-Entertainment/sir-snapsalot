@@ -38,6 +38,9 @@ namespace EHE.SirSnapsalot.LevelEditor
 
         public override void _Ready()
         {
+            // TODO: Create methods for connecting/disconnecting signals.
+            // TODO: Verify that the signals work even after readding the editor to the scene tree. Possibly need to
+            // reconnect signals in _EnterTree as well.
             // Find all ComponentSelectors in the UI and start listening to
             // their ComponentSelected event.
             foreach (var selector in this.GetChildren<ComponentSelector>(recurse: true))
@@ -78,6 +81,18 @@ namespace EHE.SirSnapsalot.LevelEditor
             else
             {
                 _loadButton.Pressed += OnLoadButtonPressed;
+            }
+        }
+
+        public override void _ExitTree()
+        {
+            // Unsubscribe from the component selected events.
+            foreach (var selector in _componentSelectors)
+            {
+                if (IsInstanceValid(selector))
+                {
+                    selector.ComponentSelected -= OnComponentSelected;
+                }
             }
         }
 
