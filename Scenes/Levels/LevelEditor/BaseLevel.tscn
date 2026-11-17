@@ -1,16 +1,12 @@
 [gd_scene format=3 uid="uid://drur0a5ndj8rl"]
 
 [ext_resource type="Script" uid="uid://dog681eywdien" path="res://Code/EHE/SirSnapsalot/LevelSystem/Level.cs" id="1_uqbwj"]
-[ext_resource type="Resource" uid="uid://gnakrgkapgmb" path="res://Data/Resources/LevelComponents/ProtoFloor1.tres" id="2_f24sm"]
-[ext_resource type="Resource" uid="uid://c5uqw6ksrdept" path="res://Data/Resources/LevelComponents/ProtoWall1.tres" id="3_agxf6"]
-[ext_resource type="Resource" uid="uid://p5ls6ob2wkxl" path="res://Data/Resources/LevelComponents/ProtoPillar1.tres" id="4_nhtej"]
 [ext_resource type="PackedScene" uid="uid://b7r6fabvjinfm" path="res://Scenes/Character/Character.tscn" id="5_agxf6"]
+
+[sub_resource type="Environment" id="Environment_xp82p"]
 
 [node name="BaseLevel" type="Node3D" unique_id=1007198492 node_paths=PackedStringArray("_startGameButton", "_character")]
 script = ExtResource("1_uqbwj")
-_floorComponent = ExtResource("2_f24sm")
-_wallComponent = ExtResource("3_agxf6")
-_propComponent = ExtResource("4_nhtej")
 _startGameButton = NodePath("CanvasLayer/Button")
 _character = NodePath("Character")
 
@@ -22,3 +18,17 @@ offset_bottom = 8.0
 text = "Start Game"
 
 [node name="Character" parent="." unique_id=1559585746 instance=ExtResource("5_agxf6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=695503445]
+environment = SubResource("Environment_xp82p")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=54954686]
+transform = Transform3D(0.70710677, -0.61237246, 0.35355335, 0, 0.49999997, 0.86602545, -0.70710677, -0.61237246, 0.35355335, 5, 5, 5)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=887232419]
+transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 19, 11, 19)
+projection = 1
+fov = 90.0
+size = 25.0
