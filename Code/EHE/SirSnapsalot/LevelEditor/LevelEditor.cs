@@ -84,6 +84,14 @@ namespace EHE.SirSnapsalot.LevelEditor
             }
         }
 
+        public override void _UnhandledInput(InputEvent inputEvent)
+        {
+            if (inputEvent.IsActionPressed("LevelEditorRemoveObject"))
+            {
+                RemoveObject();
+            }
+        }
+
         public override void _ExitTree()
         {
             // Unsubscribe from the component selected events.
@@ -106,6 +114,33 @@ namespace EHE.SirSnapsalot.LevelEditor
 
             _level.SetGhostComponent(selectedComponent);
         }
+
+        #region Object placement, rotation, and removal
+
+        // TODO: Pass object to remove as parameter.
+        private bool RemoveObject()
+        {
+            Vector2 mousePosition = GetViewport().GetMousePosition();
+            Vector2I? gridPosition = _level.Grid.MousePos2GridPos(mousePosition);
+
+            if (gridPosition == null)
+            {
+                return false;
+            }
+
+            GridCell cell = _level.Grid.GetGridCell((Vector2I)gridPosition);
+
+            if (cell == null)
+            {
+                return false;
+            }
+
+            // TODO: Only remove the given type of objects.
+            cell.ClearCellComponents();
+            return true;
+        }
+
+        #endregion
 
         #region Saving and loading level scenes
 
