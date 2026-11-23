@@ -470,6 +470,26 @@ namespace EHE.SirSnapsalot.LevelSystem
             return GetGridCoordinatesFromPosition((Vector3)intersection);
         }
 
+        /// <summary>
+        /// Converts a world-space position to its corresponding grid
+        /// coordinates using the grid's configured grid scale.
+        /// </summary>
+        ///
+        /// <param name="worldPosition">
+        /// The position in world coordinates to convert.
+        /// </param>
+        ///
+        /// <returns>The corresponding grid coordinates.</returns>
+        ///
+        /// <remarks>
+        /// The grid only allows non-negative coordinates. Thus, the minimum
+        /// value returned is equivalent to <see cref="Vector2I.Zero"/>.
+        /// </remarks>
+        public Vector2I WorldPos2GridPos(Vector3 worldPosition)
+        {
+            return GetGridCoordinatesFromPosition(worldPosition);
+        }
+
         #endregion
 
         #region Private API
