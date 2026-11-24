@@ -1,10 +1,10 @@
-using Godot;
 using System;
 using System.Collections.Generic;
 using EHE.Common.Godot.Extensions;
 using EHE.Common.Godot.Logging;
 using EHE.SirSnapsalot.LevelObjects;
 using EHE.SirSnapsalot.LevelSystem;
+using Godot;
 
 namespace EHE.SirSnapsalot.LevelEditor
 {
