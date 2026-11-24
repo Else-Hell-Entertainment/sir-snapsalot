@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource("2_4cnhw")
 Name = "ExitComponent"
-_scene = ExtResource("1_4cnhw")
+_scenes = Array[PackedScene]([ExtResource("1_4cnhw")])
 metadata/_custom_type_script = "uid://cjh65rokloc8t"

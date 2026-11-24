@@ -2,11 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://dp6xspnm3bg43" path="res://Assets/Models/Level/LevelWallL1.glb" id="1_4luci"]
 [ext_resource type="Script" uid="uid://cjh65rokloc8t" path="res://Code/EHE/SirSnapsalot/LevelSystem/ResourceDefinitions/WallComponent.cs" id="1_m41pq"]
+[ext_resource type="PackedScene" uid="uid://bsyjvf8t4mjxa" path="res://Assets/Models/Level/LevelWallL2.glb" id="2_23voy"]
+[ext_resource type="PackedScene" uid="uid://ck8uyr6lh5y0e" path="res://Assets/Models/Level/LevelWallM.glb" id="3_g0be7"]
+[ext_resource type="PackedScene" uid="uid://cw137ameb1mco" path="res://Assets/Models/Level/LevelWallR1.glb" id="4_3tg8w"]
+[ext_resource type="PackedScene" uid="uid://bk6fim8go5q3i" path="res://Assets/Models/Level/LevelWallR2.glb" id="5_3vys2"]
 
 [resource]
 script = ExtResource("1_m41pq")
 Name = "Wall1"
 _scene = ExtResource("1_4luci")
+_scenes = Array[PackedScene]([ExtResource("1_4luci"), ExtResource("2_23voy"), ExtResource("3_g0be7"), ExtResource("4_3tg8w"), ExtResource("5_3vys2")])
 IsSolid = true
 BlocksMovement = true
 metadata/_custom_type_script = "uid://cjh65rokloc8t"

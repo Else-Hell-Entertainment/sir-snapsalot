@@ -3,6 +3,7 @@
 // Author: Pekka Heljakka <pekka.heljakka@tuni.fi>
 
 using Godot;
+using Godot.Collections;
 
 namespace EHE.SirSnapsalot.LevelSystem
 {
@@ -33,7 +34,7 @@ namespace EHE.SirSnapsalot.LevelSystem
         public string Name;
 
         [Export]
-        private PackedScene _scene;
+        private Array<PackedScene> _scenes = new Array<PackedScene>();
 
         /// <summary>
         /// Does this component block movement completely, such as a wall? Character can never be moved through a solid
@@ -60,12 +61,19 @@ namespace EHE.SirSnapsalot.LevelSystem
 
         public Node GetSceneInstance()
         {
-            if (_scene != null)
+            if (_scenes == null || _scenes.Count == 0)
             {
-                return _scene.Instantiate();
+                return null;
             }
 
-            return null;
+            int index = 0;
+
+            if (_scenes.Count > 1)
+            {
+                index = GD.RandRange(from: 0, to: _scenes.Count - 1);
+            }
+
+            return _scenes[index].Instantiate();
         }
     }
 }

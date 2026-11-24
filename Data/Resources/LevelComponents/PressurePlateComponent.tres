@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource("1_bc717")
 Name = "PressurePlate"
-_scene = ExtResource("1_dxnph")
+_scenes = Array[PackedScene]([ExtResource("1_dxnph")])
 metadata/_custom_type_script = "uid://cl0ys8lhida1m"
