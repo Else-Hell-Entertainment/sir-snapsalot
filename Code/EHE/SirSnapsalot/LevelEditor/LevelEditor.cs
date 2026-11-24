@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using EHE.Common.Godot.Extensions;
 using EHE.Common.Godot.Logging;
+using EHE.SirSnapsalot.LevelObjects;
 using EHE.SirSnapsalot.LevelSystem;
 
 namespace EHE.SirSnapsalot.LevelEditor
@@ -117,27 +118,57 @@ namespace EHE.SirSnapsalot.LevelEditor
 
         #region Object placement, rotation, and removal
 
-        // TODO: Pass object to remove as parameter.
+        /// <summary>
+        /// Removes the level object currently under the mouse cursor.
+        /// </summary>
+        ///
+        /// <returns>
+        /// <c>true</c> if a level object was found and removed successfully,
+        /// <c>false</c> otherwise.
+        /// </returns>
+        ///
+        /// <remarks>
+        /// The object is located with a <see cref="RayCast3D"/> at the
+        /// viewport mouse position. Its global position is used to find the
+        /// containing <see cref="GridCell"/>. When removal succeeds, the
+        /// visual object is queued for freeing.
+        /// </remarks>
         private bool RemoveObject()
         {
             Vector2 mousePosition = GetViewport().GetMousePosition();
-            Vector2I? gridPosition = _level.Grid.MousePos2GridPos(mousePosition);
+            LevelObject visualObject = _level.GetObjectUnderMouse<LevelObject>(mousePosition);
 
-            if (gridPosition == null)
+            if (visualObject == null)
             {
                 return false;
             }
 
-            GridCell cell = _level.Grid.GetGridCell((Vector2I)gridPosition);
+            // TODO: Remove debug code.
+            this.LogDebug(visualObject.GetPath());
+
+            Vector3 visualWorldPosition = visualObject.GlobalPosition;
+            GridCell cell = _level.Grid.GetGridCell(visualWorldPosition);
 
             if (cell == null)
             {
                 return false;
             }
 
-            // TODO: Only remove the given type of objects.
-            cell.ClearCellComponents();
-            return true;
+            // TODO: Remove debug code.
+            this.LogDebug(cell.GetPath());
+
+            bool wasRemoved = cell.RemoveComponentInstance(visualObject);
+
+            if (wasRemoved)
+            {
+                // This is not done in RemoveComponentInstance because doing it
+                // here will make pooling the components easier (I think).
+                // TODO: Implement pooling cell component instances?
+                visualObject.QueueFree();
+            }
+
+            return wasRemoved;
+            // TODO: Make sure only placed objects can be removed.
         }
 
         #endregion
