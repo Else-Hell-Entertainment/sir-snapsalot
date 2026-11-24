@@ -89,7 +89,7 @@ namespace EHE.SirSnapsalot.LevelEditor
         {
             if (inputEvent.IsActionPressed("LevelEditorRemoveObject"))
             {
-                RemoveObject();
+                RemoveLevelObject();
             }
         }
 
@@ -133,7 +133,7 @@ namespace EHE.SirSnapsalot.LevelEditor
         /// containing <see cref="GridCell"/>. When removal succeeds, the
         /// visual object is queued for freeing.
         /// </remarks>
-        private bool RemoveObject()
+        private bool RemoveLevelObject()
         {
             Vector2 mousePosition = GetViewport().GetMousePosition();
             LevelObject visualObject = _level.GetObjectUnderMouse<LevelObject>(mousePosition);
