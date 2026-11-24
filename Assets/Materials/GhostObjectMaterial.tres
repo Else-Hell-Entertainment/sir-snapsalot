@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dfpqns8dnyk7f"]
+
+[ext_resource type="Shader" uid="uid://b0juyloogbtdy" path="res://Assets/Shaders/PulsatingAlpha.gdshader" id="1_i8wqu"]
+
+[resource]
+shader = ExtResource("1_i8wqu")
+shader_parameter/frequency = 0.4
+shader_parameter/peak_margin = 0.25
