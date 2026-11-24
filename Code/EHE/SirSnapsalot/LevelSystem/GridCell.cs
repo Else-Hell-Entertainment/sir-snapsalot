@@ -2,6 +2,8 @@
 // License: MIT License (see LICENSE in project root for details)
 // Author: Pekka Heljakka <pekka.heljakka@tuni.fi>
 
+using System.Collections.Generic;
+using EHE.Common.Godot.Logging;
 using EHE.SirSnapsalot.Config;
 using Godot;
 
@@ -21,6 +23,10 @@ namespace EHE.SirSnapsalot.LevelSystem
         public int GridId;
 
         private int _gridScale = SystemConfig.GridScale;
+
+        // Used to quickly reference to the child nodes under this cell in the
+        // node tree. Will be used for lookup when removing component instances.
+        private HashSet<Node3D> _componentInstances = new HashSet<Node3D>();
 
         [Export]
         public Vector2I GridCoordinates;
@@ -70,6 +76,15 @@ namespace EHE.SirSnapsalot.LevelSystem
         public void SpawnCellComponent(CellComponent.Position position, CellComponent component)
         {
             var componentInstance = (Node3D)component.GetSceneInstance();
+
+            if (!_componentInstances.Add(componentInstance))
+            {
+                this.LogWarning(
+                    $"Trying to add {componentInstance.GetName()} to cell {GridCoordinates} again, returning."
+                );
+                return;
+            }
+
             AddChild(componentInstance);
 
             // var sceneOwner = GetTree().CurrentScene;
@@ -112,6 +127,15 @@ namespace EHE.SirSnapsalot.LevelSystem
         )
         {
             Node3D componentInstance = (Node3D)componentResource.GetSceneInstance();
+
+            if (!_componentInstances.Add(componentInstance))
+            {
+                this.LogWarning(
+                    $"Trying to add {componentInstance.GetName()} to cell {GridCoordinates} again, returning."
+                );
+                return;
+            }
+
             AddChild(componentInstance);
             componentInstance.Owner = Owner;
             componentInstance.Rotation = rotation;
@@ -137,6 +161,7 @@ namespace EHE.SirSnapsalot.LevelSystem
             }
 
             Components.Clear();
+            _componentInstances.Clear();
         }
 
         public void SetComponentPosition(Node3D component, CellComponent.Position position)
