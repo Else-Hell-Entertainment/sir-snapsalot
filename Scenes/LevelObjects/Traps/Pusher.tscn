@@ -6,8 +6,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_t0asc"]
 size = Vector3(2, 2, 2)
 
-[node name="Pusher" type="StaticBody3D" unique_id=1639384190]
+[node name="Pusher" type="StaticBody3D" unique_id=1639384190 node_paths=PackedStringArray("_collisionShape")]
 script = ExtResource("1_1bg1t")
+_collisionShape = NodePath("CollisionShape3D")
 
 [node name="Model" parent="." unique_id=554394357 instance=ExtResource("1_b64u2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)

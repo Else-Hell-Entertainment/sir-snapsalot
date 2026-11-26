@@ -26,12 +26,15 @@ namespace EHE.SirSnapsalot.LevelObjects
         #region Godot API
 
         /// <summary>
+        /// Extends <see cref="LevelObject._Ready()"/>.
         /// Initializes the <see cref="TriggerArea"/> of the activator. To add
         /// extra functionality, override the <see cref="OnReady()"/> method.
         /// </summary>
         /// <exception cref="InvalidOperationException">TriggerArea is null or the reference to it is invalid.</exception>
         public sealed override void _Ready()
         {
+            base._Ready();
+
             if (!IsInstanceValid(TriggerArea))
             {
                 throw new InvalidOperationException($"{nameof(TriggerArea)} is null or the reference is invalid! Check exports!");
