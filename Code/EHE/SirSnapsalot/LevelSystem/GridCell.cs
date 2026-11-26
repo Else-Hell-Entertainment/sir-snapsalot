@@ -3,6 +3,7 @@
 // Author: Pekka Heljakka <pekka.heljakka@tuni.fi>
 
 using System.Collections.Generic;
+using EHE.Common.Godot;
 using EHE.Common.Godot.Logging;
 using EHE.SirSnapsalot.Config;
 using Godot;
@@ -73,6 +74,15 @@ namespace EHE.SirSnapsalot.LevelSystem
         /// </summary>
         /// <param name="position"></param>
         /// <param name="component"></param>
+        ///
+        /// <remarks>
+        /// If the object instantiated from the <paramref name="component"/>
+        /// implements the <see cref="IPlaceable"/> interface, its
+        /// <see cref="IPlaceable.Place()"/> is called. However, this method
+        /// will <b>not</b> check the value of <see cref="IPlaceable.CanPlace"/>
+        /// before placement so the placement criteria must be validated
+        /// elsewhere.
+        /// </remarks>
         public void SpawnCellComponent(CellComponent.Position position, CellComponent component)
         {
             var componentInstance = (Node3D)component.GetSceneInstance();
@@ -95,6 +105,20 @@ namespace EHE.SirSnapsalot.LevelSystem
 
             componentInstance.Owner = Owner;
 
+            // The type check is required (for now) since floors and walls are
+            // not inherited from LevelObject or IPlaceable. If they were,
+            // componentInstance could be casted directly to either of those
+            // when the instance is fetched from the resource.
+            // TODO: Make walls and floors implement IPlaceable or inherit LevelObject.
+            if (componentInstance is IPlaceable placeable)
+            {
+                // placeable.CanPlace cannot be checked here because the
+                // componentInstance is a new object and by default that
+                // property is false. The placeability of the object should be
+                // checked before calling this method.
+                placeable.Place();
+            }
+
             SetComponentPosition(componentInstance, position);
             SetComponentRotation(componentInstance, position);
         }
@@ -116,9 +140,19 @@ namespace EHE.SirSnapsalot.LevelSystem
         ///     aka in the middle of the cell.</param>
         ///
         /// <remarks>
-        /// Currently the <paramref name="componentPosition"/> is only used by
-        /// the WallComponents as the wall instances don't implement the
-        /// <see cref="IRotatable"/> interface and thus, require special logic.
+        /// <para>
+        ///     Currently the <paramref name="componentPosition"/> is only used by
+        ///     the WallComponents as the wall instances don't implement the
+        ///     <see cref="IRotatable"/> interface and thus, require special logic.
+        /// </para>
+        /// <para>
+        ///     If the object instantiated from the <paramref name="componentResource"/>
+        ///     implements the <see cref="IPlaceable"/> interface, its
+        ///     <see cref="IPlaceable.Place()"/> is called. However, this method
+        ///     will <b>not</b> check the value of <see cref="IPlaceable.CanPlace"/>
+        ///     before placement so the placement criteria must be validated
+        ///     elsewhere.
+        /// </para>
         /// </remarks>
         public void SpawnCellComponent(
             CellComponent componentResource,
@@ -139,6 +173,20 @@ namespace EHE.SirSnapsalot.LevelSystem
             AddChild(componentInstance);
             componentInstance.Owner = Owner;
             componentInstance.Rotation = rotation;
+
+            // The type check is required (for now) since floors and walls are
+            // not inherited from LevelObject or IPlaceable. If they were,
+            // componentInstance could be casted directly to either of those
+            // when the instance is fetched from the resource.
+            // TODO: Make walls and floors implement IPlaceable or inherit LevelObject.
+            if (componentInstance is IPlaceable placeable)
+            {
+                // placeable.CanPlace cannot be checked here because the
+                // componentInstance is a new object and by default that
+                // property is false. The placeability of the object should be
+                // checked before calling this method.
+                placeable.Place();
+            }
 
             if (componentResource is WallComponent)
             {
