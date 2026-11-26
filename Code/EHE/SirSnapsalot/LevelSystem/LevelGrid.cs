@@ -430,6 +430,66 @@ namespace EHE.SirSnapsalot.LevelSystem
             }
         }
 
+        /// <summary>
+        /// Converts a viewport-space mouse position to grid coordinates by
+        /// intersecting a ray from the camera with the grid's zero-height plane.
+        /// </summary>
+        ///
+        /// <param name="mousePosition">
+        /// The mouse position in viewport coordinates.
+        /// </param>
+        /// <param name="camera">
+        /// The camera used to project the mouse position. If omitted, the
+        /// viewport's currently active camera is used.
+        /// </param>
+        ///
+        /// <returns>
+        /// The corresponding grid coordinates, or <c>null</c> if no active
+        /// camera is available or the projected ray does not intersect the
+        /// grid plane.
+        /// </returns>
+        public Vector2I? MousePos2GridPos(Vector2 mousePosition, Camera3D camera = null)
+        {
+            // If reference to camera is not given, try finding the currently active camera.
+            camera ??= GetViewport().GetCamera3D();
+
+            if (camera == null)
+            {
+                return null;
+            }
+
+            Vector3 rayOrigin = camera.ProjectRayOrigin(mousePosition);
+            Vector3 rayDirection = camera.ProjectRayNormal(mousePosition);
+            Vector3? intersection = _zeroPlane.IntersectsRay(rayOrigin, rayDirection);
+
+            if (intersection == null)
+            {
+                return null;
+            }
+
+            return GetGridCoordinatesFromPosition((Vector3)intersection);
+        }
+
+        /// <summary>
+        /// Converts a world-space position to its corresponding grid
+        /// coordinates using the grid's configured grid scale.
+        /// </summary>
+        ///
+        /// <param name="worldPosition">
+        /// The position in world coordinates to convert.
+        /// </param>
+        ///
+        /// <returns>The corresponding grid coordinates.</returns>
+        ///
+        /// <remarks>
+        /// The grid only allows non-negative coordinates. Thus, the minimum
+        /// value returned is equivalent to <see cref="Vector2I.Zero"/>.
+        /// </remarks>
+        public Vector2I WorldPos2GridPos(Vector3 worldPosition)
+        {
+            return GetGridCoordinatesFromPosition(worldPosition);
+        }
+
         #endregion
 
         #region Private API

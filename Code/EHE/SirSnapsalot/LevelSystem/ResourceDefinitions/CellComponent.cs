@@ -2,6 +2,7 @@
 // License: MIT License (see LICENSE in project root for details)
 // Author: Pekka Heljakka <pekka.heljakka@tuni.fi>
 
+using System;
 using Godot;
 
 namespace EHE.SirSnapsalot.LevelSystem
@@ -9,6 +10,14 @@ namespace EHE.SirSnapsalot.LevelSystem
     [GlobalClass]
     public partial class CellComponent : Resource
     {
+        // Caching the reference to the packed scene is necessary only if
+        // _scene can change during runtime. Most likely this will never happen
+        // but since adding it makes Copilot happy, I'll leave it here (also
+        // because I don't wanna spend any more of my dev time trying to cache
+        // a single property).
+        private PackedScene _cachedScene = null;
+        private Type _cachedSceneType = null;
+
         public enum CellComponentType
         {
             None,
@@ -58,14 +67,85 @@ namespace EHE.SirSnapsalot.LevelSystem
         // -> Makes it easier to check whether the placement is valid.
         // See LevelGrid.PlaceGhostComponent
 
+        /// <summary>
+        /// Creates a new instance of the <see cref="PackedScene"/> associated
+        /// with this resource. Returns <c>null</c> if no scene is specified or
+        /// the scene cannot be instantiated.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// This method will also cache the runtime type of the instantiated
+        /// instance. This can be retrieved using the <see cref="GetInstanceType"/>
+        /// method.
+        /// </remarks>
+        ///
+        /// <seealso cref="GetInstanceType"/>
         public Node GetSceneInstance()
         {
-            if (_scene != null)
+            // AI Assisted
+
+            if (_scene == null)
             {
-                return _scene.Instantiate();
+                _cachedScene = null;
+                _cachedSceneType = null;
+                return null;
             }
 
-            return null;
+            Node sceneInstance = _scene.Instantiate();
+
+            if (sceneInstance != null)
+            {
+                _cachedScene = _scene;
+                _cachedSceneType = sceneInstance.GetType();
+            }
+            else
+            {
+                _cachedScene = null;
+                _cachedSceneType = null;
+            }
+
+            return sceneInstance;
+        }
+
+        /// <summary>
+        /// Gets the runtime type of the instance created from this resource's
+        /// scene.
+        /// </summary>
+        ///
+        /// <returns>
+        /// The scene instance's runtime type, or <c>null</c> if no scene is
+        /// specified or it cannot be instantiated.
+        /// </returns>
+        ///
+        /// <remarks>
+        /// <para>
+        /// The type is cached for the current scene. If it has not yet been
+        /// cached, this method temporarily instantiates the scene to determine
+        /// the type, then frees that instance.
+        /// </para>
+        /// <para>
+        /// This method is intended to be used with the object removal system
+        /// in level editor.
+        /// </para>
+        /// </remarks>
+        public Type GetInstanceType()
+        {
+            // AI Generated
+
+            if (_scene == null)
+            {
+                _cachedScene = null;
+                _cachedSceneType = null;
+                return null;
+            }
+
+            if (!ReferenceEquals(_cachedScene, _scene))
+            {
+                Node sceneInstance = GetSceneInstance();
+                sceneInstance?.Free();
+            }
+
+            return _cachedSceneType;
         }
     }
 }

@@ -2,6 +2,8 @@
 // License: MIT License (see LICENSE in project root for details)
 // Author: Pekka Heljakka <pekka.heljakka@tuni.fi>
 
+using System.Collections.Generic;
+using EHE.Common.Godot.Logging;
 using EHE.SirSnapsalot.Config;
 using Godot;
 
@@ -21,6 +23,10 @@ namespace EHE.SirSnapsalot.LevelSystem
         public int GridId;
 
         private int _gridScale = SystemConfig.GridScale;
+
+        // Used to quickly reference to the child nodes under this cell in the
+        // node tree. This is used for lookup when removing component instances.
+        private HashSet<Node3D> _componentInstances = new HashSet<Node3D>();
 
         [Export]
         public Vector2I GridCoordinates;
@@ -70,6 +76,15 @@ namespace EHE.SirSnapsalot.LevelSystem
         public void SpawnCellComponent(CellComponent.Position position, CellComponent component)
         {
             var componentInstance = (Node3D)component.GetSceneInstance();
+
+            if (!_componentInstances.Add(componentInstance))
+            {
+                this.LogWarning(
+                    $"Trying to add {componentInstance.GetName()} to cell {GridCoordinates} again, returning."
+                );
+                return;
+            }
+
             AddChild(componentInstance);
 
             // var sceneOwner = GetTree().CurrentScene;
@@ -112,6 +127,15 @@ namespace EHE.SirSnapsalot.LevelSystem
         )
         {
             Node3D componentInstance = (Node3D)componentResource.GetSceneInstance();
+
+            if (!_componentInstances.Add(componentInstance))
+            {
+                this.LogWarning(
+                    $"Trying to add {componentInstance.GetName()} to cell {GridCoordinates} again, returning."
+                );
+                return;
+            }
+
             AddChild(componentInstance);
             componentInstance.Owner = Owner;
             componentInstance.Rotation = rotation;
@@ -128,6 +152,53 @@ namespace EHE.SirSnapsalot.LevelSystem
             }
         }
 
+        /// <summary>
+        /// Removes the given component instance node from this cell if
+        /// possible. Note: This will only remove the node from the scene tree,
+        /// the memory is <b>not</b> freed.
+        /// </summary>
+        ///
+        /// <param name="componentInstance">The component instance to remove.</param>
+        ///
+        /// <returns>
+        /// <c>true</c> if the instance was removed successfully,
+        /// <c>false</c> otherwise.
+        /// </returns>
+        ///
+        /// <remarks>
+        /// If the given <paramref name="componentInstance"/> is <c>null</c> or
+        /// otherwise invalid, an error is logged using
+        /// <see cref="SimpleLoggingExtensions"/> and <c>false</c> is returned.
+        /// </remarks>
+        public bool RemoveComponentInstance(Node3D componentInstance)
+        {
+            if (!IsInstanceValid(componentInstance))
+            {
+                this.LogError($"{nameof(componentInstance)} was null or invalid, returning false");
+                return false;
+            }
+
+            // TODO: Remove debug code.
+            this.LogDebug("Trying to remove", componentInstance.GetHashCode());
+            DebugPrintComponentInstanceHashes();
+
+            if (!_componentInstances.Remove(componentInstance))
+            {
+                // Given instance is not a child of this cell.
+                return false;
+            }
+
+            // TODO: Remove debug code.
+            DebugPrintComponentInstanceHashes();
+
+            // RemoveChild is used instead of QueueFree because freeing the
+            // memory would prevent pooling the components in the future. Also
+            // it should be easier manage pooling from somewhere else.
+            // TODO: Invoke an event when the component is removed?
+            RemoveChild(componentInstance);
+            return true;
+        }
+
         public void ClearCellComponents()
         {
             var children = GetChildren();
@@ -137,6 +208,7 @@ namespace EHE.SirSnapsalot.LevelSystem
             }
 
             Components.Clear();
+            _componentInstances.Clear();
         }
 
         public void SetComponentPosition(Node3D component, CellComponent.Position position)
@@ -294,6 +366,17 @@ namespace EHE.SirSnapsalot.LevelSystem
             }
 
             return true;
+        }
+
+        // TODO: Remove debug code.
+        private void DebugPrintComponentInstanceHashes()
+        {
+#if DEBUG
+            foreach (var componentInstance in _componentInstances)
+            {
+                GD.Print(componentInstance.GetType(), ":", componentInstance.GetHashCode());
+            }
+#endif
         }
     }
 }
